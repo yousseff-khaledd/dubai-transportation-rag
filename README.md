@@ -4,13 +4,41 @@ A local FastAPI project for answering questions from a bounded collection of Dub
 
 ## Architecture graphs
 
-The chat graph routes a question through planning, clarification when needed, retrieval, answer drafting, and final validation. Its `retrieve_evidence` node calls the retrieval graph below.
+### Chat graph
 
-![Chat graph](docs/images/chat-graph.svg)
+```mermaid
+flowchart TD
+    A([Start]) --> B[input_guard<br/>Validate request and clear previous question's data]
+    B --> C[question_guard<br/>Plan question and choose route]
 
-The retrieval graph runs lexical search, semantic search, or both in hybrid mode. It merges candidates and reranks them before returning the requested top results.
+    C -->|out_of_scope| H[response_guard]
+    C -->|needs_clarification| D[ask_clarification<br/>Pause and wait for user]
+    D -->|user resumes| C
+    C -->|clarification limit reached| H
 
-![Retrieval graph](docs/images/retrieval-graph.svg)
+    C -->|retrieve| E[retrieve_evidence<br/>Run retrieval graph]
+    E --> F[draft_answer<br/>Write answer from selected chunks]
+    F --> H
+
+    H --> I([Final response])
+```
+
+### Retrieval graph
+
+```mermaid
+flowchart TD
+    A([Start]) --> B{Search mode}
+
+    B -->|lexical| C[lexical_search<br/>Word matching / BM25]
+    B -->|semantic| D[semantic_search<br/>Embedding similarity]
+    B -->|hybrid: run both| C
+    B -->|hybrid: run both| D
+
+    C --> E[merge_candidates<br/>Join and deduplicate]
+    D --> E
+    E -->|Hybrid uses reciprocal rank fusion| F[rerank_candidates<br/>Model orders up to 20 candidates]
+    F -->|Return top_k chunks| G([Results to chat graph])
+```
 
 ## Run locally
 
