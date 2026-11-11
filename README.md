@@ -2,6 +2,16 @@
 
 A local FastAPI project for answering questions from a bounded collection of Dubai legislation. The project includes PDF ingestion, lexical and semantic retrieval, and a LangGraph flow with hybrid search and LLM reranking. Day 5 adds cited answers and persistent conversation threads.
 
+## Architecture graphs
+
+The chat graph routes a question through planning, clarification when needed, retrieval, answer drafting, and final validation. Its `retrieve_evidence` node calls the retrieval graph below.
+
+![Chat graph](docs/images/chat-graph.svg)
+
+The retrieval graph runs lexical search, semantic search, or both in hybrid mode. It merges candidates and reranks them before returning the requested top results.
+
+![Retrieval graph](docs/images/retrieval-graph.svg)
+
 ## Run locally
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and use Python 3.11 or newer. From this directory:
