@@ -1,0 +1,23 @@
+[project]
+name = "dubai-transportation-rag"
+version = "0.1.0"
+description = "Local knowledge assistant for Dubai Roads and Transport legislation"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "fastapi==0.136.0",
+    "uvicorn==0.45.0",
+    "pypdf==6.11.0",
+    "openai==2.32.0",
+    "numpy==2.4.5",
+    "python-dotenv==1.2.2",
+    "langgraph>=1.2.20",
+    "langchain>=1.4.9",
+    "langchain-openai>=1.3.4",
+    "langgraph-checkpoint-sqlite>=3.1.3",
+    "pdfplumber==0.11.10",
+]
+
+[dependency-groups]
+eval = [
+    "ragas==0.4.3",
+]

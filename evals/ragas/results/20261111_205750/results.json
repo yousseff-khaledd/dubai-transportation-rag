@@ -1,0 +1,1850 @@
+{
+  "run_id": "20261111_205750",
+  "ragas_version": "0.4.3",
+  "chat_model": "gpt-4.1-mini",
+  "embedding_model": "text-embedding-3-small",
+  "document_count": 30,
+  "chunk_count": 1136,
+  "top_k": 5,
+  "metrics": [
+    "faithfulness",
+    "answer_correctness",
+    "context_precision",
+    "context_recall",
+    "answer_relevancy"
+  ],
+  "cases": [
+    {
+      "id": "Q01",
+      "question": "What is the one-hour fee for a Category One on-street car park during peak hours?",
+      "reference_answer": "The one-hour Category One on-street parking fee during peak hours is AED 4.00.",
+      "expected_document_id": "1817",
+      "expected_chunk_id": "a25fbea55bf0a5bf74cc",
+      "expected_locator": "5",
+      "source_phrase": "On-street during peak hours: 4.00 dirhams",
+      "expected_status": "answered",
+      "attempts": [
+        {
+          "http_status": 200,
+          "response": {
+            "thread_id": "eval_20261111_205750_Q01_1",
+            "request_id": "2a9c2bd9-ba48-4343-befe-ac06c524a8b9",
+            "status": "answered",
+            "answer": "The one-hour fee for a Category One on-street car park during peak hours in Dubai is 4.00 dirhams.",
+            "citations": [
+              {
+                "chunk_id": "a25fbea55bf0a5bf74cc",
+                "document_id": "1817",
+                "locator": "5"
+              }
+            ],
+            "clarification": null,
+            "interrupt_id": null,
+            "error": null
+          },
+          "elapsed_seconds": 6.761,
+          "planned_query": "What is the one-hour fee for a Category One on-street car park during peak hours in Dubai?",
+          "evidence": [
+            {
+              "chunk_id": "a25fbea55bf0a5bf74cc",
+              "document_id": "1817",
+              "locator": "5",
+              "text": "Schedule (1): Parking Fees\nPDF page 5\nParking Fees for Category One Car Parks (in dirhams) | Duration: One (1) hour | On-street outside peak hours: 4.00 dirhams | On-street during peak hours: 4.00 dirhams | On-street premium during peak hours: 6.00 dirhams | Off-street outside peak hours: 3.00 dirhams | Off-street during peak hours: 4.00 dirhams | Off-street premium during peak hours: 6.00 dirhams"
+            },
+            {
+              "chunk_id": "2ef082e6fd0cd9442314",
+              "document_id": "1817",
+              "locator": "5",
+              "text": "Schedule (1): Parking Fees\nPDF page 5\nParking Fees for Category One Car Parks (in dirhams) | Duration: Half an hour | On-street outside peak hours: 2.00 dirhams | On-street during peak hours: 2.00 dirhams | On-street premium during peak hours: 3.00 dirhams | Off-street outside peak hours: - dirhams | Off-street during peak hours: - dirhams | Off-street premium during peak hours: - dirhams"
+            },
+            {
+              "chunk_id": "920f9856fbd4d72dc4bc",
+              "document_id": "1817",
+              "locator": "5",
+              "text": "Schedule (1): Parking Fees\nPDF page 5\nParking Fees for Category One Car Parks (in dirhams) | Duration: Four (4) hours | On-street outside peak hours: 16.00 dirhams | On-street during peak hours: 16.00 dirhams | On-street premium during peak hours: 24.00 dirhams | Off-street outside peak hours: 12.00 dirhams | Off-street during peak hours: 16.00 dirhams | Off-street premium during peak hours: 24.00 dirhams"
+            },
+            {
+              "chunk_id": "bab0c92f66132d954bdb",
+              "document_id": "1817",
+              "locator": "5",
+              "text": "Schedule (1): Parking Fees\nPDF page 5\nParking Fees for Category One Car Parks (in dirhams) | Duration: Two (2) hours | On-street outside peak hours: 8.00 dirhams | On-street during peak hours: 8.00 dirhams | On-street premium during peak hours: 12.00 dirhams | Off-street outside peak hours: 6.00 dirhams | Off-street during peak hours: 8.00 dirhams | Off-street premium during peak hours: 12.00 dirhams"
+            },
+            {
+              "chunk_id": "63857151918753e52be0",
+              "document_id": "1817",
+              "locator": "5",
+              "text": "Schedule (1): Parking Fees\nPDF page 5\nParking Fees for Category One Car Parks (in dirhams) | Duration: Three (3) hours | On-street outside peak hours: 12.00 dirhams | On-street during peak hours: 12.00 dirhams | On-street premium during peak hours: 18.00 dirhams | Off-street outside peak hours: 9.00 dirhams | Off-street during peak hours: 12.00 dirhams | Off-street premium during peak hours: 18.00 dirhams"
+            }
+          ],
+          "status_matches": true,
+          "document_rank": 1,
+          "chunk_rank": 1,
+          "citation_valid": true,
+          "ragas_scores": {
+            "faithfulness": 1.0,
+            "answer_correctness": 0.9643907099310239,
+            "context_precision": 0.9999999999666667,
+            "context_recall": 1.0,
+            "answer_relevancy": 1.0
+          },
+          "metric_errors": {}
+        }
+      ]
+    },
+    {
+      "id": "Q02",
+      "question": "Under Law No. (9) of 2023, what insurance must an autonomous vehicle have to be licensed?",
+      "reference_answer": "The autonomous vehicle must be insured with an insurance company licensed to operate in the UAE, as prescribed by the Director General.",
+      "expected_document_id": "1525",
+      "expected_chunk_id": "ad4140c36714b474e0f6",
+      "expected_locator": "7",
+      "source_phrase": "be insured with an insurance company licensed to operate in the UAE",
+      "expected_status": "answered",
+      "attempts": [
+        {
+          "http_status": 200,
+          "response": {
+            "thread_id": "eval_20261111_205750_Q02_1",
+            "request_id": "2a4cb0b0-f478-4402-a73b-31ccd1505608",
+            "status": "answered",
+            "answer": "Under Law No. (9) of 2023, an autonomous vehicle must be covered by a comprehensive insurance policy issued by an insurance company licensed to operate in the UAE to be licensed in Dubai.",
+            "citations": [
+              {
+                "chunk_id": "ad4140c36714b474e0f6",
+                "document_id": "1525",
+                "locator": "7"
+              },
+              {
+                "chunk_id": "77e58acfb3acfcd78994",
+                "document_id": "1872",
+                "locator": "4"
+              }
+            ],
+            "clarification": null,
+            "interrupt_id": null,
+            "error": null
+          },
+          "elapsed_seconds": 6.607,
+          "planned_query": "Under Law No. (9) of 2023, what insurance must an autonomous vehicle have to be licensed in Dubai?",
+          "evidence": [
+            {
+              "chunk_id": "ad4140c36714b474e0f6",
+              "document_id": "1525",
+              "locator": "7",
+              "text": "Requirements for Licensing Autonomous Vehicles\nArticle (8)\ntheir users in accordance with the relevant guidelines adopted by the RTA; 6. conform to the specifications approved in the UAE; 7. be insured with an insurance company licensed to operate in the UAE, as prescribed by the Director General in this respect; and 8. meet any other conditions determined pursuant to the relevant resolutions issued by the Director General."
+            },
+            {
+              "chunk_id": "8696b073929e5268205f",
+              "document_id": "1525",
+              "locator": "6-7",
+              "text": "Requirements for Licensing Autonomous Vehicles\nArticle (8)\nTo be licensed, an Autonomous Vehicle must: 1. be sourced from the authorised local Agent for that type of Autonomous Vehicles in the Emirate, at the time of initial registration; 2. be registered in its source country or country of origin, and have a proven record of use on the public Roads designated for its category and type in that country; 3. pass the technical inspection prescribed by the RTA; 4. be equipped to read and respond to Traffic Signs, and capable of responding to Road priorities and travelling on Roads; 5. meet the security and safety standards and specifications, and be equipped with the systems required to interact with Roads and their users in accordance with the relevant guidelines adopted by the RTA; 6."
+            },
+            {
+              "chunk_id": "77e58acfb3acfcd78994",
+              "document_id": "1872",
+              "locator": "4",
+              "text": "Requirements for Licensing Autonomous Vehicles\nArticle (7)\nIn addition to the requirements prescribed by the Law, for an Autonomous Vehicle to be licensed, it must: 1. fall within the categories and types specified in Article (2) of this Resolution; 2. comply with all the standards, requirements, and conditions set out in Articles (3) and (4) of this Resolution; 3. be covered by a comprehensive insurance policy issued by an insurance company licensed to operate in the UAE; 4. be operated by an Operator holding a valid Permit; and 5. not have been modified, upgraded, or updated in re spect of any features related to the Autonomous Driving System, operational design domain, or electronic applications without first obtaining the approval of the RTA."
+            },
+            {
+              "chunk_id": "8ea9679d58156e448b5d",
+              "document_id": "1872",
+              "locator": "4",
+              "text": "Licence Renewal Requirements\nArticle (8)\nFor an Autonomous Vehicle licence to be renewed, the following requirements must be satisfied: 1. The Autonomous Vehicle must successfully pass the technical inspection conducted in accordance with the standards and requirements approved by the RTA. 2. The Autonomous Vehicle must be covered by a comprehensive insurance policy issued by an insurance company licensed to operate in the UAE. 3. The relevant Activity Permit must be valid."
+            },
+            {
+              "chunk_id": "0da8a9e995093b009063",
+              "document_id": "1525",
+              "locator": "2",
+              "text": "Title of the Law\nArticle (1)\nThis Law will be cited as \"Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai\"."
+            }
+          ],
+          "status_matches": true,
+          "document_rank": 1,
+          "chunk_rank": 1,
+          "citation_valid": true,
+          "ragas_scores": {
+            "faithfulness": 1.0,
+            "answer_correctness": 0.5116603667728676,
+            "context_precision": 0.8055555555287036,
+            "context_recall": 1.0,
+            "answer_relevancy": 0.9181754091171932
+          },
+          "metric_errors": {}
+        }
+      ]
+    },
+    {
+      "id": "Q03",
+      "question": "What departure fee does Law No. (13) of 2022 charge passengers leaving through Dubai airports?",
+      "reference_answer": "The departure fee is AED 75.00 per passenger departing the UAE through Dubai airports, subject to the law's exemptions.",
+      "expected_document_id": "1432",
+      "expected_chunk_id": "23d885d0bfc09fdf430f",
+      "expected_locator": "1-2",
+      "source_phrase": "seventy-five dirhams",
+      "expected_status": "answered",
+      "attempts": [
+        {
+          "http_status": 200,
+          "response": {
+            "thread_id": "eval_20261111_205750_Q03_1",
+            "request_id": "95aeb82f-eab7-4c60-88ef-7cf39c7c990a",
+            "status": "answered",
+            "answer": "Law No. (13) of 2022 charges a departure fee of seventy-five dirhams (AED 75.00) from every passenger departing the United Arab Emirates through Dubai airports. However, exemptions apply to passengers below the age of two years, on-duty pilots and cabin crew, transit passengers whose arrival and departure flight number is the same, and transfer passengers whose final destination is not the UAE and whose departure is within 24 hours from the time of arrival.",
+            "citations": [
+              {
+                "chunk_id": "23d885d0bfc09fdf430f",
+                "document_id": "1432",
+                "locator": "1-2"
+              }
+            ],
+            "clarification": null,
+            "interrupt_id": null,
+            "error": null
+          },
+          "elapsed_seconds": 6.907,
+          "planned_query": "What departure fee does Law No. (13) of 2022 charge passengers leaving through Dubai airports?",
+          "evidence": [
+            {
+              "chunk_id": "23d885d0bfc09fdf430f",
+              "document_id": "1432",
+              "locator": "1-2",
+              "text": "Charging the Fee\nArticle (1)\na. A departure fee of seventy-five dirhams (AED 75.00) will be collected from every passenger departing the United Arab Emirates through Dubai airports. b. The following categories are hereby exempted from payment of the fee referred to in paragraph (a) of this Article: 1. passengers below the age of two (2) years; 2. on-duty pilots and cabin crew; 3. transit passengers whose arrival and departure flight number is the same ; and 4. transfer passengers whose final destination is not the United Arab Emirates and who se departure is within twenty-four (24) hours from the time of arrival."
+            },
+            {
+              "chunk_id": "143f6a89d24557b4f6b0",
+              "document_id": "1432",
+              "locator": "2",
+              "text": "Collection of the Fee\nArticle (2)\nAirlines operating in Dubai airports will be responsible for collecting the fee referred to in Article (1) of this Law upon issuing air tickets to customers within or outside of the United Arab Emirates. The airlines must transfer the proceeds generated from collecting such a fee to the Corporation, in accordance with the processes, procedures, and time frames stipulated in the document stating the conditions for using airports, as adopted by the Corporation in this respect."
+            },
+            {
+              "chunk_id": "42c2646c0435d4bc6322",
+              "document_id": "1432",
+              "locator": "2",
+              "text": "Fee Payment\nArticle (3)\nThe fee collected pursuant to this Law will be paid to the Public Treasury of the G overnment of Dubai."
+            },
+            {
+              "chunk_id": "3185909575071b59b65e",
+              "document_id": "1432",
+              "locator": "1",
+              "text": "Preamble\nLaw No. (13) of 2022 Concerning the Dubai Airports Departure Fee1 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ We, Mohammed bin Rashid Al Maktoum, Ruler of Dubai, After perusal of: Cabinet Resolution No. (10) of 2010 Concerning the Departure Fee through Sea, Air, and Land Ports of Entry of the United Arab Emirates; Law No. (5) of 1995 Establishing the Department of Finance; Law No. (3) of 2003 Establishing the Executive Council of the Emirate of Dubai; Law No. (3) of 2004 Imposing the Dubai International Airport Departure Fee and its amendments; Law No. (23) of 2007 Establishing the Dubai Airports Corporation (the “Corporation”); Law No."
+            },
+            {
+              "chunk_id": "f3881128ebf56f71b107",
+              "document_id": "1432",
+              "locator": "1",
+              "text": "Preamble\n2007 Establishing the Dubai Airports Corporation (the “Corporation”); Law No. (14) of 2009 Concerning the Pricing of Government Services in the Emirate of Dubai and its amendments; and Law No. (1) of 2016 Concerning the Financial Regulations of the Government of Dubai, Do hereby issue this Law."
+            }
+          ],
+          "status_matches": true,
+          "document_rank": 1,
+          "chunk_rank": 1,
+          "citation_valid": true,
+          "ragas_scores": {
+            "faithfulness": 1.0,
+            "answer_correctness": 0.4283427490470064,
+            "context_precision": 0.7499999999625,
+            "context_recall": 1.0,
+            "answer_relevancy": 0.8824931101457318
+          },
+          "metric_errors": {}
+        }
+      ]
+    },
+    {
+      "id": "Q04",
+      "question": "What is the fine for conducting the activity without a permit in Schedule (2) of the 2026 establishment violations resolution?",
+      "reference_answer": "The fine for conducting the activity without a permit is AED 10,000.",
+      "expected_document_id": "1915",
+      "expected_chunk_id": "d58a829ce70544981735",
+      "expected_locator": "11",
+      "source_phrase": "Conducting the Activity without a Permit | Fine: 10,000 dirhams",
+      "expected_status": "answered",
+      "attempts": [
+        {
+          "http_status": 200,
+          "response": {
+            "thread_id": "eval_20261111_205750_Q04_1",
+            "request_id": "40bd089e-0760-4ad8-8bd1-4968a617e479",
+            "status": "answered",
+            "answer": "The fine for conducting the activity without a permit as specified in Schedule (2) of the 2026 establishment violations resolution in Dubai transport legislation is 10,000 dirhams.",
+            "citations": [
+              {
+                "chunk_id": "d58a829ce70544981735",
+                "document_id": "1915",
+                "locator": "11"
+              }
+            ],
+            "clarification": null,
+            "interrupt_id": null,
+            "error": null
+          },
+          "elapsed_seconds": 5.447,
+          "planned_query": "What is the fine for conducting the activity without a permit as specified in Schedule (2) of the 2026 establishment violations resolution in Dubai transport legislation?",
+          "evidence": [
+            {
+              "chunk_id": "d58a829ce70544981735",
+              "document_id": "1915",
+              "locator": "11",
+              "text": "Schedule (2): Violations and Fines of Establishments\nPDF page 11\nNo. 1 | Conducting the Activity without a Permit | Fine: 10,000 dirhams"
+            },
+            {
+              "chunk_id": "935830090cdb9eeb124f",
+              "document_id": "1915",
+              "locator": "11",
+              "text": "Schedule (2): Violations and Fines of Establishments\nPDF page 11\nNo. 2 | Conducting the Activity with an expired Permit | Fine: 5,000 dirhams"
+            },
+            {
+              "chunk_id": "fade85b31e675fe42a1f",
+              "document_id": "1915",
+              "locator": "12",
+              "text": "Schedule (2): Violations and Fines of Establishments\nPDF page 12\nNo. 18 | Using the Establishment’s Training Vehicles, buildings, or facilities for conducting any activity other than the Activity authorised by the Agency | Fine: 5,000 dirhams"
+            },
+            {
+              "chunk_id": "0606d6244067aa9cf2e2",
+              "document_id": "1915",
+              "locator": "11",
+              "text": "Schedule (2): Violations and Fines of Establishments\nPDF page 11\nNo. 9 | Conducting the Activity using a Training Vehicle which is not owned by the Establishment | Fine: 5,000 dirhams"
+            },
+            {
+              "chunk_id": "911e0b0aa271fbf72365",
+              "document_id": "1915",
+              "locator": "13",
+              "text": "Schedule (2): Violations and Fines of Establishments\nPDF page 13\nNo. 27 | Exceeding the maximum capacity of a Training Vehicle as specified in the Permit issued for the Establishment | Fine: 2,000 dirhams"
+            }
+          ],
+          "status_matches": true,
+          "document_rank": 1,
+          "chunk_rank": 1,
+          "citation_valid": true,
+          "ragas_scores": {
+            "faithfulness": 1.0,
+            "answer_correctness": 0.9512969595577432,
+            "context_precision": 0.9999999999,
+            "context_recall": 1.0,
+            "answer_relevancy": 0.99638480624977
+          },
+          "metric_errors": {}
+        }
+      ]
+    },
+    {
+      "id": "Q05",
+      "question": "What is the water taxi fare from Al Mamzar station to Deira Old Souk station?",
+      "reference_answer": "The water taxi fare from Al Mamzar station to Deira Old Souk station is AED 150.",
+      "expected_document_id": "236",
+      "expected_chunk_id": "5f282cdb77d47ba1a601",
+      "expected_locator": "5",
+      "source_phrase": "Deira Old Souk (20): 150 dirhams",
+      "expected_status": "answered",
+      "attempts": [
+        {
+          "http_status": 200,
+          "response": {
+            "thread_id": "eval_20261111_205750_Q05_1",
+            "request_id": "4fa776a2-9e12-46db-ad49-5c16b0a3c408",
+            "status": "answered",
+            "answer": "The water taxi fare from Al Mamzar station to Deira Old Souk station in Dubai is 150 dirhams.",
+            "citations": [
+              {
+                "chunk_id": "5f282cdb77d47ba1a601",
+                "document_id": "236",
+                "locator": "5"
+              }
+            ],
+            "clarification": null,
+            "interrupt_id": null,
+            "error": null
+          },
+          "elapsed_seconds": 7.107,
+          "planned_query": "What is the water taxi fare from Al Mamzar station to Deira Old Souk station in Dubai?",
+          "evidence": [
+            {
+              "chunk_id": "5f282cdb77d47ba1a601",
+              "document_id": "236",
+              "locator": "5",
+              "text": "Schedule (1): Water Taxi Fares between Stations\nPDF page 5\nFrom Al Mamzar (10) | To Al Mamzar (10): 0 dirhams | Deira Old Souk (20): 150 dirhams | Al Sabkha (21): 160 dirhams | Baniyas (22): 180 dirhams | Dubai Festival City (23): 290 dirhams | Al Shandagha (30): 130 dirhams | Bur Dubai (31): 140 dirhams | Al Fahidi (32): 160 dirhams | Al Seef (33): 190 dirhams | Creek Park (a) (34): 220 dirhams | Creek Park (b) (35): 320 dirhams | Al Boom Tourist Village (36): 250 dirhams | Jumeirah Open Beach (40): 225 dirhams | Jumeirah Beach Park (41): 270 dirhams | Jumeirah Beach Hotel (42): 315 dirhams | Dubai Marina (East Marina) (50): 390 dirhams | Jebel Ali Hotel and Resort (51): 535 dirhams | Atlantis (52): 390 dirhams"
+            },
+            {
+              "chunk_id": "b1ec5c3022065c3d6710",
+              "document_id": "236",
+              "locator": "5",
+              "text": "Schedule (1): Water Taxi Fares between Stations\nPDF page 5\nFrom Deira Old Souk (20) | To Al Mamzar (10): 150 dirhams | Deira Old Souk (20): 0 dirhams | Al Sabkha (21): 60 dirhams | Baniyas (22): 85 dirhams | Dubai Festival City (23): 225 dirhams | Al Shandagha (30): 75 dirhams | Bur Dubai (31): 65 dirhams | Al Fahidi (32): 60 dirhams | Al Seef (33): 95 dirhams | Creek Park (a) (34): 130 dirhams | Creek Park (b) (35): 130 dirhams | Al Boom Tourist Village (36): 175 dirhams | Jumeirah Open Beach (40): 160 dirhams | Jumeirah Beach Park (41): 200 dirhams | Jumeirah Beach Hotel (42): 245 dirhams | Dubai Marina (East Marina) (50): 310 dirhams | Jebel Ali Hotel and Resort (51): 430 dirhams | Atlantis (52): 310 dirhams"
+            },
+            {
+              "chunk_id": "262a63fd8094d57b339c",
+              "document_id": "236",
+              "locator": "5",
+              "text": "Schedule (1): Water Taxi Fares between Stations\nPDF page 5\nFrom Bur Dubai (31) | To Al Mamzar (10): 140 dirhams | Deira Old Souk (20): 65 dirhams | Al Sabkha (21): 70 dirhams | Baniyas (22): 95 dirhams | Dubai Festival City (23): 235 dirhams | Al Shandagha (30): 65 dirhams | Bur Dubai (31): 0 dirhams | Al Fahidi (32): 70 dirhams | Al Seef (33): 105 dirhams | Creek Park (a) (34): 145 dirhams | Creek Park (b) (35): 145 dirhams | Al Boom Tourist Village (36): 185 dirhams | Jumeirah Open Beach (40): 155 dirhams | Jumeirah Beach Park (41): 190 dirhams | Jumeirah Beach Hotel (42): 240 dirhams | Dubai Marina (East Marina) (50): 300 dirhams | Jebel Ali Hotel and Resort (51): 415 dirhams | Atlantis (52): 305 dirhams"
+            },
+            {
+              "chunk_id": "81e6490d0839494c1715",
+              "document_id": "236",
+              "locator": "5",
+              "text": "Schedule (1): Water Taxi Fares between Stations\nPDF page 5\nFrom Dubai Festival City (23) | To Al Mamzar (10): 290 dirhams | Deira Old Souk (20): 225 dirhams | Al Sabkha (21): 215 dirhams | Baniyas (22): 190 dirhams | Dubai Festival City (23): 0 dirhams | Al Shandagha (30): 250 dirhams | Bur Dubai (31): 235 dirhams | Al Fahidi (32): 215 dirhams | Al Seef (33): 175 dirhams | Creek Park (a) (34): 140 dirhams | Creek Park (b) (35): 140 dirhams | Al Boom Tourist Village (36): 100 dirhams | Jumeirah Open Beach (40): 300 dirhams | Jumeirah Beach Park (41): 335 dirhams | Jumeirah Beach Hotel (42): 385 dirhams | Dubai Marina (East Marina) (50): 445 dirhams | Jebel Ali Hotel and Resort (51): 570 dirhams | Atlantis (52): 450 dirhams"
+            },
+            {
+              "chunk_id": "5a3656f4c6a0d0d2cfe5",
+              "document_id": "236",
+              "locator": "5",
+              "text": "Schedule (1): Water Taxi Fares between Stations\nPDF page 5\nFrom Al Sabkha (21) | To Al Mamzar (10): 160 dirhams | Deira Old Souk (20): 60 dirhams | Al Sabkha (21): 0 dirhams | Baniyas (22): 75 dirhams | Dubai Festival City (23): 215 dirhams | Al Shandagha (30): 90 dirhams | Bur Dubai (31): 70 dirhams | Al Fahidi (32): 55 dirhams | Al Seef (33): 85 dirhams | Creek Park (a) (34): 120 dirhams | Creek Park (b) (35): 120 dirhams | Al Boom Tourist Village (36): 165 dirhams | Jumeirah Open Beach (40): 170 dirhams | Jumeirah Beach Park (41): 210 dirhams | Jumeirah Beach Hotel (42): 255 dirhams | Dubai Marina (East Marina) (50): 315 dirhams | Jebel Ali Hotel and Resort (51): 440 dirhams | Atlantis (52): 320 dirhams"
+            }
+          ],
+          "status_matches": true,
+          "document_rank": 1,
+          "chunk_rank": 1,
+          "citation_valid": true,
+          "ragas_scores": {
+            "faithfulness": 1.0,
+            "answer_correctness": 0.9883313354766853,
+            "context_precision": 0.99999999995,
+            "context_recall": 1.0,
+            "answer_relevancy": 1.0
+          },
+          "metric_errors": {}
+        }
+      ]
+    },
+    {
+      "id": "Q06",
+      "question": "Which Schedule (5) railway violation items require a written warning before a fine under Administrative Resolution No. (817) of 2024?",
+      "reference_answer": "Items (3), (4), and (5) of Schedule (5) require a written warning before a fine.",
+      "expected_document_id": "1739",
+      "expected_chunk_id": "48f24bb9df8edb1d13b7",
+      "expected_locator": "1",
+      "source_phrase": "Items (3), (4), and (5) of Schedule (5)",
+      "expected_status": "answered",
+      "attempts": [
+        {
+          "http_status": 200,
+          "response": {
+            "thread_id": "eval_20261111_205750_Q06_1",
+            "request_id": "d867cce1-57da-4ecc-9b07-b3f93e8eb1c8",
+            "status": "answered",
+            "answer": "Under Administrative Resolution No. (817) of 2024, the Schedule 5 railway violation items that require a written warning before a fine are specifically the violations set out in Items (3), (4), and (5) of Schedule (5) attached to Executive Council Resolution No. (1) of 2017 and its amendments.",
+            "citations": [
+              {
+                "chunk_id": "48f24bb9df8edb1d13b7",
+                "document_id": "1739",
+                "locator": "1"
+              }
+            ],
+            "clarification": null,
+            "interrupt_id": null,
+            "error": null
+          },
+          "elapsed_seconds": 7.962,
+          "planned_query": "Schedule 5 railway violation items under Administrative Resolution No. (817) of 2024 that require a written warning before a fine",
+          "evidence": [
+            {
+              "chunk_id": "48f24bb9df8edb1d13b7",
+              "document_id": "1739",
+              "locator": "1",
+              "text": "Violations that Require Issuing Warnings Prior to Imposing Fines\nArticle (1)\nThe following violations, set out in the Schedules attached to the above -mentioned Executive Council Resolution No. (1) of 2017 and its amendments, require issuing written warnings prior to imposing fines: 1. the violations set out in Items (3), (4), and (5) of Schedule (5); 2. the violations set out in Items (1), (2), and (3) of Schedule (6), where the committed violation does not constitute a serious hazard to the Railway Critical Zone or Protection Zone; and 3. the violations set out in Items (9), (10), (11), and (12) of Schedule (6)."
+            },
+            {
+              "chunk_id": "fd840cbe301a1477e203",
+              "document_id": "1546",
+              "locator": "8",
+              "text": "Penalties and Administrative Measures\nArticle (15)\na. Without prejudice to any stricter penalty stipulated in any other resolution, a Person who commits any of the violations mentioned in Schedule (5) and Schedule (6) attached to this Resolution will be punished by the fine indicated opposite that violation. b. Notwithstanding the provisions of paragraph (a) of this Article, imposing a fine on a Person who commits any of the violations prescribed by a resolution of the Director General must be preceded by serving a written warning on that Person requiring him to redress and remedy the violation within a time frame determined by the Agency or the Safety Regulatory Entity. Where the violator fails to do so, the fine will be imposed on him. c."
+            },
+            {
+              "chunk_id": "bc713b6910b665da44f4",
+              "document_id": "1739",
+              "locator": "1",
+              "text": "Preamble\nAdministrative Resolution No. (817) of 2024 Determining the Railway Violations that Require Issuing Warnings Prior to Imposing Fines1 ــــــــــــــــــــــــــــــــــــــــــ The Director General and Chairman of the Board of Executive Directors of the Roads and Transport Authority, After perusal of: Law No. (17) of 2005 Establishing the Roads and Transport Authority and its amendments; Executive Council Resolution No. (1) of 2017 R egulating Railways in the Emirate of Dubai and its amendments; and Administrative Resolution No. (462) of 2017 Determining the Railway Violations that Require Issuing Warnings Prior to Imposing Fines, Do hereby issue this Resolution."
+            },
+            {
+              "chunk_id": "6d9c8e5904f747c06b4d",
+              "document_id": "1546",
+              "locator": "14",
+              "text": "Schedule (6): Violations and Fines Imposed by the Agency\nPDF page 14\nNo. 11 | Suspending Infrastructure construction works or any other works related to Railway Systems without obtaining a No- objection Certificate | Fine: 300,000.00 dirhams"
+            },
+            {
+              "chunk_id": "ec6cd26cf0e65a1a6b78",
+              "document_id": "1546",
+              "locator": "13",
+              "text": "Schedule (6): Violations and Fines Imposed by the Agency\nPDF page 13\nNo. 9 | Constructing or operating Infrastructure or performing any work related to Railway Systems without obtaining a Compliance Certificate from the Agency | Fine: 500,000.00 dirhams"
+            }
+          ],
+          "status_matches": true,
+          "document_rank": 1,
+          "chunk_rank": 1,
+          "citation_valid": true,
+          "ragas_scores": {
+            "faithfulness": 0.6666666666666666,
+            "answer_correctness": 0.3897482166449735,
+            "context_precision": 0.9999999999,
+            "context_recall": 1.0,
+            "answer_relevancy": 0.9444752820810193
+          },
+          "metric_errors": {}
+        }
+      ]
+    },
+    {
+      "id": "Q07",
+      "question": "Under Law No. (22) of 2006, when does the RTA charge a traffic toll fee to a motor vehicle owner?",
+      "reference_answer": "The RTA charges the vehicle owner when the vehicle uses Dubai's road network and passes through a traffic toll gate in one direction, whether or not the vehicle is registered in Dubai.",
+      "expected_document_id": "13",
+      "expected_chunk_id": "ac948ce25c6b6199f6e4",
+      "expected_locator": "2",
+      "source_phrase": "pass through a Traffic Toll Gate in one direction",
+      "expected_status": "answered",
+      "attempts": [
+        {
+          "http_status": 200,
+          "response": {
+            "thread_id": "eval_20261111_205750_Q07_1",
+            "request_id": "23285d97-5e49-4abd-9889-e82bb991f485",
+            "status": "answered",
+            "answer": "Under Law No. (22) of 2006, the RTA charges a traffic toll fee to motor vehicle owners whose vehicles use the road network of the Emirate and pass through a Traffic Toll Gate in one direction, regardless of whether the vehicle is registered in the Emirate. Vehicle owners must also obtain and affix Tags to their vehicles before passing through the toll gates as per the law's requirements.",
+            "citations": [
+              {
+                "chunk_id": "ac948ce25c6b6199f6e4",
+                "document_id": "13",
+                "locator": "2"
+              },
+              {
+                "chunk_id": "423966d76af53b184291",
+                "document_id": "13",
+                "locator": "3"
+              },
+              {
+                "chunk_id": "774c50eef96f301e4c3b",
+                "document_id": "13",
+                "locator": "3"
+              }
+            ],
+            "clarification": null,
+            "interrupt_id": null,
+            "error": null
+          },
+          "elapsed_seconds": 7.22,
+          "planned_query": "Under Law No. (22) of 2006, when does the RTA charge a traffic toll fee to a motor vehicle owner?",
+          "evidence": [
+            {
+              "chunk_id": "ac948ce25c6b6199f6e4",
+              "document_id": "13",
+              "locator": "2",
+              "text": "Article (3)\nThe RTA will charge motor Vehicle Owners whose Vehicles use the Road network of the Emirate and pass through a Traffic Toll Gate in one direction a “Traffic Toll Fee”, whether or not the Vehicle is registered in the Emirate."
+            },
+            {
+              "chunk_id": "423966d76af53b184291",
+              "document_id": "13",
+              "locator": "3",
+              "text": "Article (6)\nVehicle Owners whose motor Vehicles pass through Traffic Toll Gates in the Emirate must obtain Tags and affix them to their designated places on the Vehicles."
+            },
+            {
+              "chunk_id": "28d9bd8ebc6e151d5ca3",
+              "document_id": "191",
+              "locator": "4",
+              "text": "Article (11)\nThe fees and fines collected pursuant to this Regulation will be paid to the RTA."
+            },
+            {
+              "chunk_id": "774c50eef96f301e4c3b",
+              "document_id": "13",
+              "locator": "3",
+              "text": "Article (5)\nVehicle Owners must ensure that the motor Vehicles mentioned in Article (4) above do not pass through Traffic Toll Gates without first having the Tag affixed to their Vehicles in accordance with the rules and conditions stipulated in this Law."
+            },
+            {
+              "chunk_id": "b85c16ee62775a2ad94e",
+              "document_id": "13",
+              "locator": "3",
+              "text": "Article (7)\nFor the purposes of this Law, the RTA will be solely responsible for setting and adopting the technical requirements, standards, and guidelines for determining the locations of Traffic Toll Gates on the streets and Roads in the Emirate, and for determining the Peak Hours, and Traffic Toll Gate operation timings."
+            }
+          ],
+          "status_matches": true,
+          "document_rank": 1,
+          "chunk_rank": 1,
+          "citation_valid": true,
+          "ragas_scores": {
+            "faithfulness": 0.75,
+            "answer_correctness": 0.5442448346830373,
+            "context_precision": 0.9166666666361111,
+            "context_recall": 1.0,
+            "answer_relevancy": 0.7076019050803383
+          },
+          "metric_errors": {}
+        }
+      ]
+    },
+    {
+      "id": "Q08",
+      "question": "Does Law No. (4) of 2020 apply to all types of unmanned aircraft regardless of their use or control systems?",
+      "reference_answer": "Yes. It applies to all types of unmanned aircraft regardless of use or control system. Military-purpose aircraft operated in coordination with the DCAA are excluded.",
+      "expected_document_id": "1718",
+      "expected_chunk_id": "0386faaeae372c54791f",
+      "expected_locator": "6-7",
+      "source_phrase": "all types of Unmanned Aircraft, regardless of their use or control systems",
+      "expected_status": "answered",
+      "attempts": [
+        {
+          "http_status": 502,
+          "response": {
+            "thread_id": "eval_20261111_205750_Q08_1",
+            "request_id": "bfd42188-5d06-447c-80a3-7694c309d429",
+            "status": "error",
+            "answer": null,
+            "citations": [],
+            "clarification": null,
+            "interrupt_id": null,
+            "error": {
+              "code": "model_failure",
+              "message": "A model request failed or returned an invalid response."
+            }
+          },
+          "elapsed_seconds": 4.672,
+          "planned_query": "Does Law No. (4) of 2020 apply to all types of unmanned aircraft regardless of their use or control systems in Dubai transport legislation?",
+          "evidence": [],
+          "status_matches": false,
+          "document_rank": null,
+          "chunk_rank": null,
+          "citation_valid": false
+        },
+        {
+          "http_status": 502,
+          "response": {
+            "thread_id": "eval_20261111_205750_Q08_2",
+            "request_id": "71963a29-dec5-42ce-a15b-75457385e670",
+            "status": "error",
+            "answer": null,
+            "citations": [],
+            "clarification": null,
+            "interrupt_id": null,
+            "error": {
+              "code": "model_failure",
+              "message": "A model request failed or returned an invalid response."
+            }
+          },
+          "elapsed_seconds": 3.875,
+          "planned_query": "Does Law No. (4) of 2020 apply to all types of unmanned aircraft regardless of their use or control systems in Dubai transport legislation?",
+          "evidence": [],
+          "status_matches": false,
+          "document_rank": null,
+          "chunk_rank": null,
+          "citation_valid": false
+        }
+      ]
+    },
+    {
+      "id": "Q09",
+      "question": "Can a vessel owner use a vessel for commercial maritime activity without first obtaining a permit under the 2025 maritime resolution?",
+      "reference_answer": "No. A vessel owner, operator, or maritime agent must first obtain a permit before using a vessel for the activity.",
+      "expected_document_id": "1875",
+      "expected_chunk_id": "dcda48e463cf7d003588",
+      "expected_locator": "3",
+      "source_phrase": "No Vessel owner, operator, or maritime agent may use a Vessel for conducting the Activity without first obtaining a Permit",
+      "expected_status": "answered",
+      "attempts": [
+        {
+          "http_status": 502,
+          "response": {
+            "thread_id": "eval_20261111_205750_Q09_1",
+            "request_id": "0673ecd0-68b3-4bd1-a0d1-011b597c7fae",
+            "status": "error",
+            "answer": null,
+            "citations": [],
+            "clarification": null,
+            "interrupt_id": null,
+            "error": {
+              "code": "model_failure",
+              "message": "A model request failed or returned an invalid response."
+            }
+          },
+          "elapsed_seconds": 3.522,
+          "planned_query": "Is it allowed for a vessel owner to use a vessel for commercial maritime activity without first obtaining a permit under the 2025 maritime resolution in Dubai?",
+          "evidence": [],
+          "status_matches": false,
+          "document_rank": null,
+          "chunk_rank": null,
+          "citation_valid": false
+        },
+        {
+          "http_status": 502,
+          "response": {
+            "thread_id": "eval_20261111_205750_Q09_2",
+            "request_id": "b41c2e99-055e-4de8-81fa-772477767b69",
+            "status": "error",
+            "answer": null,
+            "citations": [],
+            "clarification": null,
+            "interrupt_id": null,
+            "error": {
+              "code": "model_failure",
+              "message": "A model request failed or returned an invalid response."
+            }
+          },
+          "elapsed_seconds": 3.419,
+          "planned_query": "Is it allowed for a vessel owner to use a vessel for commercial maritime activity without first obtaining a permit under the 2025 maritime resolution in Dubai?",
+          "evidence": [],
+          "status_matches": false,
+          "document_rank": null,
+          "chunk_rank": null,
+          "citation_valid": false
+        }
+      ]
+    },
+    {
+      "id": "Q10",
+      "question": "How does Regulation No. (1) of 2007 define a taxicab?",
+      "reference_answer": "A taxicab is a vehicle designated for transporting passengers in return for a specific fare.",
+      "expected_document_id": "190",
+      "expected_chunk_id": "ccb4498ed146b396a8bb",
+      "expected_locator": "1",
+      "source_phrase": "Vehicles designated for transporting passengers in return for a specific fare",
+      "expected_status": "answered",
+      "attempts": [
+        {
+          "http_status": 200,
+          "response": {
+            "thread_id": "eval_20261111_205750_Q10_1",
+            "request_id": "c8fa8fbe-fea8-42ce-9481-6a4003521262",
+            "status": "answered",
+            "answer": "According to Regulation No. (1) of 2007 Concerning Passenger Transport by Taxicabs in the Emirate of Dubai, a Taxicab is defined as vehicles designated for transporting passengers in return for a specific fare.",
+            "citations": [
+              {
+                "chunk_id": "ccb4498ed146b396a8bb",
+                "document_id": "190",
+                "locator": "1"
+              }
+            ],
+            "clarification": null,
+            "interrupt_id": null,
+            "error": null
+          },
+          "elapsed_seconds": 6.108,
+          "planned_query": "Definition of a taxicab according to Regulation No. (1) of 2007 in Dubai transport legislation",
+          "evidence": [
+            {
+              "chunk_id": "ccb4498ed146b396a8bb",
+              "document_id": "190",
+              "locator": "1",
+              "text": "Article (1)\nThe following words and expressions will have the meaning indicated opposite each of them unless the context implies otherwise: Emirate: The Emirate of Dubai. RTA: The Roads and Transport Authority. Agency: The Public Transport Agency at the RTA. Licensing Authority: The Public Transport Agency at the RTA in relation to passenger transport activities. Taxicab: Vehicles designated for transporting passengers in return for a specific fare. On-demand Taxicab: A vehicle which transports passengers pursuant to prior agreement s between customers and on-demand Taxicab operators."
+            },
+            {
+              "chunk_id": "2ebedd5e941422b42087",
+              "document_id": "190",
+              "locator": "2",
+              "text": "Article (4)\nA Taxicab may operate in the Emirate only if it is equipped with a meter for which the tariff is set by the RTA. Taxicab drivers must operate the meter at the beginning of each trip to transport passengers."
+            },
+            {
+              "chunk_id": "963ee6bd1d167e90a5b9",
+              "document_id": "190",
+              "locator": "2",
+              "text": "Article (5)\nAn entity licensed to trans port passengers only by On-demand Taxicabs must not operate its vehicles as Taxicabs, and must maintain regular records of all transport requests received by it as well as any transportation agreements with third parties."
+            },
+            {
+              "chunk_id": "ab8b1254f90091cb6b70",
+              "document_id": "190",
+              "locator": "1",
+              "text": "Preamble\nRegulation No. (1) of 2007 Concerning Passenger Transport by Taxicabs in the Emirate of Dubai1 ـــــــــــــــــــــــــــــــــــــــــــــــ We, Hamdan bin Mohammed bin Rashid Al Maktoum, Chairman of the Executive Council, After perusal of: Law No. (3) of 2003 Establishing the Executive Council of the Emirate of Dubai; Law No. (17) of 2005 Establishing the Roads and Transport Authority; Law No. (10) of 2007 Authorising the Chairman of the Executive Council to Issue Regulations Concerning Passenger Transport by Taxicabs in the Emirate of Dubai; and Regulation No. (7) of 2006 Concerning Traffic Control Rules and Procedures in the Emirate of Dubai, Do hereby issue this Regulation."
+            },
+            {
+              "chunk_id": "dae7a52ef7cd78cc4b66",
+              "document_id": "190",
+              "locator": "2",
+              "text": "Article (3)\nDrivers of Taxicabs or On-demand Taxicabs may not transport passengers without obtaining relevant permit from the RTA."
+            }
+          ],
+          "status_matches": true,
+          "document_rank": 1,
+          "chunk_rank": 1,
+          "citation_valid": true,
+          "ragas_scores": {
+            "faithfulness": 1.0,
+            "answer_correctness": 0.4251728085875304,
+            "context_precision": 0.9999999999,
+            "context_recall": 1.0,
+            "answer_relevancy": 0.9162408016809126
+          },
+          "metric_errors": {}
+        }
+      ]
+    },
+    {
+      "id": "N01",
+      "question": "What were the Dubai vehicle permit fees in 1900?",
+      "expected_status": "insufficient_evidence",
+      "mode": "lexical",
+      "filters": {
+        "year": 1900
+      },
+      "attempts": [
+        {
+          "http_status": 200,
+          "response": {
+            "thread_id": "eval_20261111_205750_N01_1",
+            "request_id": "ac1d3929-0054-43b2-96b8-713e7414c5d2",
+            "status": "insufficient_evidence",
+            "answer": null,
+            "citations": [],
+            "clarification": null,
+            "interrupt_id": null,
+            "error": null
+          },
+          "elapsed_seconds": 2.348,
+          "planned_query": "Dubai vehicle permit fees in the year 1900",
+          "evidence": [],
+          "status_matches": true
+        }
+      ]
+    },
+    {
+      "id": "N02",
+      "question": "How do I cook pasta?",
+      "expected_status": "out_of_scope",
+      "attempts": [
+        {
+          "http_status": 200,
+          "response": {
+            "thread_id": "eval_20261111_205750_N02_1",
+            "request_id": "4b198292-e25e-4017-ab9b-566844ca9759",
+            "status": "out_of_scope",
+            "answer": null,
+            "citations": [],
+            "clarification": null,
+            "interrupt_id": null,
+            "error": null
+          },
+          "elapsed_seconds": 1.152,
+          "planned_query": "How do I cook pasta?",
+          "evidence": [],
+          "status_matches": true
+        }
+      ]
+    },
+    {
+      "id": "N03",
+      "question": "What insurance is required for those vehicles?",
+      "expected_status": "needs_clarification",
+      "attempts": [
+        {
+          "http_status": 200,
+          "response": {
+            "thread_id": "eval_20261111_205750_N03_1",
+            "request_id": "83e7bfa4-098d-4ccb-a9ae-195063af942c",
+            "status": "needs_clarification",
+            "answer": null,
+            "citations": [],
+            "clarification": "What type of vehicles are you referring to?",
+            "interrupt_id": "6b49f0109e9242ee5f9bc64ec5d1da84",
+            "error": null
+          },
+          "elapsed_seconds": 0.949,
+          "planned_query": "",
+          "evidence": [],
+          "status_matches": true
+        }
+      ]
+    }
+  ],
+  "mode_comparison": {
+    "Q01": {
+      "lexical": {
+        "http_status": 200,
+        "elapsed_seconds": 1.723,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "a25fbea55bf0a5bf74cc",
+          "2ef082e6fd0cd9442314",
+          "bab0c92f66132d954bdb",
+          "63857151918753e52be0",
+          "920f9856fbd4d72dc4bc"
+        ],
+        "document_ids": [
+          "1817",
+          "1817",
+          "1817",
+          "1817",
+          "1817"
+        ],
+        "trace": [
+          "lexical_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "semantic": {
+        "http_status": 200,
+        "elapsed_seconds": 2.102,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "a25fbea55bf0a5bf74cc",
+          "2ef082e6fd0cd9442314",
+          "bab0c92f66132d954bdb",
+          "63857151918753e52be0",
+          "920f9856fbd4d72dc4bc"
+        ],
+        "document_ids": [
+          "1817",
+          "1817",
+          "1817",
+          "1817",
+          "1817"
+        ],
+        "trace": [
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "hybrid": {
+        "http_status": 200,
+        "elapsed_seconds": 2.11,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "a25fbea55bf0a5bf74cc",
+          "2ef082e6fd0cd9442314",
+          "bab0c92f66132d954bdb",
+          "920f9856fbd4d72dc4bc",
+          "63857151918753e52be0"
+        ],
+        "document_ids": [
+          "1817",
+          "1817",
+          "1817",
+          "1817",
+          "1817"
+        ],
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      }
+    },
+    "Q02": {
+      "lexical": {
+        "http_status": 200,
+        "elapsed_seconds": 1.312,
+        "document_rank": 2,
+        "chunk_rank": 2,
+        "chunk_ids": [
+          "77e58acfb3acfcd78994",
+          "ad4140c36714b474e0f6",
+          "8ea9679d58156e448b5d",
+          "aefad0b7bbb6feaa0aa9",
+          "0da8a9e995093b009063"
+        ],
+        "document_ids": [
+          "1872",
+          "1525",
+          "1872",
+          "1939",
+          "1525"
+        ],
+        "trace": [
+          "lexical_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "semantic": {
+        "http_status": 200,
+        "elapsed_seconds": 1.364,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "ad4140c36714b474e0f6",
+          "77e58acfb3acfcd78994",
+          "8ea9679d58156e448b5d",
+          "8696b073929e5268205f",
+          "e6a8fc03545cd08c0d69"
+        ],
+        "document_ids": [
+          "1525",
+          "1872",
+          "1872",
+          "1525",
+          "1525"
+        ],
+        "trace": [
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "hybrid": {
+        "http_status": 200,
+        "elapsed_seconds": 1.661,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "ad4140c36714b474e0f6",
+          "77e58acfb3acfcd78994",
+          "8ea9679d58156e448b5d",
+          "8696b073929e5268205f",
+          "0da8a9e995093b009063"
+        ],
+        "document_ids": [
+          "1525",
+          "1872",
+          "1872",
+          "1525",
+          "1525"
+        ],
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      }
+    },
+    "Q03": {
+      "lexical": {
+        "http_status": 200,
+        "elapsed_seconds": 1.578,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "23d885d0bfc09fdf430f",
+          "143f6a89d24557b4f6b0",
+          "3185909575071b59b65e",
+          "f3881128ebf56f71b107",
+          "b681c9f3a39d50c3df3e"
+        ],
+        "document_ids": [
+          "1432",
+          "1432",
+          "1432",
+          "1432",
+          "1432"
+        ],
+        "trace": [
+          "lexical_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "semantic": {
+        "http_status": 200,
+        "elapsed_seconds": 2.082,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "23d885d0bfc09fdf430f",
+          "143f6a89d24557b4f6b0",
+          "42c2646c0435d4bc6322",
+          "3185909575071b59b65e",
+          "f3881128ebf56f71b107"
+        ],
+        "document_ids": [
+          "1432",
+          "1432",
+          "1432",
+          "1432",
+          "1432"
+        ],
+        "trace": [
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "hybrid": {
+        "http_status": 200,
+        "elapsed_seconds": 1.974,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "23d885d0bfc09fdf430f",
+          "143f6a89d24557b4f6b0",
+          "42c2646c0435d4bc6322",
+          "3185909575071b59b65e",
+          "f3881128ebf56f71b107"
+        ],
+        "document_ids": [
+          "1432",
+          "1432",
+          "1432",
+          "1432",
+          "1432"
+        ],
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      }
+    },
+    "Q04": {
+      "lexical": {
+        "http_status": 200,
+        "elapsed_seconds": 1.235,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "d58a829ce70544981735",
+          "935830090cdb9eeb124f",
+          "0606d6244067aa9cf2e2",
+          "fade85b31e675fe42a1f",
+          "1a2799a88852edb5907b"
+        ],
+        "document_ids": [
+          "1915",
+          "1915",
+          "1915",
+          "1915",
+          "1915"
+        ],
+        "trace": [
+          "lexical_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "semantic": {
+        "http_status": 200,
+        "elapsed_seconds": 1.636,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "d58a829ce70544981735",
+          "935830090cdb9eeb124f",
+          "eb195f1325caba19622f",
+          "0606d6244067aa9cf2e2",
+          "fade85b31e675fe42a1f"
+        ],
+        "document_ids": [
+          "1915",
+          "1915",
+          "1918",
+          "1915",
+          "1915"
+        ],
+        "trace": [
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "hybrid": {
+        "http_status": 200,
+        "elapsed_seconds": 1.658,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "d58a829ce70544981735",
+          "935830090cdb9eeb124f",
+          "fade85b31e675fe42a1f",
+          "1a2799a88852edb5907b",
+          "0606d6244067aa9cf2e2"
+        ],
+        "document_ids": [
+          "1915",
+          "1915",
+          "1915",
+          "1915",
+          "1915"
+        ],
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      }
+    },
+    "Q05": {
+      "lexical": {
+        "http_status": 200,
+        "elapsed_seconds": 1.571,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "5f282cdb77d47ba1a601",
+          "b1ec5c3022065c3d6710",
+          "171440eebbc94d5797ce",
+          "194c0166b5ee091a455d",
+          "5a3656f4c6a0d0d2cfe5"
+        ],
+        "document_ids": [
+          "236",
+          "236",
+          "236",
+          "236",
+          "236"
+        ],
+        "trace": [
+          "lexical_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "semantic": {
+        "http_status": 200,
+        "elapsed_seconds": 1.869,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "5f282cdb77d47ba1a601",
+          "b1ec5c3022065c3d6710",
+          "81e6490d0839494c1715",
+          "ed7cf92a237899d75bf0",
+          "5a3656f4c6a0d0d2cfe5"
+        ],
+        "document_ids": [
+          "236",
+          "236",
+          "236",
+          "236",
+          "236"
+        ],
+        "trace": [
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "hybrid": {
+        "http_status": 200,
+        "elapsed_seconds": 2.617,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "5f282cdb77d47ba1a601",
+          "b1ec5c3022065c3d6710",
+          "5a3656f4c6a0d0d2cfe5",
+          "ed7cf92a237899d75bf0",
+          "262a63fd8094d57b339c"
+        ],
+        "document_ids": [
+          "236",
+          "236",
+          "236",
+          "236",
+          "236"
+        ],
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      }
+    },
+    "Q06": {
+      "lexical": {
+        "http_status": 200,
+        "elapsed_seconds": 1.803,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "48f24bb9df8edb1d13b7",
+          "fd840cbe301a1477e203",
+          "bc713b6910b665da44f4",
+          "cd72021beefca74491d7",
+          "827b57885a9c8dffcb6e"
+        ],
+        "document_ids": [
+          "1739",
+          "1546",
+          "1739",
+          "1743",
+          "1834"
+        ],
+        "trace": [
+          "lexical_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "semantic": {
+        "http_status": 200,
+        "elapsed_seconds": 1.811,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "48f24bb9df8edb1d13b7",
+          "fd840cbe301a1477e203",
+          "bc713b6910b665da44f4",
+          "6d9c8e5904f747c06b4d",
+          "ec6cd26cf0e65a1a6b78"
+        ],
+        "document_ids": [
+          "1739",
+          "1546",
+          "1739",
+          "1546",
+          "1546"
+        ],
+        "trace": [
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "hybrid": {
+        "http_status": 200,
+        "elapsed_seconds": 2.099,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "48f24bb9df8edb1d13b7",
+          "fd840cbe301a1477e203",
+          "bc713b6910b665da44f4",
+          "cd72021beefca74491d7",
+          "6d9c8e5904f747c06b4d"
+        ],
+        "document_ids": [
+          "1739",
+          "1546",
+          "1739",
+          "1743",
+          "1546"
+        ],
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      }
+    },
+    "Q07": {
+      "lexical": {
+        "http_status": 200,
+        "elapsed_seconds": 1.733,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "ac948ce25c6b6199f6e4",
+          "34bc6ea0eaca4d0c7196",
+          "1ef8cce4c8eacf42b4e8",
+          "ccc86830b9c2afb6e1aa",
+          "774c50eef96f301e4c3b"
+        ],
+        "document_ids": [
+          "13",
+          "1767",
+          "13",
+          "13",
+          "13"
+        ],
+        "trace": [
+          "lexical_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "semantic": {
+        "http_status": 200,
+        "elapsed_seconds": 1.746,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "ac948ce25c6b6199f6e4",
+          "a01094b5586f8d7c59d5",
+          "b85c16ee62775a2ad94e",
+          "e29524215bd73bd0d829",
+          "36cb888025668476aa83"
+        ],
+        "document_ids": [
+          "13",
+          "13",
+          "13",
+          "13",
+          "13"
+        ],
+        "trace": [
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "hybrid": {
+        "http_status": 200,
+        "elapsed_seconds": 2.235,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "ac948ce25c6b6199f6e4",
+          "423966d76af53b184291",
+          "28d9bd8ebc6e151d5ca3",
+          "774c50eef96f301e4c3b",
+          "b85c16ee62775a2ad94e"
+        ],
+        "document_ids": [
+          "13",
+          "13",
+          "191",
+          "13",
+          "13"
+        ],
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      }
+    },
+    "Q08": {
+      "lexical": {
+        "http_status": 200,
+        "elapsed_seconds": 1.271,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "0386faaeae372c54791f",
+          "69b200bad4ee916fac69",
+          "a5155cccba2fb3b274ac",
+          "b17f0d606533738ee3e6",
+          "d04459171dd2a1c10335"
+        ],
+        "document_ids": [
+          "1718",
+          "1718",
+          "1718",
+          "1718",
+          "1718"
+        ],
+        "trace": [
+          "lexical_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "semantic": {
+        "http_status": 200,
+        "elapsed_seconds": 1.706,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "0386faaeae372c54791f",
+          "d04459171dd2a1c10335",
+          "b86f8fb68137357cf711",
+          "5453619cfc8797fc4acd",
+          "c5c911cf8ec623069f03"
+        ],
+        "document_ids": [
+          "1718",
+          "1718",
+          "1718",
+          "1718",
+          "1718"
+        ],
+        "trace": [
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "hybrid": {
+        "http_status": 200,
+        "elapsed_seconds": 1.809,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "0386faaeae372c54791f",
+          "69b200bad4ee916fac69",
+          "a5155cccba2fb3b274ac",
+          "b17f0d606533738ee3e6",
+          "d04459171dd2a1c10335"
+        ],
+        "document_ids": [
+          "1718",
+          "1718",
+          "1718",
+          "1718",
+          "1718"
+        ],
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      }
+    },
+    "Q09": {
+      "lexical": {
+        "http_status": 200,
+        "elapsed_seconds": 1.633,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "dcda48e463cf7d003588",
+          "c974b7dbab8913fb6098",
+          "9a1bd1968eed2b5d1aff",
+          "742e0ff692bf8b68a660",
+          "943555446a8404ff9c19"
+        ],
+        "document_ids": [
+          "1875",
+          "1875",
+          "1875",
+          "1875",
+          "1875"
+        ],
+        "trace": [
+          "lexical_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "semantic": {
+        "http_status": 200,
+        "elapsed_seconds": 1.943,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "dcda48e463cf7d003588",
+          "3e2f5dd1bd5661de0b7a",
+          "894c5abe7a730dd5e132",
+          "1cb6c0484f6053b0d5e5",
+          "9a1bd1968eed2b5d1aff"
+        ],
+        "document_ids": [
+          "1875",
+          "1875",
+          "1834",
+          "1875",
+          "1875"
+        ],
+        "trace": [
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "hybrid": {
+        "http_status": 200,
+        "elapsed_seconds": 2.298,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "dcda48e463cf7d003588",
+          "1cb6c0484f6053b0d5e5",
+          "c974b7dbab8913fb6098",
+          "3e2f5dd1bd5661de0b7a",
+          "39dc4b74591c6e9c7ced"
+        ],
+        "document_ids": [
+          "1875",
+          "1875",
+          "1875",
+          "1875",
+          "1834"
+        ],
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      }
+    },
+    "Q10": {
+      "lexical": {
+        "http_status": 200,
+        "elapsed_seconds": 0.851,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "ccb4498ed146b396a8bb",
+          "ab8b1254f90091cb6b70",
+          "dae7a52ef7cd78cc4b66",
+          "2ebedd5e941422b42087",
+          "963ee6bd1d167e90a5b9"
+        ],
+        "document_ids": [
+          "190",
+          "190",
+          "190",
+          "190",
+          "190"
+        ],
+        "trace": [
+          "lexical_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "semantic": {
+        "http_status": 200,
+        "elapsed_seconds": 1.421,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "ccb4498ed146b396a8bb",
+          "ab8b1254f90091cb6b70",
+          "dae7a52ef7cd78cc4b66",
+          "2ebedd5e941422b42087",
+          "963ee6bd1d167e90a5b9"
+        ],
+        "document_ids": [
+          "190",
+          "190",
+          "190",
+          "190",
+          "190"
+        ],
+        "trace": [
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      },
+      "hybrid": {
+        "http_status": 200,
+        "elapsed_seconds": 1.527,
+        "document_rank": 1,
+        "chunk_rank": 1,
+        "chunk_ids": [
+          "ccb4498ed146b396a8bb",
+          "ab8b1254f90091cb6b70",
+          "dae7a52ef7cd78cc4b66",
+          "2ebedd5e941422b42087",
+          "963ee6bd1d167e90a5b9"
+        ],
+        "document_ids": [
+          "190",
+          "190",
+          "190",
+          "190",
+          "190"
+        ],
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "error": null
+      }
+    }
+  },
+  "followup": {
+    "initial": {
+      "http_status": 200,
+      "response": {
+        "thread_id": "eval_20261111_205750_followup_a",
+        "request_id": "cf92ae23-caa7-4a1b-9e96-d16197fe5da6",
+        "status": "answered",
+        "answer": "Law No. (9) of 2023 regulates the operation of autonomous vehicles in the Emirate of Dubai.",
+        "citations": [
+          {
+            "chunk_id": "0da8a9e995093b009063",
+            "document_id": "1525",
+            "locator": "2"
+          },
+          {
+            "chunk_id": "04b78b37052a56109eed",
+            "document_id": "1525",
+            "locator": "1-2"
+          }
+        ],
+        "clarification": null,
+        "interrupt_id": null,
+        "error": null
+      },
+      "elapsed_seconds": 7.091,
+      "planned_query": "What does Law No. (9) of 2023 regulate in Dubai transport legislation?",
+      "evidence": [
+        {
+          "chunk_id": "0da8a9e995093b009063",
+          "document_id": "1525",
+          "locator": "2",
+          "text": "Title of the Law\nArticle (1)\nThis Law will be cited as \"Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai\"."
+        },
+        {
+          "chunk_id": "c2580d11bc5f046193f5",
+          "document_id": "1525",
+          "locator": "1",
+          "text": "Preamble\nLaw No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai1 ــــــــــــــــــــــــــــــــــــــــــــ We, Mohammed bin Rashid Al Maktoum, Ruler of Dubai, After perusal of: Federal Law No. (5) of 1985 Issuing the Civil Code of the United Arab Emirates and its amendments; Federal Law No. (21) of 1995 Concerning Road Traffic, its Implementing Bylaw, their amendments, and the resolutions issued in pursuance thereof; Federal Law No. (15) of 2020 Concerning Consumer Protection; Federal Law by Decree No. (20) of 2020 Concerning Specifications and Standards; Federal Law by Decree No. (31) of 2021 Issuing the Crime and Punishment Law; Federal Law by Decree No. (45) of 2021 Concerning Protection of Personal Data; Federal Law No."
+        },
+        {
+          "chunk_id": "04b78b37052a56109eed",
+          "document_id": "1525",
+          "locator": "1-2",
+          "text": "Preamble\nNo. (45) of 2021 Concerning Protection of Personal Data; Federal Law No. (3) of 2022 Regulating Commercial Agencies; The Dubai Police Law of 1966; Law No. (3) of 2003 Establishing the Executive Council of the Emirate of Dubai; Law No. (17) of 2005 Establishing the Roads and Transport Authority and its amendments; Law No. (5) of 2021 Concerning the Dubai International Financial Centre; Decree No. (22) of 2009 Concerning Special Development Zones in the Emirate of Dubai; Executive Council Resolution No. (3) of 2019 Regulating Test Runs of Autonomous Vehicles in the Emirate of Dubai; and The legislation establishing and regulating free zones in the Emirate of Dubai, Do hereby issue this Law."
+        },
+        {
+          "chunk_id": "d5b4ecda678c1f897391",
+          "document_id": "1939",
+          "locator": "1",
+          "text": "Preamble\nExecutive Council Resolution No. (14) of 2026 Approving the Activities Related to the Use of Autonomous Vehicles and their Operational Phases in the Emirate of Dubai1 ــــــــــــــــــــــــــــــــــــــــــــــــــــ We, Hamdan bin Mohammed bin Rashid Al Maktoum, Crown Prince of Dubai, Chairman of the Executive Council, After perusal of: Federal Law by Decree No. (14) of 2024 Regulating Road Traffic; Law No. (17) of 2005 Establishing the Roads and Transport Authority and its amendments; Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai and its Implementing Bylaw; Executive Council Resolution No. (33) of 2011 Regulating the Transport of Passengers by Buses in the Emirate of Dubai; Executive Council Resolution No."
+        },
+        {
+          "chunk_id": "dbafb90d05b245050815",
+          "document_id": "1872",
+          "locator": "1",
+          "text": "Preamble\nAdministrative Resolution No. (939) of 2025 Issuing the Implementing Bylaw of Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai1 ــــــــــــــــــــــــــــــ The Director General and Chairman of the Board of Executive Directors of the Roads and Transport Authority, After perusal of: Federal Law by Decree No. (14) of 2024 Regulating Road Traffic; Law No. (17) of 2005 Establishing the Roads and Transport Authority and its amendments; and Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai, Does hereby issue this Resolution."
+        }
+      ]
+    },
+    "thread_a_followup": {
+      "http_status": 200,
+      "response": {
+        "thread_id": "eval_20261111_205750_followup_a",
+        "request_id": "c27aad22-9a39-46e5-964b-973844b20f1f",
+        "status": "answered",
+        "answer": "According to Law No. (9) of 2023 and its implementing bylaws, autonomous vehicles operating in the Emirate of Dubai must be covered by a comprehensive insurance policy issued by an insurance company licensed to operate in the UAE. This insurance requirement is prescribed by the Director General and is mandatory for both licensing and license renewal of autonomous vehicles.",
+        "citations": [
+          {
+            "chunk_id": "77e58acfb3acfcd78994",
+            "document_id": "1872",
+            "locator": "4"
+          },
+          {
+            "chunk_id": "ad4140c36714b474e0f6",
+            "document_id": "1525",
+            "locator": "7"
+          }
+        ],
+        "clarification": null,
+        "interrupt_id": null,
+        "error": null
+      },
+      "elapsed_seconds": 6.694,
+      "planned_query": "What insurance is required for autonomous vehicles operating in the Emirate of Dubai according to Law No. (9) of 2023?",
+      "evidence": [
+        {
+          "chunk_id": "d5b4ecda678c1f897391",
+          "document_id": "1939",
+          "locator": "1",
+          "text": "Preamble\nExecutive Council Resolution No. (14) of 2026 Approving the Activities Related to the Use of Autonomous Vehicles and their Operational Phases in the Emirate of Dubai1 ــــــــــــــــــــــــــــــــــــــــــــــــــــ We, Hamdan bin Mohammed bin Rashid Al Maktoum, Crown Prince of Dubai, Chairman of the Executive Council, After perusal of: Federal Law by Decree No. (14) of 2024 Regulating Road Traffic; Law No. (17) of 2005 Establishing the Roads and Transport Authority and its amendments; Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai and its Implementing Bylaw; Executive Council Resolution No. (33) of 2011 Regulating the Transport of Passengers by Buses in the Emirate of Dubai; Executive Council Resolution No."
+        },
+        {
+          "chunk_id": "0fe97e5836b8786c1776",
+          "document_id": "1939",
+          "locator": "2",
+          "text": "Activities Related to the Use of Autonomous Vehicles\nArticle (2)\n2023. b. Without prejudice to the provisions of the above -mentioned Law No. (9) of 2023, the provisions of the legislation referred to in paragraph (a) of this Article apply to Autonomous Vehicles used in the activities specified therein, to the extent that they are compatible with the nature of the Autonomous Vehicles. c. The Director General will, pursuant to a resolution he issues in this respect, determine the requirements and controls for the use of Autonomous Vehicles in the activities specified in the legislation referred to in paragraph (a) of this Article."
+        },
+        {
+          "chunk_id": "77e58acfb3acfcd78994",
+          "document_id": "1872",
+          "locator": "4",
+          "text": "Requirements for Licensing Autonomous Vehicles\nArticle (7)\nIn addition to the requirements prescribed by the Law, for an Autonomous Vehicle to be licensed, it must: 1. fall within the categories and types specified in Article (2) of this Resolution; 2. comply with all the standards, requirements, and conditions set out in Articles (3) and (4) of this Resolution; 3. be covered by a comprehensive insurance policy issued by an insurance company licensed to operate in the UAE; 4. be operated by an Operator holding a valid Permit; and 5. not have been modified, upgraded, or updated in re spect of any features related to the Autonomous Driving System, operational design domain, or electronic applications without first obtaining the approval of the RTA."
+        },
+        {
+          "chunk_id": "8ea9679d58156e448b5d",
+          "document_id": "1872",
+          "locator": "4",
+          "text": "Licence Renewal Requirements\nArticle (8)\nFor an Autonomous Vehicle licence to be renewed, the following requirements must be satisfied: 1. The Autonomous Vehicle must successfully pass the technical inspection conducted in accordance with the standards and requirements approved by the RTA. 2. The Autonomous Vehicle must be covered by a comprehensive insurance policy issued by an insurance company licensed to operate in the UAE. 3. The relevant Activity Permit must be valid."
+        },
+        {
+          "chunk_id": "ad4140c36714b474e0f6",
+          "document_id": "1525",
+          "locator": "7",
+          "text": "Requirements for Licensing Autonomous Vehicles\nArticle (8)\ntheir users in accordance with the relevant guidelines adopted by the RTA; 6. conform to the specifications approved in the UAE; 7. be insured with an insurance company licensed to operate in the UAE, as prescribed by the Director General in this respect; and 8. meet any other conditions determined pursuant to the relevant resolutions issued by the Director General."
+        }
+      ],
+      "status_matches": true,
+      "document_rank": 5,
+      "chunk_rank": 5,
+      "citation_valid": true,
+      "ragas_scores": {
+        "faithfulness": 0.8,
+        "answer_correctness": 0.5421964222657629,
+        "context_precision": 0.99999999998,
+        "context_recall": 1.0,
+        "answer_relevancy": 0.9606065015286928
+      },
+      "metric_errors": {}
+    },
+    "thread_b_same_question": {
+      "http_status": 200,
+      "response": {
+        "thread_id": "eval_20261111_205750_followup_b",
+        "request_id": "5cb181ea-8af1-4019-a2bd-189f3ce1c576",
+        "status": "needs_clarification",
+        "answer": null,
+        "citations": [],
+        "clarification": "Which type of vehicles are you referring to?",
+        "interrupt_id": "4ba4d36d1886940b08d10c0dd69c081c",
+        "error": null
+      },
+      "elapsed_seconds": 1.545,
+      "planned_query": "",
+      "evidence": []
+    },
+    "continuity_passed": true
+  },
+  "summary": {
+    "status_matches": 11,
+    "case_count": 13,
+    "first_attempt_errors": 2,
+    "answered_first_attempt": 8,
+    "document_hit_at_5": 8,
+    "citation_valid": 8,
+    "answered_case_count": 10,
+    "chat_latency_seconds": {
+      "mean": 5.136,
+      "median": 6.108
+    },
+    "mode_document_hit_at_5": {
+      "lexical": 10,
+      "semantic": 10,
+      "hybrid": 10
+    },
+    "mode_errors": {
+      "lexical": 0,
+      "semantic": 0,
+      "hybrid": 0
+    },
+    "ragas": {
+      "faithfulness": {
+        "count": 8,
+        "mean": 0.9271,
+        "median": 1.0
+      },
+      "answer_correctness": {
+        "count": 8,
+        "mean": 0.6504,
+        "median": 0.528
+      },
+      "context_precision": {
+        "count": 8,
+        "mean": 0.934,
+        "median": 1.0
+      },
+      "context_recall": {
+        "count": 8,
+        "mean": 1.0,
+        "median": 1.0
+      },
+      "answer_relevancy": {
+        "count": 8,
+        "mean": 0.9207,
+        "median": 0.9313
+      }
+    }
+  }
+}

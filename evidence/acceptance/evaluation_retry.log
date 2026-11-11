@@ -1,0 +1,23 @@
+INFO:     Started server process [22728]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56608 - "GET /health HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 15 candidates after merging
+INFO:     Rerank node started: 15 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=5
+INFO:     127.0.0.1:56609 - "POST /search HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [22728]

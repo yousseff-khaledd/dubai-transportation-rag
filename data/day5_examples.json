@@ -1,0 +1,125 @@
+{
+  "examples": [
+    {
+      "question": "What insurance is required for those vehicles?",
+      "response": {
+        "thread_id": "day5demo_a",
+        "request_id": "6c4b9212-bd8e-4585-bbe4-cf71a4efc880",
+        "status": "answered",
+        "answer": "Under Dubai Roads and Transport legislation, autonomous vehicles are required to be covered by a comprehensive insurance policy issued by an insurance company licensed to operate in the UAE. This insurance requirement applies both for the initial licensing of the autonomous vehicle and for the renewal of its license. The insurance must be comprehensive and is prescribed by the relevant authorities including the Director General and the RTA (Roads and Transport Authority).",
+        "citations": [
+          {
+            "chunk_id": "77e58acfb3acfcd78994",
+            "document_id": "1872",
+            "locator": "4"
+          },
+          {
+            "chunk_id": "8ea9679d58156e448b5d",
+            "document_id": "1872",
+            "locator": "4"
+          },
+          {
+            "chunk_id": "ad4140c36714b474e0f6",
+            "document_id": "1525",
+            "locator": "7"
+          }
+        ],
+        "clarification": null
+      }
+    },
+    {
+      "question": "What insurance is required for those vehicles?",
+      "response": {
+        "thread_id": "day5demo_b",
+        "request_id": "ad137711-ea7d-4109-8c3c-4e199b7b8895",
+        "status": "needs_clarification",
+        "answer": null,
+        "citations": [],
+        "clarification": "Which types of vehicles are you referring to (e.g., private cars, commercial vehicles, taxis)?"
+      }
+    },
+    {
+      "question": "How do I cook pasta?",
+      "response": {
+        "thread_id": "day5demo_other",
+        "request_id": "74abb552-659b-4f4b-8d4a-e1f3ab67475b",
+        "status": "out_of_scope",
+        "answer": null,
+        "citations": [],
+        "clarification": null
+      }
+    },
+    {
+      "question": "What is the precise 2045 fee for autonomous vehicle permits in Dubai?",
+      "response": {
+        "thread_id": "day5demo_unknown",
+        "request_id": "d762bf25-cd5d-4446-abe9-3aa8afe6150b",
+        "status": "insufficient_evidence",
+        "answer": null,
+        "citations": [],
+        "clarification": null
+      }
+    }
+  ],
+  "trace": [
+    "Chat validation started: thread=day5demo_a",
+    "Chat query plan: route=retrieve",
+    "Chat retrieval node started",
+    "Retrieval graph started: mode=hybrid top_k=10",
+    "Retrieval routing: mode=hybrid",
+    "Lexical node started",
+    "Semantic node started",
+    "Search complete: mode=lexical results=10",
+    "Lexical node completed: 10 candidates",
+    "Search complete: mode=semantic results=10",
+    "Semantic node completed: 10 candidates",
+    "Join node started",
+    "Join node completed: 10 lexical, 10 semantic, 16 candidates after merging",
+    "Rerank node started: 16 candidates",
+    "Rerank node completed: 10 results selected",
+    "Retrieval graph completed: mode=hybrid results=10",
+    "Answer agent started: 10 selected chunks",
+    "Answer agent middleware: model call completed in 1.67s",
+    "Excerpt tool called: document=1525 locator=7 chunks=1",
+    "Excerpt tool called: document=1872 locator=4 chunks=2",
+    "Answer agent middleware: model call completed in 2.62s",
+    "Answer agent completed: 2 model-issued excerpt calls",
+    "Chat response validated: status=answered citations=3",
+    "Chat validation started: thread=day5demo_b",
+    "Chat query plan: route=needs_clarification",
+    "Chat response validated: status=needs_clarification citations=0",
+    "Chat validation started: thread=day5demo_other",
+    "Chat query plan: route=out_of_scope",
+    "Chat response validated: status=out_of_scope citations=0",
+    "Chat validation started: thread=day5demo_unknown",
+    "Chat query plan: route=retrieve",
+    "Chat retrieval node started",
+    "Retrieval graph started: mode=hybrid top_k=10",
+    "Retrieval routing: mode=hybrid",
+    "Lexical node started",
+    "Semantic node started",
+    "Search complete: mode=lexical results=10",
+    "Lexical node completed: 10 candidates",
+    "Search complete: mode=semantic results=10",
+    "Semantic node completed: 10 candidates",
+    "Join node started",
+    "Join node completed: 10 lexical, 10 semantic, 17 candidates after merging",
+    "Rerank node started: 17 candidates",
+    "Rerank node completed: 10 results selected",
+    "Retrieval graph completed: mode=hybrid results=10",
+    "Answer agent started: 10 selected chunks",
+    "Answer agent middleware: model call completed in 1.44s",
+    "Excerpt tool called: document=1525 locator=6 chunks=2",
+    "Answer agent middleware: model call completed in 1.35s",
+    "Excerpt tool called: document=1525 locator=7-8 chunks=1",
+    "Answer agent middleware: model call completed in 1.32s",
+    "Excerpt tool called: document=1918 locator=12 chunks=1",
+    "Answer agent middleware: model call completed in 1.30s",
+    "Excerpt tool called: document=1525 locator=1 chunks=1",
+    "Answer agent middleware: model call completed in 1.26s",
+    "Excerpt tool called: document=1872 locator=4 chunks=1",
+    "Answer agent middleware: model call completed in 2.80s",
+    "Answer agent completed: 5 model-issued excerpt calls",
+    "Chat response validated: status=insufficient_evidence citations=0"
+  ]
+}

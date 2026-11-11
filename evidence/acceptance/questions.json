@@ -1,0 +1,82 @@
+[
+  {
+    "id": "Q01",
+    "question": "What is the one-hour fee for a Category One on-street car park during peak hours?",
+    "expected_document_id": "1817",
+    "expected_chunk_id": "a25fbea55bf0a5bf74cc",
+    "expected_locator": "5",
+    "source_phrase": "On-street during peak hours: 4.00 dirhams"
+  },
+  {
+    "id": "Q02",
+    "question": "Under Law No. (9) of 2023, what insurance must an autonomous vehicle have to be licensed?",
+    "expected_document_id": "1525",
+    "expected_chunk_id": "ad4140c36714b474e0f6",
+    "expected_locator": "7",
+    "source_phrase": "be insured with an insurance company licensed to operate in the UAE"
+  },
+  {
+    "id": "Q03",
+    "question": "What departure fee does Law No. (13) of 2022 charge passengers leaving through Dubai airports?",
+    "expected_document_id": "1432",
+    "expected_chunk_id": "23d885d0bfc09fdf430f",
+    "expected_locator": "1-2",
+    "source_phrase": "seventy-five dirhams"
+  },
+  {
+    "id": "Q04",
+    "question": "What is the fine for conducting the activity without a permit in Schedule (2) of the 2026 establishment violations resolution?",
+    "expected_document_id": "1915",
+    "expected_chunk_id": "d58a829ce70544981735",
+    "expected_locator": "11",
+    "source_phrase": "Conducting the Activity without a Permit | Fine: 10,000 dirhams"
+  },
+  {
+    "id": "Q05",
+    "question": "What is the water taxi fare from Al Mamzar station to Deira Old Souk station?",
+    "expected_document_id": "236",
+    "expected_chunk_id": "5f282cdb77d47ba1a601",
+    "expected_locator": "5",
+    "source_phrase": "Deira Old Souk (20): 150 dirhams"
+  },
+  {
+    "id": "Q06",
+    "question": "Which Schedule (5) railway violation items require a written warning before a fine under Administrative Resolution No. (817) of 2024?",
+    "expected_document_id": "1739",
+    "expected_chunk_id": "48f24bb9df8edb1d13b7",
+    "expected_locator": "1",
+    "source_phrase": "Items (3), (4), and (5) of Schedule (5)"
+  },
+  {
+    "id": "Q07",
+    "question": "Under Law No. (22) of 2006, when does the RTA charge a traffic toll fee to a motor vehicle owner?",
+    "expected_document_id": "13",
+    "expected_chunk_id": "ac948ce25c6b6199f6e4",
+    "expected_locator": "2",
+    "source_phrase": "pass through a Traffic Toll Gate in one direction"
+  },
+  {
+    "id": "Q08",
+    "question": "Does Law No. (4) of 2020 apply to all types of unmanned aircraft regardless of their use or control systems?",
+    "expected_document_id": "1718",
+    "expected_chunk_id": "0386faaeae372c54791f",
+    "expected_locator": "6-7",
+    "source_phrase": "all types of Unmanned Aircraft, regardless of their use or control systems"
+  },
+  {
+    "id": "Q09",
+    "question": "Can a vessel owner use a vessel for commercial maritime activity without first obtaining a permit under the 2025 maritime resolution?",
+    "expected_document_id": "1875",
+    "expected_chunk_id": "dcda48e463cf7d003588",
+    "expected_locator": "3",
+    "source_phrase": "No Vessel owner, operator, or maritime agent may use a Vessel for conducting the Activity without first obtaining a Permit"
+  },
+  {
+    "id": "Q10",
+    "question": "How does Regulation No. (1) of 2007 define a taxicab?",
+    "expected_document_id": "190",
+    "expected_chunk_id": "ccb4498ed146b396a8bb",
+    "expected_locator": "1",
+    "source_phrase": "Vehicles designated for transporting passengers in return for a specific fare"
+  }
+]

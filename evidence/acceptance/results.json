@@ -1,0 +1,3548 @@
+{
+  "run_id": "20261111_202614",
+  "started_utc": "2026-11-11T20:26:14.338426+00:00",
+  "unit_tests_passed": true,
+  "corpus": {
+    "manifest_count": 30,
+    "unique_document_ids": 30,
+    "all_category_and_language_match": true,
+    "pdf_hashes_match": true,
+    "portal_primary_filter_saved": true
+  },
+  "parsing_samples": [
+    {
+      "chunk_id": "a25fbea55bf0a5bf74cc",
+      "document_id": "1817",
+      "locator": "5",
+      "text": "Schedule (1): Parking Fees\nPDF page 5\nParking Fees for Category One Car Parks (in dirhams) | Duration: One (1) hour | On-street outside peak hours: 4.00 dirhams | On-street during peak hours: 4.00 dirhams | On-street premium during peak hours: 6.00 dirhams | Off-street outside peak hours: 3.00 dirhams | Off-street during peak hours: 4.00 dirhams | Off-street premium during peak hours: 6.00 dirhams"
+    },
+    {
+      "chunk_id": "ad4140c36714b474e0f6",
+      "document_id": "1525",
+      "locator": "7",
+      "text": "Requirements for Licensing Autonomous Vehicles\nArticle (8)\ntheir users in accordance with the relevant guidelines adopted by the RTA; 6. conform to the specifications approved in the UAE; 7. be insured with an insurance company licensed to operate in the UAE, as prescribed by the Director General in this respect; and 8. meet any other conditions determined pursuant to the relevant resolutions issued by the Director General."
+    },
+    {
+      "chunk_id": "23d885d0bfc09fdf430f",
+      "document_id": "1432",
+      "locator": "1-2",
+      "text": "Charging the Fee\nArticle (1)\na. A departure fee of seventy-five dirhams (AED 75.00) will be collected from every passenger departing the United Arab Emirates through Dubai airports. b. The following categories are hereby exempted from payment of the fee referred to in paragraph (a) of this Article: 1. passengers below the age of two (2) years; 2. on-duty pilots and cabin crew; 3. transit passengers whose arrival and departure flight number is the same ; and 4. transfer passengers whose final destination is not the United Arab Emirates and who se departure is within twenty-four (24) hours from the time of arrival."
+    }
+  ],
+  "question_sources_valid": [
+    {
+      "id": "Q01",
+      "matches_index": true
+    },
+    {
+      "id": "Q02",
+      "matches_index": true
+    },
+    {
+      "id": "Q03",
+      "matches_index": true
+    },
+    {
+      "id": "Q04",
+      "matches_index": true
+    },
+    {
+      "id": "Q05",
+      "matches_index": true
+    },
+    {
+      "id": "Q06",
+      "matches_index": true
+    },
+    {
+      "id": "Q07",
+      "matches_index": true
+    },
+    {
+      "id": "Q08",
+      "matches_index": true
+    },
+    {
+      "id": "Q09",
+      "matches_index": true
+    },
+    {
+      "id": "Q10",
+      "matches_index": true
+    }
+  ],
+  "first_server_pid": 22593,
+  "health": {
+    "http_status": 200,
+    "body": {
+      "ready": true,
+      "index_available": true
+    }
+  },
+  "openapi": {
+    "openapi": "3.1.0",
+    "info": {
+      "title": "Roads and Transport Knowledge Assistant",
+      "version": "0.1.0"
+    },
+    "paths": {
+      "/health": {
+        "get": {
+          "summary": "Health",
+          "operationId": "health_health_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HealthResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/ingest": {
+        "post": {
+          "summary": "Ingest",
+          "operationId": "ingest_ingest_post",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/IngestResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/search": {
+        "post": {
+          "summary": "Search Chunks",
+          "operationId": "search_chunks_search_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RetrievalResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/chat": {
+        "post": {
+          "summary": "Chat",
+          "operationId": "chat_chat_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ChatResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/chat/resume": {
+        "post": {
+          "summary": "Resume Chat",
+          "operationId": "resume_chat_chat_resume_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResumeRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ChatResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "ChatError": {
+          "properties": {
+            "code": {
+              "type": "string",
+              "title": "Code"
+            },
+            "message": {
+              "type": "string",
+              "title": "Message"
+            }
+          },
+          "type": "object",
+          "required": [
+            "code",
+            "message"
+          ],
+          "title": "ChatError"
+        },
+        "ChatRequest": {
+          "properties": {
+            "thread_id": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "title": "Thread Id"
+            },
+            "message": {
+              "type": "string",
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Message"
+            },
+            "mode": {
+              "type": "string",
+              "enum": [
+                "lexical",
+                "semantic",
+                "hybrid"
+              ],
+              "title": "Mode",
+              "default": "hybrid"
+            },
+            "top_k": {
+              "type": "integer",
+              "maximum": 20.0,
+              "minimum": 1.0,
+              "title": "Top K",
+              "default": 10
+            },
+            "filters": {
+              "$ref": "#/components/schemas/SearchFilters"
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "thread_id",
+            "message"
+          ],
+          "title": "ChatRequest"
+        },
+        "ChatResponse": {
+          "properties": {
+            "thread_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Thread Id"
+            },
+            "request_id": {
+              "type": "string",
+              "title": "Request Id"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "answered",
+                "insufficient_evidence",
+                "out_of_scope",
+                "needs_clarification",
+                "error"
+              ],
+              "title": "Status"
+            },
+            "answer": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Answer"
+            },
+            "citations": {
+              "items": {
+                "$ref": "#/components/schemas/Citation"
+              },
+              "type": "array",
+              "title": "Citations"
+            },
+            "clarification": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Clarification"
+            },
+            "interrupt_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Interrupt Id"
+            },
+            "error": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/ChatError"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "type": "object",
+          "required": [
+            "thread_id",
+            "request_id",
+            "status"
+          ],
+          "title": "ChatResponse"
+        },
+        "Citation": {
+          "properties": {
+            "chunk_id": {
+              "type": "string",
+              "title": "Chunk Id"
+            },
+            "document_id": {
+              "type": "string",
+              "title": "Document Id"
+            },
+            "locator": {
+              "type": "string",
+              "title": "Locator"
+            }
+          },
+          "type": "object",
+          "required": [
+            "chunk_id",
+            "document_id",
+            "locator"
+          ],
+          "title": "Citation"
+        },
+        "HTTPValidationError": {
+          "properties": {
+            "detail": {
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              },
+              "type": "array",
+              "title": "Detail"
+            }
+          },
+          "type": "object",
+          "title": "HTTPValidationError"
+        },
+        "HealthResponse": {
+          "properties": {
+            "ready": {
+              "type": "boolean",
+              "title": "Ready"
+            },
+            "index_available": {
+              "type": "boolean",
+              "title": "Index Available"
+            }
+          },
+          "type": "object",
+          "required": [
+            "ready",
+            "index_available"
+          ],
+          "title": "HealthResponse"
+        },
+        "IngestResult": {
+          "properties": {
+            "indexed_documents": {
+              "type": "integer",
+              "title": "Indexed Documents",
+              "default": 0
+            },
+            "skipped_documents": {
+              "type": "integer",
+              "title": "Skipped Documents",
+              "default": 0
+            },
+            "failed_documents": {
+              "type": "integer",
+              "title": "Failed Documents",
+              "default": 0
+            },
+            "chunks_written": {
+              "type": "integer",
+              "title": "Chunks Written",
+              "default": 0
+            },
+            "embeddings_written": {
+              "type": "integer",
+              "title": "Embeddings Written",
+              "default": 0
+            },
+            "errors": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "title": "Errors"
+            },
+            "warnings": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "title": "Warnings"
+            }
+          },
+          "type": "object",
+          "title": "IngestResult"
+        },
+        "ResumeRequest": {
+          "properties": {
+            "thread_id": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "title": "Thread Id"
+            },
+            "message": {
+              "type": "string",
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Message"
+            },
+            "interrupt_id": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1,
+              "title": "Interrupt Id"
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "thread_id",
+            "message",
+            "interrupt_id"
+          ],
+          "title": "ResumeRequest"
+        },
+        "RetrievalResponse": {
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": [
+                "lexical",
+                "semantic",
+                "hybrid"
+              ],
+              "title": "Mode"
+            },
+            "ranking_stage": {
+              "type": "string",
+              "const": "reranked",
+              "title": "Ranking Stage"
+            },
+            "score_type": {
+              "type": "string",
+              "enum": [
+                "bm25",
+                "cosine_similarity",
+                "rrf"
+              ],
+              "title": "Score Type"
+            },
+            "score_direction": {
+              "type": "string",
+              "enum": [
+                "lower_is_better",
+                "higher_is_better"
+              ],
+              "title": "Score Direction"
+            },
+            "results": {
+              "items": {
+                "$ref": "#/components/schemas/SearchHit"
+              },
+              "type": "array",
+              "title": "Results"
+            },
+            "trace": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "title": "Trace"
+            },
+            "before_rerank": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "title": "Before Rerank"
+            },
+            "after_rerank": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "title": "After Rerank"
+            }
+          },
+          "type": "object",
+          "required": [
+            "mode",
+            "ranking_stage",
+            "score_type",
+            "score_direction",
+            "results",
+            "trace",
+            "before_rerank",
+            "after_rerank"
+          ],
+          "title": "RetrievalResponse"
+        },
+        "SearchFilters": {
+          "properties": {
+            "year": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "maximum": 2100.0,
+                  "minimum": 1900.0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Year"
+            },
+            "type": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "Law",
+                    "Resolution",
+                    "Regulation"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Type"
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "SearchFilters"
+        },
+        "SearchHit": {
+          "properties": {
+            "chunk_id": {
+              "type": "string",
+              "title": "Chunk Id"
+            },
+            "document_id": {
+              "type": "string",
+              "title": "Document Id"
+            },
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "text": {
+              "type": "string",
+              "title": "Text"
+            },
+            "source_url": {
+              "type": "string",
+              "title": "Source Url"
+            },
+            "content_url": {
+              "type": "string",
+              "title": "Content Url"
+            },
+            "primary_category": {
+              "type": "string",
+              "title": "Primary Category"
+            },
+            "year": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Year"
+            },
+            "type": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Type"
+            },
+            "status": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            },
+            "article_number": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Article Number"
+            },
+            "locator_type": {
+              "type": "string",
+              "const": "pdf_page",
+              "title": "Locator Type",
+              "default": "pdf_page"
+            },
+            "locator": {
+              "type": "string",
+              "title": "Locator"
+            },
+            "score": {
+              "type": "number",
+              "title": "Score"
+            }
+          },
+          "type": "object",
+          "required": [
+            "chunk_id",
+            "document_id",
+            "title",
+            "text",
+            "source_url",
+            "content_url",
+            "primary_category",
+            "year",
+            "type",
+            "status",
+            "article_number",
+            "locator",
+            "score"
+          ],
+          "title": "SearchHit"
+        },
+        "SearchRequest": {
+          "properties": {
+            "query": {
+              "type": "string",
+              "maxLength": 2000,
+              "minLength": 1,
+              "title": "Query"
+            },
+            "mode": {
+              "type": "string",
+              "enum": [
+                "lexical",
+                "semantic",
+                "hybrid"
+              ],
+              "title": "Mode",
+              "default": "lexical"
+            },
+            "filters": {
+              "$ref": "#/components/schemas/SearchFilters"
+            },
+            "top_k": {
+              "type": "integer",
+              "maximum": 20.0,
+              "minimum": 1.0,
+              "title": "Top K",
+              "default": 10
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "query"
+          ],
+          "title": "SearchRequest"
+        },
+        "ValidationError": {
+          "properties": {
+            "loc": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "type": "array",
+              "title": "Location"
+            },
+            "msg": {
+              "type": "string",
+              "title": "Message"
+            },
+            "type": {
+              "type": "string",
+              "title": "Error Type"
+            },
+            "input": {
+              "title": "Input"
+            },
+            "ctx": {
+              "type": "object",
+              "title": "Context"
+            }
+          },
+          "type": "object",
+          "required": [
+            "loc",
+            "msg",
+            "type"
+          ],
+          "title": "ValidationError"
+        }
+      }
+    }
+  },
+  "ingestion": [
+    {
+      "http_status": 200,
+      "body": {
+        "indexed_documents": 0,
+        "skipped_documents": 30,
+        "failed_documents": 0,
+        "chunks_written": 0,
+        "embeddings_written": 0,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "http_status": 200,
+      "body": {
+        "indexed_documents": 0,
+        "skipped_documents": 30,
+        "failed_documents": 0,
+        "chunks_written": 0,
+        "embeddings_written": 0,
+        "errors": [],
+        "warnings": []
+      }
+    }
+  ],
+  "search_modes": {
+    "lexical": {
+      "http_status": 200,
+      "mode": "lexical",
+      "score_type": "bm25",
+      "score_direction": "lower_is_better",
+      "trace": [
+        "lexical_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [
+        "2ef082e6fd0cd9442314",
+        "b1c36d476c32bb9b52c4",
+        "831cecf85d4fea2813cf",
+        "6952d238ede3503cf734",
+        "a25fbea55bf0a5bf74cc",
+        "63857151918753e52be0",
+        "7c67a5a8f13e0b4147e8",
+        "920f9856fbd4d72dc4bc",
+        "bab0c92f66132d954bdb",
+        "8ae1c1b7fb501a1b5321"
+      ],
+      "after_rerank": [
+        "a25fbea55bf0a5bf74cc",
+        "2ef082e6fd0cd9442314",
+        "bab0c92f66132d954bdb",
+        "63857151918753e52be0",
+        "920f9856fbd4d72dc4bc",
+        "b1c36d476c32bb9b52c4",
+        "831cecf85d4fea2813cf",
+        "7c67a5a8f13e0b4147e8",
+        "8ae1c1b7fb501a1b5321",
+        "6952d238ede3503cf734"
+      ],
+      "results": [
+        {
+          "chunk_id": "a25fbea55bf0a5bf74cc",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": -45.26266124271629
+        },
+        {
+          "chunk_id": "2ef082e6fd0cd9442314",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": -45.91669959201265
+        },
+        {
+          "chunk_id": "bab0c92f66132d954bdb",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": -45.183196552231884
+        },
+        {
+          "chunk_id": "63857151918753e52be0",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": -45.183196552231884
+        },
+        {
+          "chunk_id": "920f9856fbd4d72dc4bc",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": -45.183196552231884
+        },
+        {
+          "chunk_id": "b1c36d476c32bb9b52c4",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": -45.91669959201265
+        },
+        {
+          "chunk_id": "831cecf85d4fea2813cf",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": -45.7922945769334
+        },
+        {
+          "chunk_id": "7c67a5a8f13e0b4147e8",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2025,
+          "type": "Resolution",
+          "score": -45.183196552231884
+        },
+        {
+          "chunk_id": "8ae1c1b7fb501a1b5321",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2025,
+          "type": "Resolution",
+          "score": -45.06624580778587
+        },
+        {
+          "chunk_id": "6952d238ede3503cf734",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2025,
+          "type": "Resolution",
+          "score": -45.67843796808955
+        }
+      ]
+    },
+    "semantic": {
+      "http_status": 200,
+      "mode": "semantic",
+      "score_type": "cosine_similarity",
+      "score_direction": "higher_is_better",
+      "trace": [
+        "semantic_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [
+        "a25fbea55bf0a5bf74cc",
+        "63857151918753e52be0",
+        "bab0c92f66132d954bdb",
+        "2ef082e6fd0cd9442314",
+        "920f9856fbd4d72dc4bc",
+        "b1c36d476c32bb9b52c4",
+        "831cecf85d4fea2813cf",
+        "7c67a5a8f13e0b4147e8",
+        "8ae1c1b7fb501a1b5321",
+        "be98ce53902351ca8bc8"
+      ],
+      "after_rerank": [
+        "a25fbea55bf0a5bf74cc",
+        "2ef082e6fd0cd9442314",
+        "bab0c92f66132d954bdb",
+        "63857151918753e52be0",
+        "920f9856fbd4d72dc4bc",
+        "b1c36d476c32bb9b52c4",
+        "831cecf85d4fea2813cf",
+        "7c67a5a8f13e0b4147e8",
+        "8ae1c1b7fb501a1b5321",
+        "be98ce53902351ca8bc8"
+      ],
+      "results": [
+        {
+          "chunk_id": "a25fbea55bf0a5bf74cc",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.6944015026092529
+        },
+        {
+          "chunk_id": "2ef082e6fd0cd9442314",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.6879887580871582
+        },
+        {
+          "chunk_id": "bab0c92f66132d954bdb",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.6903171539306641
+        },
+        {
+          "chunk_id": "63857151918753e52be0",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.6908422708511353
+        },
+        {
+          "chunk_id": "920f9856fbd4d72dc4bc",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.686646580696106
+        },
+        {
+          "chunk_id": "b1c36d476c32bb9b52c4",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.6839090585708618
+        },
+        {
+          "chunk_id": "831cecf85d4fea2813cf",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.6791532039642334
+        },
+        {
+          "chunk_id": "7c67a5a8f13e0b4147e8",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.6702519655227661
+        },
+        {
+          "chunk_id": "8ae1c1b7fb501a1b5321",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.6615951061248779
+        },
+        {
+          "chunk_id": "be98ce53902351ca8bc8",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.6607711315155029
+        }
+      ]
+    },
+    "hybrid": {
+      "http_status": 200,
+      "mode": "hybrid",
+      "score_type": "rrf",
+      "score_direction": "higher_is_better",
+      "trace": [
+        "lexical_search",
+        "semantic_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [
+        "2ef082e6fd0cd9442314",
+        "a25fbea55bf0a5bf74cc",
+        "63857151918753e52be0",
+        "b1c36d476c32bb9b52c4",
+        "831cecf85d4fea2813cf",
+        "bab0c92f66132d954bdb",
+        "920f9856fbd4d72dc4bc",
+        "7c67a5a8f13e0b4147e8",
+        "8ae1c1b7fb501a1b5321",
+        "6952d238ede3503cf734",
+        "be98ce53902351ca8bc8"
+      ],
+      "after_rerank": [
+        "a25fbea55bf0a5bf74cc",
+        "2ef082e6fd0cd9442314",
+        "bab0c92f66132d954bdb",
+        "920f9856fbd4d72dc4bc",
+        "63857151918753e52be0",
+        "b1c36d476c32bb9b52c4",
+        "831cecf85d4fea2813cf",
+        "7c67a5a8f13e0b4147e8",
+        "be98ce53902351ca8bc8",
+        "8ae1c1b7fb501a1b5321",
+        "6952d238ede3503cf734"
+      ],
+      "results": [
+        {
+          "chunk_id": "a25fbea55bf0a5bf74cc",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.03177805800756621
+        },
+        {
+          "chunk_id": "2ef082e6fd0cd9442314",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.032018442622950824
+        },
+        {
+          "chunk_id": "bab0c92f66132d954bdb",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.03036576949620428
+        },
+        {
+          "chunk_id": "920f9856fbd4d72dc4bc",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.030090497737556562
+        },
+        {
+          "chunk_id": "63857151918753e52be0",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.03128054740957967
+        },
+        {
+          "chunk_id": "b1c36d476c32bb9b52c4",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.03128054740957967
+        },
+        {
+          "chunk_id": "831cecf85d4fea2813cf",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.030798389007344232
+        },
+        {
+          "chunk_id": "7c67a5a8f13e0b4147e8",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.029631255487269532
+        },
+        {
+          "chunk_id": "be98ce53902351ca8bc8",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.014285714285714285
+        },
+        {
+          "chunk_id": "8ae1c1b7fb501a1b5321",
+          "document_id": "1817",
+          "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2025,
+          "type": "Resolution",
+          "score": 0.02877846790890269
+        }
+      ]
+    }
+  },
+  "filters": {
+    "lexical_year": {
+      "http_status": 200,
+      "mode": "lexical",
+      "score_type": "bm25",
+      "score_direction": "lower_is_better",
+      "trace": [
+        "lexical_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [
+        "eb8512964b1c515861c9",
+        "5de8623b7e2af222e897",
+        "595d3eb068c4dde064c6",
+        "0c0c9e111a05f8f7e107",
+        "ec005017f3a38fec8a4f",
+        "a019a734b7fbc8105a76",
+        "663613e98892c75c800e",
+        "89f7eb22b91eb04beff8",
+        "8a89b4f960c6b0c2071e",
+        "da8b934ce3f59bf20950"
+      ],
+      "after_rerank": [
+        "595d3eb068c4dde064c6",
+        "5de8623b7e2af222e897",
+        "eb8512964b1c515861c9",
+        "ec005017f3a38fec8a4f",
+        "663613e98892c75c800e",
+        "0c0c9e111a05f8f7e107",
+        "8a89b4f960c6b0c2071e",
+        "da8b934ce3f59bf20950",
+        "a019a734b7fbc8105a76",
+        "89f7eb22b91eb04beff8"
+      ],
+      "results": [
+        {
+          "chunk_id": "595d3eb068c4dde064c6",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": -3.801605549266443
+        },
+        {
+          "chunk_id": "5de8623b7e2af222e897",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": -4.0199419034738915
+        },
+        {
+          "chunk_id": "eb8512964b1c515861c9",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "3",
+          "year": 2023,
+          "type": "Law",
+          "score": -4.266981412797136
+        },
+        {
+          "chunk_id": "ec005017f3a38fec8a4f",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2023,
+          "type": "Law",
+          "score": -3.7523751814711117
+        },
+        {
+          "chunk_id": "663613e98892c75c800e",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2023,
+          "type": "Law",
+          "score": -2.952285874088773
+        }
+      ],
+      "all_match": true
+    },
+    "lexical_type": {
+      "http_status": 200,
+      "mode": "lexical",
+      "score_type": "bm25",
+      "score_direction": "lower_is_better",
+      "trace": [
+        "lexical_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [
+        "eb8512964b1c515861c9",
+        "b8f56d98d9f45bedf51d",
+        "5de8623b7e2af222e897",
+        "595d3eb068c4dde064c6",
+        "0c0c9e111a05f8f7e107",
+        "ec005017f3a38fec8a4f",
+        "a019a734b7fbc8105a76",
+        "423966d76af53b184291",
+        "663613e98892c75c800e",
+        "82e001a0ad7739cb100d"
+      ],
+      "after_rerank": [
+        "595d3eb068c4dde064c6",
+        "5de8623b7e2af222e897",
+        "eb8512964b1c515861c9",
+        "ec005017f3a38fec8a4f",
+        "82e001a0ad7739cb100d",
+        "b8f56d98d9f45bedf51d",
+        "423966d76af53b184291",
+        "0c0c9e111a05f8f7e107",
+        "a019a734b7fbc8105a76",
+        "663613e98892c75c800e"
+      ],
+      "results": [
+        {
+          "chunk_id": "595d3eb068c4dde064c6",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": -3.801605549266443
+        },
+        {
+          "chunk_id": "5de8623b7e2af222e897",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": -4.0199419034738915
+        },
+        {
+          "chunk_id": "eb8512964b1c515861c9",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "3",
+          "year": 2023,
+          "type": "Law",
+          "score": -4.266981412797136
+        },
+        {
+          "chunk_id": "ec005017f3a38fec8a4f",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2023,
+          "type": "Law",
+          "score": -3.7523751814711117
+        },
+        {
+          "chunk_id": "82e001a0ad7739cb100d",
+          "document_id": "13",
+          "title": "Law No. (22) of 2006 Concerning the Traffic Toll in the Emirate of Dubai",
+          "locator": "3-4",
+          "year": 2006,
+          "type": "Law",
+          "score": -2.9281518525016024
+        }
+      ],
+      "all_match": true
+    },
+    "lexical_combined": {
+      "http_status": 200,
+      "mode": "lexical",
+      "score_type": "bm25",
+      "score_direction": "lower_is_better",
+      "trace": [
+        "lexical_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [
+        "eb8512964b1c515861c9",
+        "5de8623b7e2af222e897",
+        "595d3eb068c4dde064c6",
+        "0c0c9e111a05f8f7e107",
+        "ec005017f3a38fec8a4f",
+        "a019a734b7fbc8105a76",
+        "663613e98892c75c800e",
+        "89f7eb22b91eb04beff8",
+        "8a89b4f960c6b0c2071e",
+        "da8b934ce3f59bf20950"
+      ],
+      "after_rerank": [
+        "595d3eb068c4dde064c6",
+        "5de8623b7e2af222e897",
+        "eb8512964b1c515861c9",
+        "ec005017f3a38fec8a4f",
+        "663613e98892c75c800e",
+        "0c0c9e111a05f8f7e107",
+        "8a89b4f960c6b0c2071e",
+        "da8b934ce3f59bf20950",
+        "a019a734b7fbc8105a76",
+        "89f7eb22b91eb04beff8"
+      ],
+      "results": [
+        {
+          "chunk_id": "595d3eb068c4dde064c6",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": -3.801605549266443
+        },
+        {
+          "chunk_id": "5de8623b7e2af222e897",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": -4.0199419034738915
+        },
+        {
+          "chunk_id": "eb8512964b1c515861c9",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "3",
+          "year": 2023,
+          "type": "Law",
+          "score": -4.266981412797136
+        },
+        {
+          "chunk_id": "ec005017f3a38fec8a4f",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2023,
+          "type": "Law",
+          "score": -3.7523751814711117
+        },
+        {
+          "chunk_id": "663613e98892c75c800e",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2023,
+          "type": "Law",
+          "score": -2.952285874088773
+        }
+      ],
+      "all_match": true
+    },
+    "lexical_no_match": {
+      "http_status": 200,
+      "mode": "lexical",
+      "score_type": "bm25",
+      "score_direction": "lower_is_better",
+      "trace": [
+        "lexical_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [],
+      "after_rerank": [],
+      "results": [],
+      "all_match": true
+    },
+    "semantic_year": {
+      "http_status": 200,
+      "mode": "semantic",
+      "score_type": "cosine_similarity",
+      "score_direction": "higher_is_better",
+      "trace": [
+        "semantic_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [
+        "5de8623b7e2af222e897",
+        "eb8512964b1c515861c9",
+        "595d3eb068c4dde064c6",
+        "0c0c9e111a05f8f7e107",
+        "e6a8fc03545cd08c0d69",
+        "90286fa73cfc1d8a7a09",
+        "e625a5cba0d0a5b2422b",
+        "fb6c5408eb5f374b6b52",
+        "536ea2b15db939c6deb5",
+        "8696b073929e5268205f"
+      ],
+      "after_rerank": [
+        "595d3eb068c4dde064c6",
+        "5de8623b7e2af222e897",
+        "eb8512964b1c515861c9",
+        "536ea2b15db939c6deb5",
+        "8696b073929e5268205f",
+        "e6a8fc03545cd08c0d69",
+        "fb6c5408eb5f374b6b52",
+        "0c0c9e111a05f8f7e107",
+        "90286fa73cfc1d8a7a09",
+        "e625a5cba0d0a5b2422b"
+      ],
+      "results": [
+        {
+          "chunk_id": "595d3eb068c4dde064c6",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.42225655913352966
+        },
+        {
+          "chunk_id": "5de8623b7e2af222e897",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.427715003490448
+        },
+        {
+          "chunk_id": "eb8512964b1c515861c9",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "3",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.4255596101284027
+        },
+        {
+          "chunk_id": "536ea2b15db939c6deb5",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "2-3",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.3597011864185333
+        },
+        {
+          "chunk_id": "8696b073929e5268205f",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6-7",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.3589355945587158
+        }
+      ],
+      "all_match": true
+    },
+    "semantic_type": {
+      "http_status": 200,
+      "mode": "semantic",
+      "score_type": "cosine_similarity",
+      "score_direction": "higher_is_better",
+      "trace": [
+        "semantic_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [
+        "774c50eef96f301e4c3b",
+        "423966d76af53b184291",
+        "5de8623b7e2af222e897",
+        "eb8512964b1c515861c9",
+        "595d3eb068c4dde064c6",
+        "b8f56d98d9f45bedf51d",
+        "82e001a0ad7739cb100d",
+        "0c0c9e111a05f8f7e107",
+        "783bc4bdc39588e9d8a7",
+        "e6a8fc03545cd08c0d69"
+      ],
+      "after_rerank": [
+        "eb8512964b1c515861c9",
+        "b8f56d98d9f45bedf51d",
+        "82e001a0ad7739cb100d",
+        "5de8623b7e2af222e897",
+        "595d3eb068c4dde064c6",
+        "423966d76af53b184291",
+        "774c50eef96f301e4c3b",
+        "0c0c9e111a05f8f7e107",
+        "e6a8fc03545cd08c0d69",
+        "783bc4bdc39588e9d8a7"
+      ],
+      "results": [
+        {
+          "chunk_id": "eb8512964b1c515861c9",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "3",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.4255596101284027
+        },
+        {
+          "chunk_id": "b8f56d98d9f45bedf51d",
+          "document_id": "13",
+          "title": "Law No. (22) of 2006 Concerning the Traffic Toll in the Emirate of Dubai",
+          "locator": "3",
+          "year": 2006,
+          "type": "Law",
+          "score": 0.40585586428642273
+        },
+        {
+          "chunk_id": "82e001a0ad7739cb100d",
+          "document_id": "13",
+          "title": "Law No. (22) of 2006 Concerning the Traffic Toll in the Emirate of Dubai",
+          "locator": "3-4",
+          "year": 2006,
+          "type": "Law",
+          "score": 0.40089163184165955
+        },
+        {
+          "chunk_id": "5de8623b7e2af222e897",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.427715003490448
+        },
+        {
+          "chunk_id": "595d3eb068c4dde064c6",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.42225655913352966
+        }
+      ],
+      "all_match": true
+    },
+    "semantic_combined": {
+      "http_status": 200,
+      "mode": "semantic",
+      "score_type": "cosine_similarity",
+      "score_direction": "higher_is_better",
+      "trace": [
+        "semantic_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [
+        "5de8623b7e2af222e897",
+        "eb8512964b1c515861c9",
+        "595d3eb068c4dde064c6",
+        "0c0c9e111a05f8f7e107",
+        "e6a8fc03545cd08c0d69",
+        "90286fa73cfc1d8a7a09",
+        "fb6c5408eb5f374b6b52",
+        "536ea2b15db939c6deb5",
+        "8696b073929e5268205f",
+        "8a89b4f960c6b0c2071e"
+      ],
+      "after_rerank": [
+        "595d3eb068c4dde064c6",
+        "5de8623b7e2af222e897",
+        "eb8512964b1c515861c9",
+        "0c0c9e111a05f8f7e107",
+        "8a89b4f960c6b0c2071e",
+        "8696b073929e5268205f",
+        "e6a8fc03545cd08c0d69",
+        "fb6c5408eb5f374b6b52",
+        "90286fa73cfc1d8a7a09",
+        "536ea2b15db939c6deb5"
+      ],
+      "results": [
+        {
+          "chunk_id": "595d3eb068c4dde064c6",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.42225655913352966
+        },
+        {
+          "chunk_id": "5de8623b7e2af222e897",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.427715003490448
+        },
+        {
+          "chunk_id": "eb8512964b1c515861c9",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "3",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.4255596101284027
+        },
+        {
+          "chunk_id": "0c0c9e111a05f8f7e107",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "7-8",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.3870147466659546
+        },
+        {
+          "chunk_id": "8a89b4f960c6b0c2071e",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "8",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.3534632921218872
+        }
+      ],
+      "all_match": true
+    },
+    "semantic_no_match": {
+      "http_status": 200,
+      "mode": "semantic",
+      "score_type": "cosine_similarity",
+      "score_direction": "higher_is_better",
+      "trace": [
+        "semantic_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [],
+      "after_rerank": [],
+      "results": [],
+      "all_match": true
+    },
+    "hybrid_year": {
+      "http_status": 200,
+      "mode": "hybrid",
+      "score_type": "rrf",
+      "score_direction": "higher_is_better",
+      "trace": [
+        "lexical_search",
+        "semantic_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [
+        "5de8623b7e2af222e897",
+        "eb8512964b1c515861c9",
+        "595d3eb068c4dde064c6",
+        "0c0c9e111a05f8f7e107",
+        "e6a8fc03545cd08c0d69",
+        "ec005017f3a38fec8a4f",
+        "90286fa73cfc1d8a7a09",
+        "a019a734b7fbc8105a76",
+        "663613e98892c75c800e",
+        "e625a5cba0d0a5b2422b",
+        "89f7eb22b91eb04beff8",
+        "fb6c5408eb5f374b6b52",
+        "536ea2b15db939c6deb5",
+        "8a89b4f960c6b0c2071e",
+        "8696b073929e5268205f",
+        "da8b934ce3f59bf20950"
+      ],
+      "after_rerank": [
+        "595d3eb068c4dde064c6",
+        "5de8623b7e2af222e897",
+        "eb8512964b1c515861c9",
+        "ec005017f3a38fec8a4f",
+        "663613e98892c75c800e",
+        "e6a8fc03545cd08c0d69",
+        "89f7eb22b91eb04beff8",
+        "8696b073929e5268205f",
+        "0c0c9e111a05f8f7e107",
+        "8a89b4f960c6b0c2071e",
+        "da8b934ce3f59bf20950",
+        "fb6c5408eb5f374b6b52",
+        "90286fa73cfc1d8a7a09",
+        "a019a734b7fbc8105a76",
+        "536ea2b15db939c6deb5",
+        "e625a5cba0d0a5b2422b"
+      ],
+      "results": [
+        {
+          "chunk_id": "595d3eb068c4dde064c6",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.031746031746031744
+        },
+        {
+          "chunk_id": "5de8623b7e2af222e897",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.03252247488101534
+        },
+        {
+          "chunk_id": "eb8512964b1c515861c9",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "3",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.03252247488101534
+        },
+        {
+          "chunk_id": "ec005017f3a38fec8a4f",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.015384615384615385
+        },
+        {
+          "chunk_id": "663613e98892c75c800e",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.014925373134328358
+        }
+      ],
+      "all_match": true
+    },
+    "hybrid_type": {
+      "http_status": 200,
+      "mode": "hybrid",
+      "score_type": "rrf",
+      "score_direction": "higher_is_better",
+      "trace": [
+        "lexical_search",
+        "semantic_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [
+        "eb8512964b1c515861c9",
+        "5de8623b7e2af222e897",
+        "b8f56d98d9f45bedf51d",
+        "595d3eb068c4dde064c6",
+        "423966d76af53b184291",
+        "0c0c9e111a05f8f7e107",
+        "82e001a0ad7739cb100d",
+        "774c50eef96f301e4c3b",
+        "ec005017f3a38fec8a4f",
+        "a019a734b7fbc8105a76",
+        "663613e98892c75c800e",
+        "783bc4bdc39588e9d8a7",
+        "e6a8fc03545cd08c0d69"
+      ],
+      "after_rerank": [
+        "595d3eb068c4dde064c6",
+        "5de8623b7e2af222e897",
+        "eb8512964b1c515861c9",
+        "0c0c9e111a05f8f7e107",
+        "a019a734b7fbc8105a76",
+        "ec005017f3a38fec8a4f",
+        "663613e98892c75c800e",
+        "e6a8fc03545cd08c0d69",
+        "783bc4bdc39588e9d8a7",
+        "b8f56d98d9f45bedf51d",
+        "774c50eef96f301e4c3b",
+        "423966d76af53b184291",
+        "82e001a0ad7739cb100d"
+      ],
+      "results": [
+        {
+          "chunk_id": "595d3eb068c4dde064c6",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.031009615384615385
+        },
+        {
+          "chunk_id": "5de8623b7e2af222e897",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.031746031746031744
+        },
+        {
+          "chunk_id": "eb8512964b1c515861c9",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "3",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.032018442622950824
+        },
+        {
+          "chunk_id": "0c0c9e111a05f8f7e107",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "7-8",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.030090497737556562
+        },
+        {
+          "chunk_id": "a019a734b7fbc8105a76",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "8-9",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.014925373134328358
+        }
+      ],
+      "all_match": true
+    },
+    "hybrid_combined": {
+      "http_status": 200,
+      "mode": "hybrid",
+      "score_type": "rrf",
+      "score_direction": "higher_is_better",
+      "trace": [
+        "lexical_search",
+        "semantic_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [
+        "5de8623b7e2af222e897",
+        "eb8512964b1c515861c9",
+        "595d3eb068c4dde064c6",
+        "0c0c9e111a05f8f7e107",
+        "8a89b4f960c6b0c2071e",
+        "e6a8fc03545cd08c0d69",
+        "ec005017f3a38fec8a4f",
+        "90286fa73cfc1d8a7a09",
+        "a019a734b7fbc8105a76",
+        "663613e98892c75c800e",
+        "fb6c5408eb5f374b6b52",
+        "536ea2b15db939c6deb5",
+        "89f7eb22b91eb04beff8",
+        "8696b073929e5268205f",
+        "da8b934ce3f59bf20950"
+      ],
+      "after_rerank": [
+        "595d3eb068c4dde064c6",
+        "5de8623b7e2af222e897",
+        "eb8512964b1c515861c9",
+        "ec005017f3a38fec8a4f",
+        "663613e98892c75c800e",
+        "0c0c9e111a05f8f7e107",
+        "8a89b4f960c6b0c2071e",
+        "e6a8fc03545cd08c0d69",
+        "fb6c5408eb5f374b6b52",
+        "89f7eb22b91eb04beff8",
+        "8696b073929e5268205f",
+        "90286fa73cfc1d8a7a09",
+        "a019a734b7fbc8105a76",
+        "536ea2b15db939c6deb5",
+        "da8b934ce3f59bf20950"
+      ],
+      "results": [
+        {
+          "chunk_id": "595d3eb068c4dde064c6",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.031746031746031744
+        },
+        {
+          "chunk_id": "5de8623b7e2af222e897",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "6",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.03252247488101534
+        },
+        {
+          "chunk_id": "eb8512964b1c515861c9",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "3",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.03252247488101534
+        },
+        {
+          "chunk_id": "ec005017f3a38fec8a4f",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.015384615384615385
+        },
+        {
+          "chunk_id": "663613e98892c75c800e",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "locator": "5",
+          "year": 2023,
+          "type": "Law",
+          "score": 0.014925373134328358
+        }
+      ],
+      "all_match": true
+    },
+    "hybrid_no_match": {
+      "http_status": 200,
+      "mode": "hybrid",
+      "score_type": "rrf",
+      "score_direction": "higher_is_better",
+      "trace": [
+        "semantic_search",
+        "lexical_search",
+        "merge_candidates",
+        "rerank_candidates"
+      ],
+      "before_rerank": [],
+      "after_rerank": [],
+      "results": [],
+      "all_match": true
+    }
+  },
+  "supported_answer": {
+    "http_status": 200,
+    "body": {
+      "thread_id": "at_supported_20261111_202614",
+      "request_id": "64b8ce13-c694-4627-98d8-d829233af83e",
+      "status": "answered",
+      "answer": "The one-hour fee for a Category One on-street car park during peak hours in Dubai is 4.00 dirhams.",
+      "citations": [
+        {
+          "chunk_id": "a25fbea55bf0a5bf74cc",
+          "document_id": "1817",
+          "locator": "5"
+        }
+      ],
+      "clarification": null,
+      "interrupt_id": null,
+      "error": null
+    }
+  },
+  "cited_excerpts": [
+    {
+      "chunk_id": "a25fbea55bf0a5bf74cc",
+      "document_id": "1817",
+      "locator": "5",
+      "text": "Schedule (1): Parking Fees\nPDF page 5\nParking Fees for Category One Car Parks (in dirhams) | Duration: One (1) hour | On-street outside peak hours: 4.00 dirhams | On-street during peak hours: 4.00 dirhams | On-street premium during peak hours: 6.00 dirhams | Off-street outside peak hours: 3.00 dirhams | Off-street during peak hours: 4.00 dirhams | Off-street premium during peak hours: 6.00 dirhams"
+    }
+  ],
+  "memory": {
+    "thread_a_initial": {
+      "http_status": 200,
+      "body": {
+        "thread_id": "at_memory_a_20261111_202614",
+        "request_id": "a299e978-6395-4c25-94b6-a0a4dca5c4a8",
+        "status": "answered",
+        "answer": "Law No. (9) of 2023 regulates the operation of autonomous vehicles in the Emirate of Dubai.",
+        "citations": [
+          {
+            "chunk_id": "0da8a9e995093b009063",
+            "document_id": "1525",
+            "locator": "2"
+          },
+          {
+            "chunk_id": "04b78b37052a56109eed",
+            "document_id": "1525",
+            "locator": "1-2"
+          }
+        ],
+        "clarification": null,
+        "interrupt_id": null,
+        "error": null
+      }
+    },
+    "thread_a_followup": {
+      "http_status": 200,
+      "body": {
+        "thread_id": "at_memory_a_20261111_202614",
+        "request_id": "12f322e4-1cf0-41ff-a900-c29230760b28",
+        "status": "answered",
+        "answer": "Under Dubai Law No. (9) of 2023, autonomous vehicles must be insured with an insurance company licensed to operate in the UAE. Specifically, the vehicle must be covered by a comprehensive insurance policy issued by such a licensed insurance company. This requirement is prescribed by the Director General and is necessary both for the initial licensing of the autonomous vehicle and for the renewal of its license.",
+        "citations": [
+          {
+            "chunk_id": "ad4140c36714b474e0f6",
+            "document_id": "1525",
+            "locator": "7"
+          },
+          {
+            "chunk_id": "77e58acfb3acfcd78994",
+            "document_id": "1872",
+            "locator": "4"
+          },
+          {
+            "chunk_id": "8ea9679d58156e448b5d",
+            "document_id": "1872",
+            "locator": "4"
+          }
+        ],
+        "clarification": null,
+        "interrupt_id": null,
+        "error": null
+      }
+    },
+    "thread_b_same_followup": {
+      "http_status": 200,
+      "body": {
+        "thread_id": "at_memory_b_20261111_202614",
+        "request_id": "e4fed5ac-210b-4f63-9b4a-08e7e39510e0",
+        "status": "needs_clarification",
+        "answer": null,
+        "citations": [],
+        "clarification": "Which type of vehicles are you referring to?",
+        "interrupt_id": "ed7c0617b6ffb4a939053e91d029a765",
+        "error": null
+      }
+    }
+  },
+  "restart": {
+    "paused": {
+      "http_status": 200,
+      "body": {
+        "thread_id": "at_restart_20261111_202614",
+        "request_id": "f8eb2119-0744-4f24-98d6-5d15b60c998b",
+        "status": "needs_clarification",
+        "answer": null,
+        "citations": [],
+        "clarification": "Which type of vehicles are you referring to?",
+        "interrupt_id": "0e2d3e4338a2fe5c1d4ca3c56ee36891",
+        "error": null
+      }
+    },
+    "saved_state": {
+      "state_keys": [
+        "clarifications",
+        "draft",
+        "evidence",
+        "plan",
+        "request",
+        "request_id",
+        "response"
+      ],
+      "pending_interrupts": [
+        "0e2d3e4338a2fe5c1d4ca3c56ee36891"
+      ]
+    },
+    "new_server_pid": 22642,
+    "wrong_thread": {
+      "http_status": 409,
+      "body": {
+        "thread_id": "at_wrong_20261111_202614",
+        "request_id": "905d47a9-2f13-40b5-875c-61c291cc00ae",
+        "status": "error",
+        "answer": null,
+        "citations": [],
+        "clarification": null,
+        "interrupt_id": null,
+        "error": {
+          "code": "invalid_resume",
+          "message": "No matching pending interrupt exists on this thread."
+        }
+      }
+    },
+    "resumed": {
+      "http_status": 200,
+      "body": {
+        "thread_id": "at_restart_20261111_202614",
+        "request_id": "ee7a2dd4-f557-42c7-b17d-d2b01bb08eb5",
+        "status": "answered",
+        "answer": "Under Law No. (9) of 2023 in Dubai, autonomous vehicles must be insured with an insurance company licensed to operate in the UAE. Specifically, for licensing, the vehicle must be covered by a comprehensive insurance policy issued by such a licensed insurance company. This requirement also applies for the renewal of the autonomous vehicle license, where the vehicle must continue to be covered by a comprehensive insurance policy from a licensed insurer in the UAE.",
+        "citations": [
+          {
+            "chunk_id": "ad4140c36714b474e0f6",
+            "document_id": "1525",
+            "locator": "7"
+          },
+          {
+            "chunk_id": "77e58acfb3acfcd78994",
+            "document_id": "1872",
+            "locator": "4"
+          },
+          {
+            "chunk_id": "8ea9679d58156e448b5d",
+            "document_id": "1872",
+            "locator": "4"
+          }
+        ],
+        "clarification": null,
+        "interrupt_id": null,
+        "error": null
+      }
+    },
+    "repeated_resume": {
+      "http_status": 409,
+      "body": {
+        "thread_id": "at_restart_20261111_202614",
+        "request_id": "02820fce-4775-4c4d-8efb-baa54ab556f1",
+        "status": "error",
+        "answer": null,
+        "citations": [],
+        "clarification": null,
+        "interrupt_id": null,
+        "error": {
+          "code": "invalid_resume",
+          "message": "No matching pending interrupt exists on this thread."
+        }
+      }
+    }
+  },
+  "abstention": {
+    "http_status": 200,
+    "body": {
+      "thread_id": "at_unsupported_20261111_202614",
+      "request_id": "c12b9dcf-b35b-414f-85b7-362072964bf3",
+      "status": "insufficient_evidence",
+      "answer": null,
+      "citations": [],
+      "clarification": null,
+      "interrupt_id": null,
+      "error": null
+    }
+  },
+  "out_of_scope": {
+    "http_status": 200,
+    "body": {
+      "thread_id": "at_unrelated_20261111_202614",
+      "request_id": "07453ad0-a0dc-427b-bdbf-9f663f86e0f6",
+      "status": "out_of_scope",
+      "answer": null,
+      "citations": [],
+      "clarification": null,
+      "interrupt_id": null,
+      "error": null
+    }
+  },
+  "api_errors": {
+    "empty_message": {
+      "http_status": 422,
+      "body": {
+        "thread_id": "at_bad_20261111_202614",
+        "request_id": "fbfa0668-8639-4052-86b6-039f521a9d48",
+        "status": "error",
+        "answer": null,
+        "citations": [],
+        "clarification": null,
+        "interrupt_id": null,
+        "error": {
+          "code": "invalid_request",
+          "message": "Invalid request body. Check the schema at /docs."
+        }
+      }
+    },
+    "invalid_top_k": {
+      "http_status": 422,
+      "body": {
+        "thread_id": "at_bad_20261111_202614",
+        "request_id": "4e9bc7e0-ae54-4859-88ce-fd2f24cc9a29",
+        "status": "error",
+        "answer": null,
+        "citations": [],
+        "clarification": null,
+        "interrupt_id": null,
+        "error": {
+          "code": "invalid_request",
+          "message": "Invalid request body. Check the schema at /docs."
+        }
+      }
+    },
+    "unsupported_mode": {
+      "http_status": 422,
+      "body": {
+        "detail": [
+          {
+            "type": "literal_error",
+            "loc": [
+              "body",
+              "mode"
+            ],
+            "msg": "Input should be 'lexical', 'semantic' or 'hybrid'",
+            "input": "unknown",
+            "ctx": {
+              "expected": "'lexical', 'semantic' or 'hybrid'"
+            }
+          }
+        ]
+      }
+    },
+    "invalid_filter": {
+      "http_status": 422,
+      "body": {
+        "thread_id": "at_bad_20261111_202614",
+        "request_id": "ebefd72a-a381-4229-9b1c-ec5ea77e7e3d",
+        "status": "error",
+        "answer": null,
+        "citations": [],
+        "clarification": null,
+        "interrupt_id": null,
+        "error": {
+          "code": "invalid_filters",
+          "message": "Check filter year (1900–2100) and type (Law, Resolution, Regulation)."
+        }
+      }
+    },
+    "invalid_resume": {
+      "http_status": 409,
+      "body": {
+        "thread_id": "at_bad_20261111_202614",
+        "request_id": "5fd34e8f-ea07-4805-b6c5-ae5ecebeb9b0",
+        "status": "error",
+        "answer": null,
+        "citations": [],
+        "clarification": null,
+        "interrupt_id": null,
+        "error": {
+          "code": "invalid_resume",
+          "message": "No matching pending interrupt exists on this thread."
+        }
+      }
+    }
+  },
+  "evaluation": [
+    {
+      "id": "Q01",
+      "question": "What is the one-hour fee for a Category One on-street car park during peak hours?",
+      "expected_document_id": "1817",
+      "expected_locator": "5",
+      "expected_chunk_id": "a25fbea55bf0a5bf74cc",
+      "hit_in_final_top_5": true,
+      "response": {
+        "http_status": 200,
+        "mode": "hybrid",
+        "score_type": "rrf",
+        "score_direction": "higher_is_better",
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "before_rerank": [
+          "2ef082e6fd0cd9442314",
+          "a25fbea55bf0a5bf74cc",
+          "63857151918753e52be0",
+          "b1c36d476c32bb9b52c4",
+          "831cecf85d4fea2813cf",
+          "bab0c92f66132d954bdb",
+          "920f9856fbd4d72dc4bc",
+          "7c67a5a8f13e0b4147e8",
+          "8ae1c1b7fb501a1b5321",
+          "6952d238ede3503cf734",
+          "be98ce53902351ca8bc8"
+        ],
+        "after_rerank": [
+          "a25fbea55bf0a5bf74cc",
+          "2ef082e6fd0cd9442314",
+          "bab0c92f66132d954bdb",
+          "920f9856fbd4d72dc4bc",
+          "63857151918753e52be0",
+          "b1c36d476c32bb9b52c4",
+          "831cecf85d4fea2813cf",
+          "7c67a5a8f13e0b4147e8",
+          "be98ce53902351ca8bc8",
+          "8ae1c1b7fb501a1b5321",
+          "6952d238ede3503cf734"
+        ],
+        "results": [
+          {
+            "chunk_id": "a25fbea55bf0a5bf74cc",
+            "document_id": "1817",
+            "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+            "locator": "5",
+            "year": 2025,
+            "type": "Resolution",
+            "score": 0.03177805800756621
+          },
+          {
+            "chunk_id": "2ef082e6fd0cd9442314",
+            "document_id": "1817",
+            "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+            "locator": "5",
+            "year": 2025,
+            "type": "Resolution",
+            "score": 0.032018442622950824
+          },
+          {
+            "chunk_id": "bab0c92f66132d954bdb",
+            "document_id": "1817",
+            "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+            "locator": "5",
+            "year": 2025,
+            "type": "Resolution",
+            "score": 0.03036576949620428
+          },
+          {
+            "chunk_id": "920f9856fbd4d72dc4bc",
+            "document_id": "1817",
+            "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+            "locator": "5",
+            "year": 2025,
+            "type": "Resolution",
+            "score": 0.030090497737556562
+          },
+          {
+            "chunk_id": "63857151918753e52be0",
+            "document_id": "1817",
+            "title": "Executive Council Resolution No. (46) of 2025 Amending Executive Council Resolution No. (5) of 2016 Regulating Car Parks in the Emirate of Dubai",
+            "locator": "5",
+            "year": 2025,
+            "type": "Resolution",
+            "score": 0.03128054740957967
+          }
+        ]
+      }
+    },
+    {
+      "id": "Q02",
+      "question": "Under Law No. (9) of 2023, what insurance must an autonomous vehicle have to be licensed?",
+      "expected_document_id": "1525",
+      "expected_locator": "7",
+      "expected_chunk_id": "ad4140c36714b474e0f6",
+      "hit_in_final_top_5": true,
+      "response": {
+        "http_status": 200,
+        "mode": "hybrid",
+        "score_type": "rrf",
+        "score_direction": "higher_is_better",
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "before_rerank": [
+          "77e58acfb3acfcd78994",
+          "0da8a9e995093b009063",
+          "8ea9679d58156e448b5d",
+          "ad4140c36714b474e0f6",
+          "0fe97e5836b8786c1776",
+          "aefad0b7bbb6feaa0aa9",
+          "175ce4bdcb27ae275b15",
+          "e6a8fc03545cd08c0d69",
+          "82a914297b2cf90614d6",
+          "8696b073929e5268205f",
+          "dbafb90d05b245050815",
+          "2a2bc66b757b37ab7b0b",
+          "2c7f567d30eb670a7005",
+          "0c0c9e111a05f8f7e107"
+        ],
+        "after_rerank": [
+          "ad4140c36714b474e0f6",
+          "77e58acfb3acfcd78994",
+          "8ea9679d58156e448b5d",
+          "8696b073929e5268205f",
+          "0da8a9e995093b009063",
+          "e6a8fc03545cd08c0d69",
+          "2a2bc66b757b37ab7b0b",
+          "0c0c9e111a05f8f7e107",
+          "2c7f567d30eb670a7005",
+          "dbafb90d05b245050815",
+          "0fe97e5836b8786c1776",
+          "aefad0b7bbb6feaa0aa9",
+          "82a914297b2cf90614d6",
+          "175ce4bdcb27ae275b15"
+        ],
+        "results": [
+          {
+            "chunk_id": "ad4140c36714b474e0f6",
+            "document_id": "1525",
+            "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+            "locator": "7",
+            "year": 2023,
+            "type": "Law",
+            "score": 0.03036576949620428
+          },
+          {
+            "chunk_id": "77e58acfb3acfcd78994",
+            "document_id": "1872",
+            "title": "Administrative Resolution No. (939) of 2025 Issuing the Implementing Bylaw of Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+            "locator": "4",
+            "year": 2025,
+            "type": "Resolution",
+            "score": 0.03252247488101534
+          },
+          {
+            "chunk_id": "8ea9679d58156e448b5d",
+            "document_id": "1872",
+            "title": "Administrative Resolution No. (939) of 2025 Issuing the Implementing Bylaw of Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+            "locator": "4",
+            "year": 2025,
+            "type": "Resolution",
+            "score": 0.03057889822595705
+          },
+          {
+            "chunk_id": "8696b073929e5268205f",
+            "document_id": "1525",
+            "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+            "locator": "6-7",
+            "year": 2023,
+            "type": "Law",
+            "score": 0.015384615384615385
+          },
+          {
+            "chunk_id": "0da8a9e995093b009063",
+            "document_id": "1525",
+            "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+            "locator": "2",
+            "year": 2023,
+            "type": "Law",
+            "score": 0.030776515151515152
+          }
+        ]
+      }
+    },
+    {
+      "id": "Q03",
+      "question": "What departure fee does Law No. (13) of 2022 charge passengers leaving through Dubai airports?",
+      "expected_document_id": "1432",
+      "expected_locator": "1-2",
+      "expected_chunk_id": "23d885d0bfc09fdf430f",
+      "hit_in_final_top_5": false,
+      "response": {
+        "http_status": 502,
+        "body": {
+          "detail": "Reranking service failed or returned an invalid ranking"
+        }
+      },
+      "retry_after_model_failure": {
+        "http_status": 200,
+        "mode": "hybrid",
+        "score_type": "rrf",
+        "score_direction": "higher_is_better",
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "before_rerank": [
+          "23d885d0bfc09fdf430f",
+          "3185909575071b59b65e",
+          "f3881128ebf56f71b107",
+          "143f6a89d24557b4f6b0",
+          "821b8e67c19f363ca79a",
+          "04b78b37052a56109eed",
+          "42c2646c0435d4bc6322",
+          "6d837d32b1ed21d10406",
+          "b681c9f3a39d50c3df3e",
+          "c10caa4e098c7c1f42ab",
+          "ec60c393f129adc2531b",
+          "1211f8a8aa4b0ae40c3a",
+          "c1a64fa6973d4604b776",
+          "81e6490d0839494c1715",
+          "ac948ce25c6b6199f6e4"
+        ],
+        "after_rerank": [
+          "23d885d0bfc09fdf430f",
+          "143f6a89d24557b4f6b0",
+          "42c2646c0435d4bc6322",
+          "3185909575071b59b65e",
+          "f3881128ebf56f71b107",
+          "b681c9f3a39d50c3df3e",
+          "c10caa4e098c7c1f42ab",
+          "04b78b37052a56109eed",
+          "ec60c393f129adc2531b",
+          "1211f8a8aa4b0ae40c3a",
+          "6d837d32b1ed21d10406",
+          "81e6490d0839494c1715",
+          "ac948ce25c6b6199f6e4",
+          "821b8e67c19f363ca79a",
+          "c1a64fa6973d4604b776"
+        ],
+        "results": [
+          {
+            "chunk_id": "23d885d0bfc09fdf430f",
+            "document_id": "1432",
+            "title": "Law No. (13) of 2022 Concerning the Dubai Airports Departure Fee",
+            "locator": "1-2",
+            "year": 2022,
+            "type": "Law",
+            "score": 0.03252247488101534
+          },
+          {
+            "chunk_id": "143f6a89d24557b4f6b0",
+            "document_id": "1432",
+            "title": "Law No. (13) of 2022 Concerning the Dubai Airports Departure Fee",
+            "locator": "2",
+            "year": 2022,
+            "type": "Law",
+            "score": 0.030798389007344232
+          },
+          {
+            "chunk_id": "42c2646c0435d4bc6322",
+            "document_id": "1432",
+            "title": "Law No. (13) of 2022 Concerning the Dubai Airports Departure Fee",
+            "locator": "2",
+            "year": 2022,
+            "type": "Law",
+            "score": 0.015384615384615385
+          },
+          {
+            "chunk_id": "3185909575071b59b65e",
+            "document_id": "1432",
+            "title": "Law No. (13) of 2022 Concerning the Dubai Airports Departure Fee",
+            "locator": "1",
+            "year": 2022,
+            "type": "Law",
+            "score": 0.03252247488101534
+          },
+          {
+            "chunk_id": "f3881128ebf56f71b107",
+            "document_id": "1432",
+            "title": "Law No. (13) of 2022 Concerning the Dubai Airports Departure Fee",
+            "locator": "1",
+            "year": 2022,
+            "type": "Law",
+            "score": 0.031009615384615385
+          }
+        ]
+      }
+    },
+    {
+      "id": "Q04",
+      "question": "What is the fine for conducting the activity without a permit in Schedule (2) of the 2026 establishment violations resolution?",
+      "expected_document_id": "1915",
+      "expected_locator": "11",
+      "expected_chunk_id": "d58a829ce70544981735",
+      "hit_in_final_top_5": true,
+      "response": {
+        "http_status": 200,
+        "mode": "hybrid",
+        "score_type": "rrf",
+        "score_direction": "higher_is_better",
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "before_rerank": [
+          "d58a829ce70544981735",
+          "935830090cdb9eeb124f",
+          "eb195f1325caba19622f",
+          "1a2799a88852edb5907b",
+          "77b50bfc9131439e8b26",
+          "0606d6244067aa9cf2e2",
+          "fade85b31e675fe42a1f",
+          "2fd409011219157fbefe",
+          "90af59d4dd120ac9dd4b",
+          "59f6f9cb8319318255e4",
+          "c65329cf34a1037d8496",
+          "884f60cdc250b50cbd99",
+          "b551aa0601b73349a612"
+        ],
+        "after_rerank": [
+          "d58a829ce70544981735",
+          "935830090cdb9eeb124f",
+          "1a2799a88852edb5907b",
+          "fade85b31e675fe42a1f",
+          "0606d6244067aa9cf2e2",
+          "77b50bfc9131439e8b26",
+          "884f60cdc250b50cbd99",
+          "c65329cf34a1037d8496",
+          "b551aa0601b73349a612",
+          "eb195f1325caba19622f",
+          "90af59d4dd120ac9dd4b",
+          "59f6f9cb8319318255e4",
+          "2fd409011219157fbefe"
+        ],
+        "results": [
+          {
+            "chunk_id": "d58a829ce70544981735",
+            "document_id": "1915",
+            "title": "Executive Council Resolution No. (2) of 2026 Amending Executive Council Resolution No. (38) of 2018 Regulating the Activity of Driving Instruction in the Emirate of Dubai",
+            "locator": "11",
+            "year": 2026,
+            "type": "Resolution",
+            "score": 0.03252247488101534
+          },
+          {
+            "chunk_id": "935830090cdb9eeb124f",
+            "document_id": "1915",
+            "title": "Executive Council Resolution No. (2) of 2026 Amending Executive Council Resolution No. (38) of 2018 Regulating the Activity of Driving Instruction in the Emirate of Dubai",
+            "locator": "11",
+            "year": 2026,
+            "type": "Resolution",
+            "score": 0.032266458495966696
+          },
+          {
+            "chunk_id": "1a2799a88852edb5907b",
+            "document_id": "1915",
+            "title": "Executive Council Resolution No. (2) of 2026 Amending Executive Council Resolution No. (38) of 2018 Regulating the Activity of Driving Instruction in the Emirate of Dubai",
+            "locator": "12",
+            "year": 2026,
+            "type": "Resolution",
+            "score": 0.03125763125763126
+          },
+          {
+            "chunk_id": "fade85b31e675fe42a1f",
+            "document_id": "1915",
+            "title": "Executive Council Resolution No. (2) of 2026 Amending Executive Council Resolution No. (38) of 2018 Regulating the Activity of Driving Instruction in the Emirate of Dubai",
+            "locator": "12",
+            "year": 2026,
+            "type": "Resolution",
+            "score": 0.029631255487269532
+          },
+          {
+            "chunk_id": "0606d6244067aa9cf2e2",
+            "document_id": "1915",
+            "title": "Executive Council Resolution No. (2) of 2026 Amending Executive Council Resolution No. (38) of 2018 Regulating the Activity of Driving Instruction in the Emirate of Dubai",
+            "locator": "11",
+            "year": 2026,
+            "type": "Resolution",
+            "score": 0.029857397504456328
+          }
+        ]
+      }
+    },
+    {
+      "id": "Q05",
+      "question": "What is the water taxi fare from Al Mamzar station to Deira Old Souk station?",
+      "expected_document_id": "236",
+      "expected_locator": "5",
+      "expected_chunk_id": "5f282cdb77d47ba1a601",
+      "hit_in_final_top_5": true,
+      "response": {
+        "http_status": 200,
+        "mode": "hybrid",
+        "score_type": "rrf",
+        "score_direction": "higher_is_better",
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "before_rerank": [
+          "b1ec5c3022065c3d6710",
+          "5f282cdb77d47ba1a601",
+          "ed7cf92a237899d75bf0",
+          "5a3656f4c6a0d0d2cfe5",
+          "f2f7cc237391e55cbda3",
+          "262a63fd8094d57b339c",
+          "911178a0e23b740e0f97",
+          "81e6490d0839494c1715",
+          "171440eebbc94d5797ce",
+          "194c0166b5ee091a455d",
+          "3f156733fa6262653a4f",
+          "81055af26ebeb40b6cfa",
+          "bf3de9260fcc996ec7ed"
+        ],
+        "after_rerank": [
+          "5f282cdb77d47ba1a601",
+          "b1ec5c3022065c3d6710",
+          "5a3656f4c6a0d0d2cfe5",
+          "ed7cf92a237899d75bf0",
+          "262a63fd8094d57b339c",
+          "171440eebbc94d5797ce",
+          "194c0166b5ee091a455d",
+          "81055af26ebeb40b6cfa",
+          "f2f7cc237391e55cbda3",
+          "911178a0e23b740e0f97",
+          "81e6490d0839494c1715",
+          "3f156733fa6262653a4f",
+          "bf3de9260fcc996ec7ed"
+        ],
+        "results": [
+          {
+            "chunk_id": "5f282cdb77d47ba1a601",
+            "document_id": "236",
+            "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+            "locator": "5",
+            "year": 2010,
+            "type": "Resolution",
+            "score": 0.03225806451612903
+          },
+          {
+            "chunk_id": "b1ec5c3022065c3d6710",
+            "document_id": "236",
+            "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+            "locator": "5",
+            "year": 2010,
+            "type": "Resolution",
+            "score": 0.03278688524590164
+          },
+          {
+            "chunk_id": "5a3656f4c6a0d0d2cfe5",
+            "document_id": "236",
+            "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+            "locator": "5",
+            "year": 2010,
+            "type": "Resolution",
+            "score": 0.030303030303030304
+          },
+          {
+            "chunk_id": "ed7cf92a237899d75bf0",
+            "document_id": "236",
+            "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+            "locator": "5",
+            "year": 2010,
+            "type": "Resolution",
+            "score": 0.030330882352941176
+          },
+          {
+            "chunk_id": "262a63fd8094d57b339c",
+            "document_id": "236",
+            "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+            "locator": "5",
+            "year": 2010,
+            "type": "Resolution",
+            "score": 0.029877369007803793
+          }
+        ]
+      }
+    },
+    {
+      "id": "Q06",
+      "question": "Which Schedule (5) railway violation items require a written warning before a fine under Administrative Resolution No. (817) of 2024?",
+      "expected_document_id": "1739",
+      "expected_locator": "1",
+      "expected_chunk_id": "48f24bb9df8edb1d13b7",
+      "hit_in_final_top_5": true,
+      "response": {
+        "http_status": 200,
+        "mode": "hybrid",
+        "score_type": "rrf",
+        "score_direction": "higher_is_better",
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "before_rerank": [
+          "48f24bb9df8edb1d13b7",
+          "bc713b6910b665da44f4",
+          "fd840cbe301a1477e203",
+          "6d9c8e5904f747c06b4d",
+          "cd72021beefca74491d7",
+          "ec6cd26cf0e65a1a6b78",
+          "dd07c37f0ed6b2f943b5",
+          "e98d737859ec26c32927",
+          "2aef7420be57a5d97bb6",
+          "6c54c48e2ad5fb1a82c2",
+          "3b4ccf72151837a0bd88",
+          "962d8bba5eb4a78d30d2",
+          "591307aaa7fe3bc73242",
+          "827b57885a9c8dffcb6e",
+          "13264bc8c9fbce6c9762",
+          "3ff68df53a549e8c9254",
+          "6ffafae439f93638f5f8"
+        ],
+        "after_rerank": [
+          "48f24bb9df8edb1d13b7",
+          "fd840cbe301a1477e203",
+          "bc713b6910b665da44f4",
+          "6d9c8e5904f747c06b4d",
+          "ec6cd26cf0e65a1a6b78",
+          "cd72021beefca74491d7",
+          "6c54c48e2ad5fb1a82c2",
+          "3b4ccf72151837a0bd88",
+          "6ffafae439f93638f5f8",
+          "dd07c37f0ed6b2f943b5",
+          "962d8bba5eb4a78d30d2",
+          "591307aaa7fe3bc73242",
+          "13264bc8c9fbce6c9762",
+          "3ff68df53a549e8c9254",
+          "e98d737859ec26c32927",
+          "2aef7420be57a5d97bb6",
+          "827b57885a9c8dffcb6e"
+        ],
+        "results": [
+          {
+            "chunk_id": "48f24bb9df8edb1d13b7",
+            "document_id": "1739",
+            "title": "Administrative Resolution No. (817) of 2024 Determining the Railway Violations that Require Issuing Warnings Prior to Imposing Fines",
+            "locator": "1",
+            "year": 2024,
+            "type": "Resolution",
+            "score": 0.03252247488101534
+          },
+          {
+            "chunk_id": "fd840cbe301a1477e203",
+            "document_id": "1546",
+            "title": "Executive Council Resolution No. (53) of 2023 Amending Executive Council Resolution No. (1) of 2017 Regulating Railways in the Emirate of Dubai",
+            "locator": "8",
+            "year": 2023,
+            "type": "Resolution",
+            "score": 0.030158730158730156
+          },
+          {
+            "chunk_id": "bc713b6910b665da44f4",
+            "document_id": "1739",
+            "title": "Administrative Resolution No. (817) of 2024 Determining the Railway Violations that Require Issuing Warnings Prior to Imposing Fines",
+            "locator": "1",
+            "year": 2024,
+            "type": "Resolution",
+            "score": 0.03252247488101534
+          },
+          {
+            "chunk_id": "6d9c8e5904f747c06b4d",
+            "document_id": "1546",
+            "title": "Executive Council Resolution No. (53) of 2023 Amending Executive Council Resolution No. (1) of 2017 Regulating Railways in the Emirate of Dubai",
+            "locator": "14",
+            "year": 2023,
+            "type": "Resolution",
+            "score": 0.015873015873015872
+          },
+          {
+            "chunk_id": "ec6cd26cf0e65a1a6b78",
+            "document_id": "1546",
+            "title": "Executive Council Resolution No. (53) of 2023 Amending Executive Council Resolution No. (1) of 2017 Regulating Railways in the Emirate of Dubai",
+            "locator": "13",
+            "year": 2023,
+            "type": "Resolution",
+            "score": 0.015625
+          }
+        ]
+      }
+    },
+    {
+      "id": "Q07",
+      "question": "Under Law No. (22) of 2006, when does the RTA charge a traffic toll fee to a motor vehicle owner?",
+      "expected_document_id": "13",
+      "expected_locator": "2",
+      "expected_chunk_id": "ac948ce25c6b6199f6e4",
+      "hit_in_final_top_5": true,
+      "response": {
+        "http_status": 200,
+        "mode": "hybrid",
+        "score_type": "rrf",
+        "score_direction": "higher_is_better",
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "before_rerank": [
+          "ac948ce25c6b6199f6e4",
+          "ccc86830b9c2afb6e1aa",
+          "e29524215bd73bd0d829",
+          "36cb888025668476aa83",
+          "774c50eef96f301e4c3b",
+          "28d9bd8ebc6e151d5ca3",
+          "423966d76af53b184291",
+          "8448b18db15cac8cca49",
+          "fb6c5408eb5f374b6b52",
+          "34bc6ea0eaca4d0c7196",
+          "b85c16ee62775a2ad94e",
+          "1ef8cce4c8eacf42b4e8",
+          "a01094b5586f8d7c59d5",
+          "fb09e2ab7f2edd89e628",
+          "1260b07107cd406dee82",
+          "fe5e2df2ae373f56a9ce",
+          "3a358f618188b2d0d2f6",
+          "9f7bab960835c7c0fdc9"
+        ],
+        "after_rerank": [
+          "ac948ce25c6b6199f6e4",
+          "423966d76af53b184291",
+          "28d9bd8ebc6e151d5ca3",
+          "774c50eef96f301e4c3b",
+          "b85c16ee62775a2ad94e",
+          "a01094b5586f8d7c59d5",
+          "e29524215bd73bd0d829",
+          "36cb888025668476aa83",
+          "ccc86830b9c2afb6e1aa",
+          "1ef8cce4c8eacf42b4e8",
+          "34bc6ea0eaca4d0c7196",
+          "8448b18db15cac8cca49",
+          "1260b07107cd406dee82",
+          "9f7bab960835c7c0fdc9",
+          "fb09e2ab7f2edd89e628",
+          "fe5e2df2ae373f56a9ce",
+          "fb6c5408eb5f374b6b52",
+          "3a358f618188b2d0d2f6"
+        ],
+        "results": [
+          {
+            "chunk_id": "ac948ce25c6b6199f6e4",
+            "document_id": "13",
+            "title": "Law No. (22) of 2006 Concerning the Traffic Toll in the Emirate of Dubai",
+            "locator": "2",
+            "year": 2006,
+            "type": "Law",
+            "score": 0.03278688524590164
+          },
+          {
+            "chunk_id": "423966d76af53b184291",
+            "document_id": "13",
+            "title": "Law No. (22) of 2006 Concerning the Traffic Toll in the Emirate of Dubai",
+            "locator": "3",
+            "year": 2006,
+            "type": "Law",
+            "score": 0.015625
+          },
+          {
+            "chunk_id": "28d9bd8ebc6e151d5ca3",
+            "document_id": "191",
+            "title": "Regulation No. (2) of 2007 Regulating the Operation of Water Buses on Dubai Creek",
+            "locator": "4",
+            "year": 2007,
+            "type": "Regulation",
+            "score": 0.015625
+          },
+          {
+            "chunk_id": "774c50eef96f301e4c3b",
+            "document_id": "13",
+            "title": "Law No. (22) of 2006 Concerning the Traffic Toll in the Emirate of Dubai",
+            "locator": "3",
+            "year": 2006,
+            "type": "Law",
+            "score": 0.015873015873015872
+          },
+          {
+            "chunk_id": "b85c16ee62775a2ad94e",
+            "document_id": "13",
+            "title": "Law No. (22) of 2006 Concerning the Traffic Toll in the Emirate of Dubai",
+            "locator": "3",
+            "year": 2006,
+            "type": "Law",
+            "score": 0.015151515151515152
+          }
+        ]
+      }
+    },
+    {
+      "id": "Q08",
+      "question": "Does Law No. (4) of 2020 apply to all types of unmanned aircraft regardless of their use or control systems?",
+      "expected_document_id": "1718",
+      "expected_locator": "6-7",
+      "expected_chunk_id": "0386faaeae372c54791f",
+      "hit_in_final_top_5": true,
+      "response": {
+        "http_status": 200,
+        "mode": "hybrid",
+        "score_type": "rrf",
+        "score_direction": "higher_is_better",
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "before_rerank": [
+          "0386faaeae372c54791f",
+          "8bfcc040331714f29764",
+          "d04459171dd2a1c10335",
+          "b86f8fb68137357cf711",
+          "1779d62f863466ec61b1",
+          "a5155cccba2fb3b274ac",
+          "359ddba996938a4642e1",
+          "b17f0d606533738ee3e6",
+          "9ebc9503969621bc1121",
+          "168de13fb8809cbaa63e",
+          "c5c911cf8ec623069f03",
+          "0fe97e5836b8786c1776",
+          "5453619cfc8797fc4acd",
+          "69b200bad4ee916fac69",
+          "4f61b031981d87c0a6fc"
+        ],
+        "after_rerank": [
+          "0386faaeae372c54791f",
+          "69b200bad4ee916fac69",
+          "a5155cccba2fb3b274ac",
+          "b17f0d606533738ee3e6",
+          "d04459171dd2a1c10335",
+          "b86f8fb68137357cf711",
+          "5453619cfc8797fc4acd",
+          "4f61b031981d87c0a6fc",
+          "1779d62f863466ec61b1",
+          "c5c911cf8ec623069f03",
+          "168de13fb8809cbaa63e",
+          "359ddba996938a4642e1",
+          "8bfcc040331714f29764",
+          "9ebc9503969621bc1121",
+          "0fe97e5836b8786c1776"
+        ],
+        "results": [
+          {
+            "chunk_id": "0386faaeae372c54791f",
+            "document_id": "1718",
+            "title": "Law No. (4) of 2020 Regulating Unmanned Aircraft in the Emirate of Dubai",
+            "locator": "6-7",
+            "year": 2020,
+            "type": "Law",
+            "score": 0.03278688524590164
+          },
+          {
+            "chunk_id": "69b200bad4ee916fac69",
+            "document_id": "1718",
+            "title": "Law No. (4) of 2020 Regulating Unmanned Aircraft in the Emirate of Dubai",
+            "locator": "3",
+            "year": 2020,
+            "type": "Law",
+            "score": 0.014492753623188406
+          },
+          {
+            "chunk_id": "a5155cccba2fb3b274ac",
+            "document_id": "1718",
+            "title": "Law No. (4) of 2020 Regulating Unmanned Aircraft in the Emirate of Dubai",
+            "locator": "4-5",
+            "year": 2020,
+            "type": "Law",
+            "score": 0.016129032258064516
+          },
+          {
+            "chunk_id": "b17f0d606533738ee3e6",
+            "document_id": "1718",
+            "title": "Law No. (4) of 2020 Regulating Unmanned Aircraft in the Emirate of Dubai",
+            "locator": "5",
+            "year": 2020,
+            "type": "Law",
+            "score": 0.015873015873015872
+          },
+          {
+            "chunk_id": "d04459171dd2a1c10335",
+            "document_id": "1718",
+            "title": "Law No. (4) of 2020 Regulating Unmanned Aircraft in the Emirate of Dubai",
+            "locator": "14",
+            "year": 2020,
+            "type": "Law",
+            "score": 0.03055037313432836
+          }
+        ]
+      }
+    },
+    {
+      "id": "Q09",
+      "question": "Can a vessel owner use a vessel for commercial maritime activity without first obtaining a permit under the 2025 maritime resolution?",
+      "expected_document_id": "1875",
+      "expected_locator": "3",
+      "expected_chunk_id": "dcda48e463cf7d003588",
+      "hit_in_final_top_5": true,
+      "response": {
+        "http_status": 200,
+        "mode": "hybrid",
+        "score_type": "rrf",
+        "score_direction": "higher_is_better",
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "before_rerank": [
+          "dcda48e463cf7d003588",
+          "821b3af610ed7e7c7c69",
+          "9a1bd1968eed2b5d1aff",
+          "894c5abe7a730dd5e132",
+          "742e0ff692bf8b68a660",
+          "39dc4b74591c6e9c7ced",
+          "c974b7dbab8913fb6098",
+          "1cb6c0484f6053b0d5e5",
+          "aefad0b7bbb6feaa0aa9",
+          "f433094521e35dbae46d",
+          "3e2f5dd1bd5661de0b7a",
+          "943555446a8404ff9c19",
+          "1a2799a88852edb5907b",
+          "1213a363e066a757ac18",
+          "eb8512964b1c515861c9",
+          "827b57885a9c8dffcb6e",
+          "f1191edd40aa891f83aa"
+        ],
+        "after_rerank": [
+          "dcda48e463cf7d003588",
+          "1cb6c0484f6053b0d5e5",
+          "c974b7dbab8913fb6098",
+          "3e2f5dd1bd5661de0b7a",
+          "39dc4b74591c6e9c7ced",
+          "9a1bd1968eed2b5d1aff",
+          "f433094521e35dbae46d",
+          "742e0ff692bf8b68a660",
+          "943555446a8404ff9c19",
+          "821b3af610ed7e7c7c69",
+          "894c5abe7a730dd5e132",
+          "f1191edd40aa891f83aa",
+          "827b57885a9c8dffcb6e",
+          "1213a363e066a757ac18",
+          "eb8512964b1c515861c9",
+          "aefad0b7bbb6feaa0aa9",
+          "1a2799a88852edb5907b"
+        ],
+        "results": [
+          {
+            "chunk_id": "dcda48e463cf7d003588",
+            "document_id": "1875",
+            "title": "Administrative Resolution No. (1) of 2025 Regulating the Conduct of Commercial Maritime Activities on Vessels in the Emirate of Dubai",
+            "locator": "3",
+            "year": 2025,
+            "type": "Resolution",
+            "score": 0.03278688524590164
+          },
+          {
+            "chunk_id": "1cb6c0484f6053b0d5e5",
+            "document_id": "1875",
+            "title": "Administrative Resolution No. (1) of 2025 Regulating the Conduct of Commercial Maritime Activities on Vessels in the Emirate of Dubai",
+            "locator": "4",
+            "year": 2025,
+            "type": "Resolution",
+            "score": 0.015384615384615385
+          },
+          {
+            "chunk_id": "c974b7dbab8913fb6098",
+            "document_id": "1875",
+            "title": "Administrative Resolution No. (1) of 2025 Regulating the Conduct of Commercial Maritime Activities on Vessels in the Emirate of Dubai",
+            "locator": "3",
+            "year": 2025,
+            "type": "Resolution",
+            "score": 0.015625
+          },
+          {
+            "chunk_id": "3e2f5dd1bd5661de0b7a",
+            "document_id": "1875",
+            "title": "Administrative Resolution No. (1) of 2025 Regulating the Conduct of Commercial Maritime Activities on Vessels in the Emirate of Dubai",
+            "locator": "3",
+            "year": 2025,
+            "type": "Resolution",
+            "score": 0.014925373134328358
+          },
+          {
+            "chunk_id": "39dc4b74591c6e9c7ced",
+            "document_id": "1834",
+            "title": "Administrative Resolution No. (5) of 2024 Concerning the Requirements and Procedures for Vessel Crew Licensing",
+            "locator": "4-5",
+            "year": 2024,
+            "type": "Resolution",
+            "score": 0.015625
+          }
+        ]
+      }
+    },
+    {
+      "id": "Q10",
+      "question": "How does Regulation No. (1) of 2007 define a taxicab?",
+      "expected_document_id": "190",
+      "expected_locator": "1",
+      "expected_chunk_id": "ccb4498ed146b396a8bb",
+      "hit_in_final_top_5": true,
+      "response": {
+        "http_status": 200,
+        "mode": "hybrid",
+        "score_type": "rrf",
+        "score_direction": "higher_is_better",
+        "trace": [
+          "lexical_search",
+          "semantic_search",
+          "merge_candidates",
+          "rerank_candidates"
+        ],
+        "before_rerank": [
+          "ab8b1254f90091cb6b70",
+          "dae7a52ef7cd78cc4b66",
+          "daccf726303a2db6193b",
+          "2ebedd5e941422b42087",
+          "963ee6bd1d167e90a5b9",
+          "ccb4498ed146b396a8bb",
+          "b2f5c6ed3625ee83132f",
+          "7670fcc63c05bcf7599d",
+          "35215c2cf11bfc9c572d",
+          "f3881128ebf56f71b107",
+          "d1978adc6b0e56ac0048",
+          "2e23589fb8d6954bd0a4",
+          "039fc3a95646e90ab46c",
+          "dfd01d1850aeb7c85beb"
+        ],
+        "after_rerank": [
+          "ccb4498ed146b396a8bb",
+          "ab8b1254f90091cb6b70",
+          "dae7a52ef7cd78cc4b66",
+          "2ebedd5e941422b42087",
+          "963ee6bd1d167e90a5b9",
+          "daccf726303a2db6193b",
+          "b2f5c6ed3625ee83132f",
+          "7670fcc63c05bcf7599d",
+          "35215c2cf11bfc9c572d",
+          "d1978adc6b0e56ac0048",
+          "2e23589fb8d6954bd0a4",
+          "dfd01d1850aeb7c85beb",
+          "039fc3a95646e90ab46c",
+          "f3881128ebf56f71b107"
+        ],
+        "results": [
+          {
+            "chunk_id": "ccb4498ed146b396a8bb",
+            "document_id": "190",
+            "title": "Regulation No. (1) of 2007 Concerning Passenger Transport by Taxicabs in the Emirate of Dubai",
+            "locator": "1",
+            "year": 2007,
+            "type": "Regulation",
+            "score": 0.029877369007803793
+          },
+          {
+            "chunk_id": "ab8b1254f90091cb6b70",
+            "document_id": "190",
+            "title": "Regulation No. (1) of 2007 Concerning Passenger Transport by Taxicabs in the Emirate of Dubai",
+            "locator": "1",
+            "year": 2007,
+            "type": "Regulation",
+            "score": 0.03278688524590164
+          },
+          {
+            "chunk_id": "dae7a52ef7cd78cc4b66",
+            "document_id": "190",
+            "title": "Regulation No. (1) of 2007 Concerning Passenger Transport by Taxicabs in the Emirate of Dubai",
+            "locator": "2",
+            "year": 2007,
+            "type": "Regulation",
+            "score": 0.03200204813108039
+          },
+          {
+            "chunk_id": "2ebedd5e941422b42087",
+            "document_id": "190",
+            "title": "Regulation No. (1) of 2007 Concerning Passenger Transport by Taxicabs in the Emirate of Dubai",
+            "locator": "2",
+            "year": 2007,
+            "type": "Regulation",
+            "score": 0.030798389007344232
+          },
+          {
+            "chunk_id": "963ee6bd1d167e90a5b9",
+            "document_id": "190",
+            "title": "Regulation No. (1) of 2007 Concerning Passenger Transport by Taxicabs in the Emirate of Dubai",
+            "locator": "2",
+            "year": 2007,
+            "type": "Regulation",
+            "score": 0.030330882352941176
+          }
+        ]
+      }
+    }
+  ],
+  "tool_and_middleware_trace": [
+    "INFO:     Answer agent middleware: model call completed in 1.31s",
+    "INFO:     Excerpt tool called: document=1817 locator=6 chunks=3",
+    "INFO:     Excerpt tool called: document=1817 locator=5 chunks=7",
+    "INFO:     Answer agent middleware: model call completed in 1.30s",
+    "INFO:     Answer agent completed: 2 model-issued excerpt calls",
+    "INFO:     Answer agent middleware: model call completed in 1.29s",
+    "INFO:     Excerpt tool called: document=1525 locator=2 chunks=1",
+    "INFO:     Excerpt tool called: document=1525 locator=1-2 chunks=1",
+    "INFO:     Answer agent middleware: model call completed in 1.44s",
+    "INFO:     Answer agent completed: 2 model-issued excerpt calls",
+    "INFO:     Answer agent middleware: model call completed in 1.23s",
+    "INFO:     Excerpt tool called: document=1872 locator=4 chunks=2",
+    "INFO:     Excerpt tool called: document=1525 locator=7 chunks=1",
+    "INFO:     Answer agent middleware: model call completed in 1.88s",
+    "INFO:     Answer agent completed: 2 model-issued excerpt calls",
+    "INFO:     Answer agent middleware: model call completed in 1.23s",
+    "INFO:     Excerpt tool called: document=1872 locator=4 chunks=2",
+    "INFO:     Excerpt tool called: document=1525 locator=7 chunks=1",
+    "INFO:     Answer agent middleware: model call completed in 2.33s",
+    "INFO:     Answer agent completed: 2 model-issued excerpt calls"
+  ],
+  "hybrid_node_trace": [
+    "INFO:     Lexical node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 10 candidates",
+    "INFO:     Semantic node started",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 10 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 11 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 10 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 10 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 10 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Lexical node completed: 0 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 0 candidates",
+    "INFO:     Semantic node started",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 10 candidates",
+    "INFO:     Semantic node started",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 10 candidates",
+    "INFO:     Semantic node started",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 10 candidates",
+    "INFO:     Semantic node started",
+    "INFO:     Semantic node completed: 0 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 0 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 16 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 13 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 15 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Semantic node completed: 0 candidates",
+    "INFO:     Lexical node completed: 0 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 0 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 11 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 15 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 14 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 14 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Lexical node completed: 0 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 0 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 11 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 14 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 15 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 13 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 13 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 17 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 18 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 15 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 17 candidates",
+    "INFO:     Lexical node started",
+    "INFO:     Semantic node started",
+    "INFO:     Lexical node completed: 10 candidates",
+    "INFO:     Semantic node completed: 10 candidates",
+    "INFO:     Join node started",
+    "INFO:     Rerank node started: 14 candidates"
+  ],
+  "finished_utc": "2026-11-11T20:27:28.485657+00:00"
+}

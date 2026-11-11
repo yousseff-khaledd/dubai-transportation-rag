@@ -1,0 +1,30 @@
+{
+  "runs": [
+    {
+      "name": "initial_15",
+      "indexed_documents": 15,
+      "skipped_documents": 0,
+      "failed_documents": 0,
+      "chunks_written": 364,
+      "errors": [],
+      "warnings": [
+        "1941.pdf page 4: map content not indexed as text",
+        "1941.pdf page 5: map content not indexed as text",
+        "1941.pdf page 6: map content not indexed as text"
+      ]
+    },
+    {
+      "name": "additional_15",
+      "indexed_documents": 15,
+      "skipped_documents": 15,
+      "failed_documents": 0,
+      "chunks_written": 433,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "corpus_totals": {
+    "documents": 30,
+    "chunks": 797
+  }
+}

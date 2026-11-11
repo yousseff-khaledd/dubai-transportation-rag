@@ -1,0 +1,378 @@
+[
+  {
+    "request": {
+      "query": "What permits are required to operate autonomous vehicles?",
+      "mode": "lexical"
+    },
+    "response": {
+      "mode": "lexical",
+      "ranking_stage": "retrieval",
+      "score_type": "bm25",
+      "score_direction": "lower_is_better",
+      "results": [
+        {
+          "chunk_id": "8ea9679d58156e448b5d",
+          "document_id": "1872",
+          "title": "Administrative Resolution No. (939) of 2025 Issuing the Implementing Bylaw of Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "text": "Licence Renewal Requirements\nArticle (8)\nFor an Autonomous Vehicle licence to be renewed, the following requirements must be satisfied: 1. The Autonomous Vehicle must successfully pass the technical inspection conducted in accordance with the standards and requirements approved by the RTA. 2. The Autonomous Vehicle must be covered by a comprehensive insurance policy issued by an insurance company licensed to operate in the UAE. 3. The relevant Activity Permit must be valid.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=QWRtaW5pc3RyYXRpdmUgUmVzb2x1dGlvbiBOby4gKDkzOSkgb2YgMjAyNSBJc3N1aW5nIHRoZSBPcGVyYXRpb24gb2YgQXV0b25vbW91cyBWZWhpY2xlcw==&year=2025",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2025/Administrative Resolution No. (939) of 2025 Issuing the Operation of Autonomous Vehicles.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2025,
+          "type": "Resolution",
+          "status": "In Force",
+          "article_number": "8",
+          "locator_type": "pdf_page",
+          "locator": "4",
+          "score": -9.171625788611188
+        },
+        {
+          "chunk_id": "11da22c686d4f88aac19",
+          "document_id": "1872",
+          "title": "Administrative Resolution No. (939) of 2025 Issuing the Implementing Bylaw of Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "text": "Transfer of Ownership\nArticle (13)\na. In transferring the ownership of an Autonomous Vehicle from one Operator to another, the following requirements must be satisfied: 1. The Autonomous Vehicle must pass the technical inspection prescribed by the RTA, in accordance with the relevant standards approved by it. 2. The Activity of the Operator to whom the ownership of the Autonomous Vehicle is transferred must be similar to that of the Operator transferring the ownership. 3. The Operator to whom the ownership of the Autonomous Vehicle is transferred must undertake not to change its permitted use after the transfer of ownership. b. The same procedures approved by the RTA for the transfer of ownership of a Vehicle will apply to the transfer of ownership of an Autonomous Vehicle.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=QWRtaW5pc3RyYXRpdmUgUmVzb2x1dGlvbiBOby4gKDkzOSkgb2YgMjAyNSBJc3N1aW5nIHRoZSBPcGVyYXRpb24gb2YgQXV0b25vbW91cyBWZWhpY2xlcw==&year=2025",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2025/Administrative Resolution No. (939) of 2025 Issuing the Operation of Autonomous Vehicles.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2025,
+          "type": "Resolution",
+          "status": "In Force",
+          "article_number": "13",
+          "locator_type": "pdf_page",
+          "locator": "6",
+          "score": -9.117541613110507
+        },
+        {
+          "chunk_id": "9c089246da2c8ebb1278",
+          "document_id": "1939",
+          "title": "Executive Council Resolution No. (14) of 2026 Approving the Activities Related to the Use of Autonomous Vehicles and their Operational Phases in the Emirate of Dubai",
+          "text": "Obligations of Operators during the Third Phase\nArticle (6)\nDuring the Third Phase of the operation of Autonomous Vehicles, an Operator must: 1. not operate Autonomous Vehicles without first obtaining the relevant Permit; 2. comply with the operational standards and performance and safety indicators specified by the RTA for Autonomous Vehicles; 3. provide the RTA with an undertaking that Autonomous Vehicle s will not obstruct traffic or compromise the safety of Road Users during its operation; 4. provide the RTA and the Competent Entities in the Emirate, upon request, with the necessary data and information related to the operation of Autonomous Vehicles; and 5. fulfil any other obligations determined pursuant to the relevant resolution of the Director General.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=RXhlY3V0aXZlIENvdW5jaWwgUmVzb2x1dGlvbiBOby4gKDE0KSBvZiAyMDI2IEFwcHJvdmluZyB0aGUgVXNlIG9mIEF1dG9ub21vdXMgVmVoaWNsZXM=&year=2026",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2026/Executive Council Resolution No. (14) of 2026 Approving the Use of Autonomous Vehicles.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2026,
+          "type": "Resolution",
+          "status": "In Force",
+          "article_number": "6",
+          "locator_type": "pdf_page",
+          "locator": "4",
+          "score": -8.88046798858156
+        },
+        {
+          "chunk_id": "77e58acfb3acfcd78994",
+          "document_id": "1872",
+          "title": "Administrative Resolution No. (939) of 2025 Issuing the Implementing Bylaw of Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "text": "Requirements for Licensing Autonomous Vehicles\nArticle (7)\nIn addition to the requirements prescribed by the Law, for an Autonomous Vehicle to be licensed, it must: 1. fall within the categories and types specified in Article (2) of this Resolution; 2. comply with all the standards, requirements, and conditions set out in Articles (3) and (4) of this Resolution; 3. be covered by a comprehensive insurance policy issued by an insurance company licensed to operate in the UAE; 4. be operated by an Operator holding a valid Permit; and 5. not have been modified, upgraded, or updated in re spect of any features related to the Autonomous Driving System, operational design domain, or electronic applications without first obtaining the approval of the RTA.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=QWRtaW5pc3RyYXRpdmUgUmVzb2x1dGlvbiBOby4gKDkzOSkgb2YgMjAyNSBJc3N1aW5nIHRoZSBPcGVyYXRpb24gb2YgQXV0b25vbW91cyBWZWhpY2xlcw==&year=2025",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2025/Administrative Resolution No. (939) of 2025 Issuing the Operation of Autonomous Vehicles.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2025,
+          "type": "Resolution",
+          "status": "In Force",
+          "article_number": "7",
+          "locator_type": "pdf_page",
+          "locator": "4",
+          "score": -8.354440944722908
+        },
+        {
+          "chunk_id": "eb8512964b1c515861c9",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "text": "Definitions\nArticle (2)\nright to distribute Autonomous Vehicles under a Commercial Agency contract. Activity: Any activity involving the use of Autonomous Vehicles, as determined by the relevant resolutions of the Chairman of the Executive Council. Operator: A Person authorised by the RTA to conduct the Activity, including the owner of an Autonomous Vehicle. Permit: A document issued by the RTA authorising the conduct of the Activity. Permit Holder: A Person to whom a Permit is issued under this Law and the resolutions issued in pursuance hereof. Competent Entity: A government entity which is concerned, pursuant to its governing legislation, with Roads, Autonomous Vehicles, or any other matter provided for in this Law. Person: A natural person or a public or private legal person.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=TGF3IE5vLiAoOSkgb2YgMjAyMyBSZWd1bGF0aW5nIHRoZSBPcGVyYXRpb24gb2YgQXV0b25vbW91cyBWZWhpY2xlcw==&year=2023",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2023/Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2023,
+          "type": "Law",
+          "status": "In Force",
+          "article_number": "2",
+          "locator_type": "pdf_page",
+          "locator": "3",
+          "score": -8.230697764446926
+        }
+      ]
+    }
+  },
+  {
+    "request": {
+      "query": "What permits are required to operate autonomous vehicles?",
+      "mode": "semantic"
+    },
+    "response": {
+      "mode": "semantic",
+      "ranking_stage": "retrieval",
+      "score_type": "cosine_similarity",
+      "score_direction": "higher_is_better",
+      "results": [
+        {
+          "chunk_id": "77e58acfb3acfcd78994",
+          "document_id": "1872",
+          "title": "Administrative Resolution No. (939) of 2025 Issuing the Implementing Bylaw of Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "text": "Requirements for Licensing Autonomous Vehicles\nArticle (7)\nIn addition to the requirements prescribed by the Law, for an Autonomous Vehicle to be licensed, it must: 1. fall within the categories and types specified in Article (2) of this Resolution; 2. comply with all the standards, requirements, and conditions set out in Articles (3) and (4) of this Resolution; 3. be covered by a comprehensive insurance policy issued by an insurance company licensed to operate in the UAE; 4. be operated by an Operator holding a valid Permit; and 5. not have been modified, upgraded, or updated in re spect of any features related to the Autonomous Driving System, operational design domain, or electronic applications without first obtaining the approval of the RTA.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=QWRtaW5pc3RyYXRpdmUgUmVzb2x1dGlvbiBOby4gKDkzOSkgb2YgMjAyNSBJc3N1aW5nIHRoZSBPcGVyYXRpb24gb2YgQXV0b25vbW91cyBWZWhpY2xlcw==&year=2025",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2025/Administrative Resolution No. (939) of 2025 Issuing the Operation of Autonomous Vehicles.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2025,
+          "type": "Resolution",
+          "status": "In Force",
+          "article_number": "7",
+          "locator_type": "pdf_page",
+          "locator": "4",
+          "score": 0.6893001198768616
+        },
+        {
+          "chunk_id": "c8e1a8325a0d4d57d258",
+          "document_id": "1872",
+          "title": "Administrative Resolution No. (939) of 2025 Issuing the Implementing Bylaw of Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "text": "Technical and Operational Standards\nArticle (3)\nAn Autonomous Vehicle must have the following certificates, systems, and specifications: 1. a certificate of compliance issued by the Competent Entity in the country of manufacture, covering all components of the Autonomous Vehicle, including its metal frame; autonomous driving functions; durability; propulsion and braking assemblies; technical systems and their components that ensure the integrated functioning of the Autonomous Vehicle\u2019s movement and its safe operation; and which demonstrates that it has undergone all required safety tests and has satisfied the standards of those tests; 2.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=QWRtaW5pc3RyYXRpdmUgUmVzb2x1dGlvbiBOby4gKDkzOSkgb2YgMjAyNSBJc3N1aW5nIHRoZSBPcGVyYXRpb24gb2YgQXV0b25vbW91cyBWZWhpY2xlcw==&year=2025",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2025/Administrative Resolution No. (939) of 2025 Issuing the Operation of Autonomous Vehicles.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2025,
+          "type": "Resolution",
+          "status": "In Force",
+          "article_number": "3",
+          "locator_type": "pdf_page",
+          "locator": "2",
+          "score": 0.6330631971359253
+        },
+        {
+          "chunk_id": "8696b073929e5268205f",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "text": "Requirements for Licensing Autonomous Vehicles\nArticle (8)\nTo be licensed, an Autonomous Vehicle must: 1. be sourced from the authorised local Agent for that type of Autonomous Vehicles in the Emirate, at the time of initial registration; 2. be registered in its source country or country of origin, and have a proven record of use on the public Roads designated for its category and type in that country; 3. pass the technical inspection prescribed by the RTA; 4. be equipped to read and respond to Traffic Signs, and capable of responding to Road priorities and travelling on Roads; 5. meet the security and safety standards and specifications, and be equipped with the systems required to interact with Roads and their users in accordance with the relevant guidelines adopted by the RTA; 6.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=TGF3IE5vLiAoOSkgb2YgMjAyMyBSZWd1bGF0aW5nIHRoZSBPcGVyYXRpb24gb2YgQXV0b25vbW91cyBWZWhpY2xlcw==&year=2023",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2023/Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2023,
+          "type": "Law",
+          "status": "In Force",
+          "article_number": "8",
+          "locator_type": "pdf_page",
+          "locator": "6-7",
+          "score": 0.6239659786224365
+        },
+        {
+          "chunk_id": "0c0c9e111a05f8f7e107",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "text": "Obligations of Operators\nArticle (11)\nAn Operator must: 1. comply with the provisions of this Law, the resolutions issued in pursuance hereof, and other legislation in force in the Emirate, taking into account the unique nature of Autonomous Vehicles; 2. comply with the terms of his Permit; 3. develop instructions for using Autonomous Vehicles and provide Passengers with these instructions in the manner, and using the means, the Operator deems suitable. These instructions must indicate how to set and change the destination of the Vehicle, how to communicate and deal with the Vehicle in case of malfunctions, and how to safely exit the Vehicle in emergencies; 4. obtain a licence for the Autonomous Vehicle before operating it on Roads; 5.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=TGF3IE5vLiAoOSkgb2YgMjAyMyBSZWd1bGF0aW5nIHRoZSBPcGVyYXRpb24gb2YgQXV0b25vbW91cyBWZWhpY2xlcw==&year=2023",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2023/Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2023,
+          "type": "Law",
+          "status": "In Force",
+          "article_number": "11",
+          "locator_type": "pdf_page",
+          "locator": "7-8",
+          "score": 0.6219495534896851
+        },
+        {
+          "chunk_id": "5de8623b7e2af222e897",
+          "document_id": "1525",
+          "title": "Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai",
+          "text": "Using Autonomous Vehicles and Conducting Activities\nArticle (6)\nprocedures prescribed by the relevant resolutions of the Director General. c. An Autonomous Vehicle licensed by a concerned licensing entity in the UAE, other than the RTA, pursuant to the legislation regulating the use of Autonomous Vehicles may not travel within the Emirate without first obtaining the Permit referred to in paragraph (b) of this Article.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=TGF3IE5vLiAoOSkgb2YgMjAyMyBSZWd1bGF0aW5nIHRoZSBPcGVyYXRpb24gb2YgQXV0b25vbW91cyBWZWhpY2xlcw==&year=2023",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2023/Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2023,
+          "type": "Law",
+          "status": "In Force",
+          "article_number": "6",
+          "locator_type": "pdf_page",
+          "locator": "6",
+          "score": 0.6200293302536011
+        }
+      ]
+    }
+  },
+  {
+    "request": {
+      "query": "What are the rules for transporting passengers by water taxi?",
+      "mode": "lexical"
+    },
+    "response": {
+      "mode": "lexical",
+      "ranking_stage": "retrieval",
+      "score_type": "bm25",
+      "score_direction": "lower_is_better",
+      "results": [
+        {
+          "chunk_id": "35215c2cf11bfc9c572d",
+          "document_id": "236",
+          "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+          "text": "Article (1)\nApproved fare payable in return for transporting passengers by Water Taxis. Regular Trip: A Water Taxi trip between the Stations approved by the PTA. Tourist Trip: A Water Taxi trip which has no chartered route or Station.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=RXhlY3V0aXZlIENvdW5jaWwgUmVzb2x1dGlvbiBOby4gKDE4KSBvZiAyMDEw&year=2010",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2010/Executive Council Resolution No. (18) of 2010.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2010,
+          "type": "Resolution",
+          "status": "In Force as Amended",
+          "article_number": "1",
+          "locator_type": "pdf_page",
+          "locator": "2",
+          "score": -16.789317739128848
+        },
+        {
+          "chunk_id": "a0875c454055f0752b10",
+          "document_id": "236",
+          "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+          "text": "Article (2)\nto cooperate in the field of passenger transport by Water Taxi; and 8. buy, own, and take lease of floating offices for the purpose of the operatin g and maintaining Water Taxis.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=RXhlY3V0aXZlIENvdW5jaWwgUmVzb2x1dGlvbiBOby4gKDE4KSBvZiAyMDEw&year=2010",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2010/Executive Council Resolution No. (18) of 2010.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2010,
+          "type": "Resolution",
+          "status": "In Force as Amended",
+          "article_number": "2",
+          "locator_type": "pdf_page",
+          "locator": "2",
+          "score": -16.1909102049409
+        },
+        {
+          "chunk_id": "c511d8d4aae3870c8e0f",
+          "document_id": "236",
+          "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+          "text": "Article (1)\nThe following words and expressions , wherever mentioned in this Resolution, will have the meaning indicated opposite each of them unless the context implies otherwise: Emirate: The Emirate of Dubai. RTA: The Roads and Transport Authority. Chairman of the Board of Directors: The chairman of the board of directors and executive director of the RTA. PTA: The Public Transport Agency. Territorial Waters: The territorial waters of the Emirate. Water Taxi: A boat accommodating eleven (11) passengers which is licensed by the PTA to transport passengers within the Territorial Waters. Station: A place designated by the PTA for passenger embarkation and disembarkation. Fare: Approved fare payable in return for transporting passengers by Water Taxis.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=RXhlY3V0aXZlIENvdW5jaWwgUmVzb2x1dGlvbiBOby4gKDE4KSBvZiAyMDEw&year=2010",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2010/Executive Council Resolution No. (18) of 2010.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2010,
+          "type": "Resolution",
+          "status": "In Force as Amended",
+          "article_number": "1",
+          "locator_type": "pdf_page",
+          "locator": "1-2",
+          "score": -15.891126149994594
+        },
+        {
+          "chunk_id": "0cf86ec1aaf2ca14d77e",
+          "document_id": "236",
+          "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+          "text": "Schedule (2)\nViolations and Fines Related to Water Taxi Operators SN Violation Fine (in Dirhams) 1 Operating a Water Taxi without an authorisation from the RTA 2,000.00 2 Using a Water Taxi for other than the purposes stated in its licence 1,000.00 3 Failure to use the Stations approved by the RTA for passenger embarkation or disembarkation on Regular Trips 1,000.00 4 Failure to maintain a Water Taxi in accordance with the approved maintenance plans and schedules 2,000.00 5 Failure to maintain the internal or external cleanliness of a Water Taxi 500.00 6 Transporting hazardous materials in a Water Taxi 2,000.00 7 Non-compliance with the instructions of the PTA employees responsible for auditing and inspecting the operation of Water Taxis 500.00 8 Failure by a Water Taxi staff member to",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=RXhlY3V0aXZlIENvdW5jaWwgUmVzb2x1dGlvbiBOby4gKDE4KSBvZiAyMDEw&year=2010",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2010/Executive Council Resolution No. (18) of 2010.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2010,
+          "type": "Resolution",
+          "status": "In Force as Amended",
+          "article_number": null,
+          "locator_type": "pdf_page",
+          "locator": "6",
+          "score": -14.750473255882998
+        },
+        {
+          "chunk_id": "4c224514a11b3d44747c",
+          "document_id": "236",
+          "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+          "text": "Article (2)\nThe PTA will have the duties and powers to: 1. conduct detailed studies and adopt the practices required to design, build, operate, maintain, and manage Water Taxis; 2. operate Water Taxi s and manage Stations within the Territorial Waters, and supervise and audit maintenance facilities and wharfages; 3. license Water Taxi operators and determine the allowed speed limits in coordination with the concerned entities in the Emirate; 4. determine the operating hours of Water Taxis and Stations; 5. buy, sell, own, and charter Water Taxis; 6. construct, own, equip, take lease of, and lease out maintenance and repair workshops; 7. enter into agreements and partnerships with corporations, companies, and authorities to cooperate in the field of passenger transport by Water Taxi; and 8.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=RXhlY3V0aXZlIENvdW5jaWwgUmVzb2x1dGlvbiBOby4gKDE4KSBvZiAyMDEw&year=2010",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2010/Executive Council Resolution No. (18) of 2010.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2010,
+          "type": "Resolution",
+          "status": "In Force as Amended",
+          "article_number": "2",
+          "locator_type": "pdf_page",
+          "locator": "2",
+          "score": -14.733732966653308
+        }
+      ]
+    }
+  },
+  {
+    "request": {
+      "query": "What are the rules for transporting passengers by water taxi?",
+      "mode": "semantic"
+    },
+    "response": {
+      "mode": "semantic",
+      "ranking_stage": "retrieval",
+      "score_type": "cosine_similarity",
+      "score_direction": "higher_is_better",
+      "results": [
+        {
+          "chunk_id": "2e23589fb8d6954bd0a4",
+          "document_id": "236",
+          "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+          "text": "Article (5)\nFor the purpose of safe and optimal use of Water Taxi s, the RTA will issue the bylaws and instructions regulating the use of Water Taxis and Stations, including all relevant rules, requirements, and conditions, in addition to means of ensuring the safety of Water Taxi users.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=RXhlY3V0aXZlIENvdW5jaWwgUmVzb2x1dGlvbiBOby4gKDE4KSBvZiAyMDEw&year=2010",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2010/Executive Council Resolution No. (18) of 2010.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2010,
+          "type": "Resolution",
+          "status": "In Force as Amended",
+          "article_number": "5",
+          "locator_type": "pdf_page",
+          "locator": "3",
+          "score": 0.6477099657058716
+        },
+        {
+          "chunk_id": "a0875c454055f0752b10",
+          "document_id": "236",
+          "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+          "text": "Article (2)\nto cooperate in the field of passenger transport by Water Taxi; and 8. buy, own, and take lease of floating offices for the purpose of the operatin g and maintaining Water Taxis.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=RXhlY3V0aXZlIENvdW5jaWwgUmVzb2x1dGlvbiBOby4gKDE4KSBvZiAyMDEw&year=2010",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2010/Executive Council Resolution No. (18) of 2010.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2010,
+          "type": "Resolution",
+          "status": "In Force as Amended",
+          "article_number": "2",
+          "locator_type": "pdf_page",
+          "locator": "2",
+          "score": 0.5956025719642639
+        },
+        {
+          "chunk_id": "e5ddac5a842cd9e1b0fd",
+          "document_id": "236",
+          "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+          "text": "Schedule (3)\nViolations and Fines Related to Water Taxi Passengers SN Violation Fine (in Dirhams) 1 Smoking in a Water Taxi 500.00 2 Tampering with, or causing partial or total damage to a Water Taxi equipment 2,000.00 3 Acting or behaving in a manner that may cause distraction to a Water Taxi skipper or obstruct his vision while operating the Water taxi 1,000.00 4 Performing any act that may result in littering a Water Taxi or Station 1,000.00 5 Committing a rude or indecent act in a Water Taxi or Station 1,000.00",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=RXhlY3V0aXZlIENvdW5jaWwgUmVzb2x1dGlvbiBOby4gKDE4KSBvZiAyMDEw&year=2010",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2010/Executive Council Resolution No. (18) of 2010.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2010,
+          "type": "Resolution",
+          "status": "In Force as Amended",
+          "article_number": null,
+          "locator_type": "pdf_page",
+          "locator": "7",
+          "score": 0.5753020644187927
+        },
+        {
+          "chunk_id": "35215c2cf11bfc9c572d",
+          "document_id": "236",
+          "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+          "text": "Article (1)\nApproved fare payable in return for transporting passengers by Water Taxis. Regular Trip: A Water Taxi trip between the Stations approved by the PTA. Tourist Trip: A Water Taxi trip which has no chartered route or Station.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=RXhlY3V0aXZlIENvdW5jaWwgUmVzb2x1dGlvbiBOby4gKDE4KSBvZiAyMDEw&year=2010",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2010/Executive Council Resolution No. (18) of 2010.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2010,
+          "type": "Resolution",
+          "status": "In Force as Amended",
+          "article_number": "1",
+          "locator_type": "pdf_page",
+          "locator": "2",
+          "score": 0.574489951133728
+        },
+        {
+          "chunk_id": "e8eaa0109656ec319b60",
+          "document_id": "236",
+          "title": "Executive Council Resolution No. (18) of 2010 Regulating the Operation of Water Taxis in the Emirate of Dubai",
+          "text": "Article (3)\na. Use of Water Taxi will be in return for a Fare determined as follows: 1. Regular Trip: Fare determined in accordance with Schedule (1) attached hereto; or 2. Tourist Trip: Four hundred Dirhams (AED 400.00) per hour. b. The PTA will determine the methods of collecting the Fare referred to in paragraph (a) of this Article, the categories eligible for discounts, and the applicable discount rates. c. The RTA may, in acco rdance with the rules and standards it adopts , determine the Fare for trips between Stations to be constructed after the effective date of this Resolution based on the initial scheme adopted to determine the Fare of the trips as stated in Schedule (1) attached hereto.",
+          "source_url": "https://dlp.dubai.gov.ae/en/Pages/HTMLViewer.aspx?file=RXhlY3V0aXZlIENvdW5jaWwgUmVzb2x1dGlvbiBOby4gKDE4KSBvZiAyMDEw&year=2010",
+          "content_url": "https://dlp.dubai.gov.ae/Legislation Reference/2010/Executive Council Resolution No. (18) of 2010.pdf",
+          "primary_category": "Roads and Transport",
+          "year": 2010,
+          "type": "Resolution",
+          "status": "In Force as Amended",
+          "article_number": "3",
+          "locator_type": "pdf_page",
+          "locator": "2-3",
+          "score": 0.5735136270523071
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,91 @@
+{
+  "server_pid_before_restart": 27473,
+  "request": {
+    "thread_id": "day6_dc5f079005",
+    "message": "What permit do I need for it?",
+    "mode": "hybrid",
+    "top_k": 10
+  },
+  "paused": {
+    "thread_id": "day6_dc5f079005",
+    "request_id": "aea09d31-3843-4adf-9016-cc831da20948",
+    "status": "needs_clarification",
+    "answer": null,
+    "citations": [],
+    "clarification": "What specific activity or purpose are you referring to for the permit?",
+    "interrupt_id": "efcfb3913b5b43714162383472d68818",
+    "error": null
+  },
+  "server_pid_after_restart": 27669,
+  "wrong_thread": {
+    "http_status": 409,
+    "response": {
+      "thread_id": "day6_dc5f079005_wrong",
+      "request_id": "5cf09b75-dcce-4460-b4e2-4e6c7cf690f3",
+      "status": "error",
+      "answer": null,
+      "citations": [],
+      "clarification": null,
+      "interrupt_id": null,
+      "error": {
+        "code": "invalid_resume",
+        "message": "No matching pending interrupt exists on this thread."
+      }
+    }
+  },
+  "resume_request": {
+    "thread_id": "day6_dc5f079005",
+    "interrupt_id": "efcfb3913b5b43714162383472d68818",
+    "message": "I mean operating autonomous vehicles in Dubai. What permit is required?"
+  },
+  "resumed": {
+    "http_status": 200,
+    "response": {
+      "thread_id": "day6_dc5f079005",
+      "request_id": "dc21f7ee-ea8c-4c4b-97a5-ef411a47ff66",
+      "status": "answered",
+      "answer": "According to Dubai Roads and Transport legislation, specifically Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai, a Permit issued by the Roads and Transport Authority (RTA) is required to operate autonomous vehicles. No person may conduct an activity involving autonomous vehicles in Dubai without first obtaining this Permit. The Permit authorizes the conduct of the activity and is issued according to conditions and procedures prescribed by the relevant resolutions of the Director General. Additionally, the autonomous vehicle itself must be licensed by the RTA to travel on roads in Dubai. The Permit applicant must have a commercial licence issued by the competent commercial licensing authority in the Emirate and submit proof of authorization from competent entities if required. This Permit is essential for operating autonomous vehicles within Dubai.",
+      "citations": [
+        {
+          "chunk_id": "595d3eb068c4dde064c6",
+          "document_id": "1525",
+          "locator": "6"
+        },
+        {
+          "chunk_id": "5de8623b7e2af222e897",
+          "document_id": "1525",
+          "locator": "6"
+        },
+        {
+          "chunk_id": "323582843e166210596d",
+          "document_id": "1872",
+          "locator": "5-6"
+        },
+        {
+          "chunk_id": "eb8512964b1c515861c9",
+          "document_id": "1525",
+          "locator": "3"
+        }
+      ],
+      "clarification": null,
+      "interrupt_id": null,
+      "error": null
+    }
+  },
+  "no_pending_interrupt": {
+    "http_status": 409,
+    "response": {
+      "thread_id": "day6_dc5f079005",
+      "request_id": "bfa8f25f-fcc5-443c-a2e8-750e78c1aeae",
+      "status": "error",
+      "answer": null,
+      "citations": [],
+      "clarification": null,
+      "interrupt_id": null,
+      "error": {
+        "code": "invalid_resume",
+        "message": "No matching pending interrupt exists on this thread."
+      }
+    }
+  }
+}

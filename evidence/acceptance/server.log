@@ -1,0 +1,549 @@
+INFO:     Started server process [22593]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56469 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56470 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56471 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     Starting ingestion from /Users/youssef/Documents/dubai transportation rag/data/manifest.csv
+INFO:     Skipped unchanged document 1960
+INFO:     Skipped unchanged document 1941
+INFO:     Skipped unchanged document 1939
+INFO:     Skipped unchanged document 1915
+INFO:     Skipped unchanged document 1910
+INFO:     Skipped unchanged document 1889
+INFO:     Skipped unchanged document 1875
+INFO:     Skipped unchanged document 1872
+INFO:     Skipped unchanged document 1784
+INFO:     Skipped unchanged document 1782
+INFO:     Skipped unchanged document 1525
+INFO:     Skipped unchanged document 1432
+INFO:     Skipped unchanged document 1546
+INFO:     Skipped unchanged document 190
+INFO:     Skipped unchanged document 13
+INFO:     Skipped unchanged document 1943
+INFO:     Skipped unchanged document 1918
+INFO:     Skipped unchanged document 1817
+INFO:     Skipped unchanged document 1767
+INFO:     Skipped unchanged document 1834
+INFO:     Skipped unchanged document 1813
+INFO:     Skipped unchanged document 1743
+INFO:     Skipped unchanged document 1739
+INFO:     Skipped unchanged document 1655
+INFO:     Skipped unchanged document 1640
+INFO:     Skipped unchanged document 1718
+INFO:     Skipped unchanged document 1709
+INFO:     Skipped unchanged document 777
+INFO:     Skipped unchanged document 191
+INFO:     Skipped unchanged document 236
+INFO:     Ingestion complete: 0 indexed, 30 skipped, 0 failed, 0 chunks written, 0 warnings
+INFO:     Search indexes ready: 0 new embeddings
+INFO:     127.0.0.1:56472 - "POST /ingest HTTP/1.1" 200 OK
+INFO:     Starting ingestion from /Users/youssef/Documents/dubai transportation rag/data/manifest.csv
+INFO:     Skipped unchanged document 1960
+INFO:     Skipped unchanged document 1941
+INFO:     Skipped unchanged document 1939
+INFO:     Skipped unchanged document 1915
+INFO:     Skipped unchanged document 1910
+INFO:     Skipped unchanged document 1889
+INFO:     Skipped unchanged document 1875
+INFO:     Skipped unchanged document 1872
+INFO:     Skipped unchanged document 1784
+INFO:     Skipped unchanged document 1782
+INFO:     Skipped unchanged document 1525
+INFO:     Skipped unchanged document 1432
+INFO:     Skipped unchanged document 1546
+INFO:     Skipped unchanged document 190
+INFO:     Skipped unchanged document 13
+INFO:     Skipped unchanged document 1943
+INFO:     Skipped unchanged document 1918
+INFO:     Skipped unchanged document 1817
+INFO:     Skipped unchanged document 1767
+INFO:     Skipped unchanged document 1834
+INFO:     Skipped unchanged document 1813
+INFO:     Skipped unchanged document 1743
+INFO:     Skipped unchanged document 1739
+INFO:     Skipped unchanged document 1655
+INFO:     Skipped unchanged document 1640
+INFO:     Skipped unchanged document 1718
+INFO:     Skipped unchanged document 1709
+INFO:     Skipped unchanged document 777
+INFO:     Skipped unchanged document 191
+INFO:     Skipped unchanged document 236
+INFO:     Ingestion complete: 0 indexed, 30 skipped, 0 failed, 0 chunks written, 0 warnings
+INFO:     Search indexes ready: 0 new embeddings
+INFO:     127.0.0.1:56473 - "POST /ingest HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=lexical top_k=10
+INFO:     Retrieval routing: mode=lexical
+INFO:     Lexical node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 0 semantic, 10 candidates after merging
+INFO:     Rerank node started: 10 candidates
+INFO:     Rerank node completed: 10 results selected
+INFO:     Retrieval graph completed: mode=lexical results=10
+INFO:     127.0.0.1:56474 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=semantic top_k=10
+INFO:     Retrieval routing: mode=semantic
+INFO:     Semantic node started
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 0 lexical, 10 semantic, 10 candidates after merging
+INFO:     Rerank node started: 10 candidates
+INFO:     Rerank node completed: 10 results selected
+INFO:     Retrieval graph completed: mode=semantic results=10
+INFO:     127.0.0.1:56476 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=hybrid top_k=10
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 11 candidates after merging
+INFO:     Rerank node started: 11 candidates
+INFO:     Rerank node completed: 10 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=10
+INFO:     127.0.0.1:56480 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=lexical top_k=5
+INFO:     Retrieval routing: mode=lexical
+INFO:     Lexical node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 0 semantic, 10 candidates after merging
+INFO:     Rerank node started: 10 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=lexical results=5
+INFO:     127.0.0.1:56483 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=lexical top_k=5
+INFO:     Retrieval routing: mode=lexical
+INFO:     Lexical node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 0 semantic, 10 candidates after merging
+INFO:     Rerank node started: 10 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=lexical results=5
+INFO:     127.0.0.1:56485 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=lexical top_k=5
+INFO:     Retrieval routing: mode=lexical
+INFO:     Lexical node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 0 semantic, 10 candidates after merging
+INFO:     Rerank node started: 10 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=lexical results=5
+INFO:     127.0.0.1:56488 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=lexical top_k=5
+INFO:     Retrieval routing: mode=lexical
+INFO:     Lexical node started
+INFO:     Search complete: mode=lexical results=0
+INFO:     Lexical node completed: 0 candidates
+INFO:     Join node started
+INFO:     Join node completed: 0 lexical, 0 semantic, 0 candidates after merging
+INFO:     Rerank node started: 0 candidates
+INFO:     Rerank model call skipped: no candidates
+INFO:     Rerank node completed: 0 results selected
+INFO:     Retrieval graph completed: mode=lexical results=0
+INFO:     127.0.0.1:56490 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=semantic top_k=5
+INFO:     Retrieval routing: mode=semantic
+INFO:     Semantic node started
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 0 lexical, 10 semantic, 10 candidates after merging
+INFO:     Rerank node started: 10 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=semantic results=5
+INFO:     127.0.0.1:56491 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=semantic top_k=5
+INFO:     Retrieval routing: mode=semantic
+INFO:     Semantic node started
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 0 lexical, 10 semantic, 10 candidates after merging
+INFO:     Rerank node started: 10 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=semantic results=5
+INFO:     127.0.0.1:56494 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=semantic top_k=5
+INFO:     Retrieval routing: mode=semantic
+INFO:     Semantic node started
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 0 lexical, 10 semantic, 10 candidates after merging
+INFO:     Rerank node started: 10 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=semantic results=5
+INFO:     127.0.0.1:56497 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=semantic top_k=5
+INFO:     Retrieval routing: mode=semantic
+INFO:     Semantic node started
+INFO:     Search complete: mode=semantic results=0
+INFO:     Semantic node completed: 0 candidates
+INFO:     Join node started
+INFO:     Join node completed: 0 lexical, 0 semantic, 0 candidates after merging
+INFO:     Rerank node started: 0 candidates
+INFO:     Rerank model call skipped: no candidates
+INFO:     Rerank node completed: 0 results selected
+INFO:     Retrieval graph completed: mode=semantic results=0
+INFO:     127.0.0.1:56503 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 16 candidates after merging
+INFO:     Rerank node started: 16 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=5
+INFO:     127.0.0.1:56504 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 13 candidates after merging
+INFO:     Rerank node started: 13 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=5
+INFO:     127.0.0.1:56507 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 15 candidates after merging
+INFO:     Rerank node started: 15 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=5
+INFO:     127.0.0.1:56512 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=semantic results=0
+INFO:     Semantic node completed: 0 candidates
+INFO:     Search complete: mode=lexical results=0
+INFO:     Lexical node completed: 0 candidates
+INFO:     Join node started
+INFO:     Join node completed: 0 lexical, 0 semantic, 0 candidates after merging
+INFO:     Rerank node started: 0 candidates
+INFO:     Rerank model call skipped: no candidates
+INFO:     Rerank node completed: 0 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=0
+INFO:     127.0.0.1:56515 - "POST /search HTTP/1.1" 200 OK
+INFO:     Chat validation started: thread=at_supported_20261111_202614
+INFO:     Chat query plan: route=retrieve
+INFO:     Chat retrieval node started
+INFO:     Retrieval graph started: mode=hybrid top_k=10
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 11 candidates after merging
+INFO:     Rerank node started: 11 candidates
+INFO:     Rerank node completed: 10 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=10
+INFO:     Answer agent started: 10 selected chunks
+INFO:     Answer agent middleware: model call completed in 1.31s
+INFO:     Excerpt tool called: document=1817 locator=6 chunks=3
+INFO:     Excerpt tool called: document=1817 locator=5 chunks=7
+INFO:     Answer agent middleware: model call completed in 1.30s
+INFO:     Answer agent completed: 2 model-issued excerpt calls
+INFO:     Chat response validated: status=answered citations=1
+INFO:     127.0.0.1:56516 - "POST /chat HTTP/1.1" 200 OK
+INFO:     Chat validation started: thread=at_memory_a_20261111_202614
+INFO:     Chat query plan: route=retrieve
+INFO:     Chat retrieval node started
+INFO:     Retrieval graph started: mode=hybrid top_k=10
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 15 candidates after merging
+INFO:     Rerank node started: 15 candidates
+INFO:     Rerank node completed: 10 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=10
+INFO:     Answer agent started: 10 selected chunks
+INFO:     Answer agent middleware: model call completed in 1.29s
+INFO:     Excerpt tool called: document=1525 locator=2 chunks=1
+INFO:     Excerpt tool called: document=1525 locator=1-2 chunks=1
+INFO:     Answer agent middleware: model call completed in 1.44s
+INFO:     Answer agent completed: 2 model-issued excerpt calls
+INFO:     Chat response validated: status=answered citations=2
+INFO:     127.0.0.1:56521 - "POST /chat HTTP/1.1" 200 OK
+INFO:     Chat validation started: thread=at_memory_a_20261111_202614
+INFO:     Chat query plan: route=retrieve
+INFO:     Chat retrieval node started
+INFO:     Retrieval graph started: mode=hybrid top_k=10
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 14 candidates after merging
+INFO:     Rerank node started: 14 candidates
+INFO:     Rerank node completed: 10 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=10
+INFO:     Answer agent started: 10 selected chunks
+INFO:     Answer agent middleware: model call completed in 1.23s
+INFO:     Excerpt tool called: document=1872 locator=4 chunks=2
+INFO:     Excerpt tool called: document=1525 locator=7 chunks=1
+INFO:     Answer agent middleware: model call completed in 1.88s
+INFO:     Answer agent completed: 2 model-issued excerpt calls
+INFO:     Chat response validated: status=answered citations=3
+INFO:     127.0.0.1:56525 - "POST /chat HTTP/1.1" 200 OK
+INFO:     Chat validation started: thread=at_memory_b_20261111_202614
+INFO:     Chat query plan: route=needs_clarification
+INFO:     Chat paused: thread=at_memory_b_20261111_202614 request=e4fed5ac-210b-4f63-9b4a-08e7e39510e0 interrupt=ed7c0617b6ffb4a939053e91d029a765 attempt=1
+INFO:     127.0.0.1:56532 - "POST /chat HTTP/1.1" 200 OK
+INFO:     Chat validation started: thread=at_restart_20261111_202614
+INFO:     Chat query plan: route=needs_clarification
+INFO:     Chat paused: thread=at_restart_20261111_202614 request=f8eb2119-0744-4f24-98d6-5d15b60c998b interrupt=0e2d3e4338a2fe5c1d4ca3c56ee36891 attempt=1
+INFO:     127.0.0.1:56533 - "POST /chat HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [22593]
+
+--- RESTART after PID 22593 ---
+INFO:     Started server process [22642]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56539 - "GET /health HTTP/1.1" 200 OK
+WARNING:  Chat request failed: thread=at_wrong_20261111_202614 request=905d47a9-2f13-40b5-875c-61c291cc00ae code=invalid_resume
+INFO:     127.0.0.1:56540 - "POST /chat/resume HTTP/1.1" 409 Conflict
+INFO:     Chat resuming: thread=at_restart_20261111_202614 request=ee7a2dd4-f557-42c7-b17d-d2b01bb08eb5 interrupt=0e2d3e4338a2fe5c1d4ca3c56ee36891
+INFO:     Chat query plan: route=retrieve
+INFO:     Chat retrieval node started
+INFO:     Retrieval graph started: mode=hybrid top_k=10
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 14 candidates after merging
+INFO:     Rerank node started: 14 candidates
+INFO:     Rerank node completed: 10 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=10
+INFO:     Answer agent started: 10 selected chunks
+INFO:     Answer agent middleware: model call completed in 1.23s
+INFO:     Excerpt tool called: document=1872 locator=4 chunks=2
+INFO:     Excerpt tool called: document=1525 locator=7 chunks=1
+INFO:     Answer agent middleware: model call completed in 2.33s
+INFO:     Answer agent completed: 2 model-issued excerpt calls
+INFO:     Chat response validated: status=answered citations=3
+INFO:     127.0.0.1:56541 - "POST /chat/resume HTTP/1.1" 200 OK
+WARNING:  Chat request failed: thread=at_restart_20261111_202614 request=02820fce-4775-4c4d-8efb-baa54ab556f1 code=invalid_resume
+INFO:     127.0.0.1:56546 - "POST /chat/resume HTTP/1.1" 409 Conflict
+INFO:     Chat validation started: thread=at_unsupported_20261111_202614
+INFO:     Chat query plan: route=retrieve
+INFO:     Chat retrieval node started
+INFO:     Retrieval graph started: mode=lexical top_k=10
+INFO:     Retrieval routing: mode=lexical
+INFO:     Lexical node started
+INFO:     Search complete: mode=lexical results=0
+INFO:     Lexical node completed: 0 candidates
+INFO:     Join node started
+INFO:     Join node completed: 0 lexical, 0 semantic, 0 candidates after merging
+INFO:     Rerank node started: 0 candidates
+INFO:     Rerank model call skipped: no candidates
+INFO:     Rerank node completed: 0 results selected
+INFO:     Retrieval graph completed: mode=lexical results=0
+INFO:     Chat response validated: status=insufficient_evidence citations=0
+INFO:     127.0.0.1:56547 - "POST /chat HTTP/1.1" 200 OK
+INFO:     Chat validation started: thread=at_unrelated_20261111_202614
+INFO:     Chat query plan: route=out_of_scope
+INFO:     Chat response validated: status=out_of_scope citations=0
+INFO:     127.0.0.1:56549 - "POST /chat HTTP/1.1" 200 OK
+WARNING:  Chat request failed: thread=at_bad_20261111_202614 request=fbfa0668-8639-4052-86b6-039f521a9d48 code=invalid_request
+INFO:     127.0.0.1:56550 - "POST /chat HTTP/1.1" 422 Unprocessable Content
+WARNING:  Chat request failed: thread=at_bad_20261111_202614 request=4e9bc7e0-ae54-4859-88ce-fd2f24cc9a29 code=invalid_request
+INFO:     127.0.0.1:56551 - "POST /chat HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:56552 - "POST /search HTTP/1.1" 422 Unprocessable Content
+WARNING:  Chat request failed: thread=at_bad_20261111_202614 request=ebefd72a-a381-4229-9b1c-ec5ea77e7e3d code=invalid_filters
+INFO:     127.0.0.1:56553 - "POST /chat HTTP/1.1" 422 Unprocessable Content
+WARNING:  Chat request failed: thread=at_bad_20261111_202614 request=5fd34e8f-ea07-4805-b6c5-ae5ecebeb9b0 code=invalid_resume
+INFO:     127.0.0.1:56554 - "POST /chat/resume HTTP/1.1" 409 Conflict
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 11 candidates after merging
+INFO:     Rerank node started: 11 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=5
+INFO:     127.0.0.1:56555 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 14 candidates after merging
+INFO:     Rerank node started: 14 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=5
+INFO:     127.0.0.1:56561 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 15 candidates after merging
+INFO:     Rerank node started: 15 candidates
+ERROR:    Retrieval graph failed: RerankFailure
+INFO:     127.0.0.1:56564 - "POST /search HTTP/1.1" 502 Bad Gateway
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 13 candidates after merging
+INFO:     Rerank node started: 13 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=5
+INFO:     127.0.0.1:56567 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 13 candidates after merging
+INFO:     Rerank node started: 13 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=5
+INFO:     127.0.0.1:56570 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 17 candidates after merging
+INFO:     Rerank node started: 17 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=5
+INFO:     127.0.0.1:56573 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 18 candidates after merging
+INFO:     Rerank node started: 18 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=5
+INFO:     127.0.0.1:56578 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 15 candidates after merging
+INFO:     Rerank node started: 15 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=5
+INFO:     127.0.0.1:56582 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 17 candidates after merging
+INFO:     Rerank node started: 17 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=5
+INFO:     127.0.0.1:56585 - "POST /search HTTP/1.1" 200 OK
+INFO:     Retrieval graph started: mode=hybrid top_k=5
+INFO:     Retrieval routing: mode=hybrid
+INFO:     Lexical node started
+INFO:     Semantic node started
+INFO:     Search complete: mode=lexical results=10
+INFO:     Lexical node completed: 10 candidates
+INFO:     Search complete: mode=semantic results=10
+INFO:     Semantic node completed: 10 candidates
+INFO:     Join node started
+INFO:     Join node completed: 10 lexical, 10 semantic, 14 candidates after merging
+INFO:     Rerank node started: 14 candidates
+INFO:     Rerank node completed: 5 results selected
+INFO:     Retrieval graph completed: mode=hybrid results=5
+INFO:     127.0.0.1:56588 - "POST /search HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [22642]

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183c37">
+  <title>Route — Dubai transport knowledge</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="Route home"><span class="brand-mark" aria-hidden="true">↗</span>route<span class="brand-period">.</span></a>
+    <p class="brand-caption">DUBAI TRANSPORT KNOWLEDGE</p>
+    <button id="new-chat" class="new-chat" type="button"><span aria-hidden="true">＋</span> New conversation <span aria-hidden="true">↗</span></button>
+
+    <details class="search-settings" open>
+      <summary>SEARCH SETTINGS <span aria-hidden="true">⌄</span></summary>
+      <fieldset id="settings-fields">
+        <legend class="sr-only">Retrieval settings</legend>
+        <label for="mode">Search method</label>
+        <select id="mode">
+          <option value="hybrid">Hybrid</option>
+          <option value="lexical">Lexical</option>
+          <option value="semantic">Semantic</option>
+        </select>
+        <p id="mode-description" class="field-help">Combines word matches and meaning.</p>
+        <label for="top-k">Maximum source chunks <output id="top-k-value" for="top-k">10</output></label>
+        <input id="top-k" type="range" min="1" max="20" value="10">
+        <div class="range-labels"><span>1</span><span>20</span></div>
+        <div class="settings-divider"></div>
+        <p class="filter-heading">NARROW YOUR SOURCES <span>Optional</span></p>
+        <label for="year">Legislation year</label>
+        <input id="year" type="number" min="1900" max="2100" step="1" placeholder="All years" aria-describedby="year-help">
+        <span id="year-help" class="sr-only">Leave empty for all years. Otherwise enter a year from 1900 to 2100.</span>
+        <label for="document-type">Document type</label>
+        <select id="document-type">
+          <option value="">All document types</option>
+          <option value="Law">Law</option>
+          <option value="Resolution">Resolution</option>
+          <option value="Regulation">Regulation</option>
+        </select>
+      </fieldset>
+      <p id="settings-note" class="field-help" hidden>These settings stay fixed while you clarify this question.</p>
+    </details>
+
+    <div class="sidebar-bottom">
+      <div class="corpus-note"><span class="corpus-symbol" aria-hidden="true">§</span><div><strong>Roads &amp; Transport</strong><span>Answers from your indexed legislation</span></div></div>
+      <div class="thread-line"><span>CONVERSATION</span><button id="copy-thread" type="button" title="Copy conversation ID">Copy ID</button></div>
+      <code id="thread-id"></code>
+    </div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div class="breadcrumb">Knowledge workspace <span>/</span> <strong>Ask a question</strong></div>
+      <button id="connection" class="connection" type="button" title="Check API connection"><span class="status-dot"></span><span id="connection-label">Connecting</span></button>
+    </header>
+
+    <div id="conversation-area" class="conversation-area">
+      <section id="welcome" class="welcome">
+        <div class="eyebrow"><span></span> YOUR TRANSPORT RESEARCH DESK</div>
+        <h1>A clearer route<br>through <em>legislation.</em></h1>
+        <p class="welcome-description">Ask about Dubai’s roads and transport rules.<br>Explore the answer. Check the sources. Keep asking.</p>
+        <div class="suggestions" aria-label="Example questions">
+          <button type="button" data-question="What permits are required to operate autonomous vehicles in Dubai?"><span class="suggestion-category">PERMITS &amp; LICENSING</span><span>What permits do autonomous vehicles need?</span><span class="suggestion-arrow" aria-hidden="true">↗</span></button>
+          <button type="button" data-question="What does the indexed legislation say about public parking fees in Dubai?"><span class="suggestion-category">PARKING &amp; FEES</span><span>What are the rules for public parking fees?</span><span class="suggestion-arrow" aria-hidden="true">↗</span></button>
+          <button type="button" data-question="What permit do I need for it?"><span class="suggestion-category">TRY A CLARIFICATION</span><span>What permit do I need for it?</span><span class="suggestion-arrow" aria-hidden="true">↗</span></button>
+        </div>
+        <div class="welcome-footnote"><span aria-hidden="true">↳</span> Every answer starts with your document collection.</div>
+      </section>
+      <section id="messages" class="messages" role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions"></section>
+      <div id="thinking" class="thinking" role="status" hidden><span class="thinking-orbit" aria-hidden="true"></span><span>Reading your question and checking the sources…</span></div>
+    </div>
+
+    <div class="composer-area">
+      <div id="notice" class="notice" role="status" hidden></div>
+      <div id="clarification-banner" class="clarification-banner" hidden><span aria-hidden="true">↳</span><span>A little more context is needed. Reply below to continue this question.</span></div>
+      <form id="chat-form" class="composer">
+        <label class="sr-only" for="message">Your message</label>
+        <textarea id="message" rows="2" maxlength="2000" placeholder="Ask about Dubai roads and transport…" required></textarea>
+        <div class="composer-bottom"><div class="composer-hint"><span id="composer-mode">Hybrid search</span><span class="hint-divider">·</span><span id="character-count">0 / 2,000</span></div><button id="send" type="submit" aria-label="Send message"><span>Send</span><span aria-hidden="true">↑</span></button></div>
+      </form>
+      <p class="disclaimer">Answers reflect the indexed documents. Review the cited legislation for the full context.</p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+*.pyc
+data/index.sqlite*
+.DS_Store
+# Keep downloaded legislation local until redistribution rights are confirmed.
+data/pdfs/
+
+data/checkpoints.sqlite*

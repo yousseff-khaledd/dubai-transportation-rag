@@ -1,0 +1,27 @@
+Failed to index document 13: document is outside the approved English Roads and Transport corpus
+Chat request failed: thread=b request=4ef53ca4-46b1-4bd4-8a90-5857a331f934 code=invalid_resume
+Chat request failed: thread=a request=0dec9868-6e72-4e95-a140-f36221b5277c code=invalid_resume
+Chat request failed: thread=a request=0631841f-b223-4f57-ab83-c9570038cfad code=clarification_pending
+Chat request failed: thread=a request=9db5b356-b3f6-4076-bd84-50c06e69363a code=invalid_resume
+Chat request failed: thread=a request=a6d89ef1-686f-4fb5-aaee-e14871d876e4 code=thread_busy
+Chat request failed: thread=a request=73990009-dcc3-41b0-b2dd-35e7793536d9 code=invalid_filters
+Chat request failed: thread=a request=f26c45d2-4b37-435e-af1e-0279383bb3ca code=invalid_filters
+Chat request failed: thread=a request=60b3604d-3dda-4579-a1d4-2074a46b03a6 code=invalid_request
+Chat request failed: thread=a request=d96c7540-f363-4677-bc0f-4873cda994f2 code=invalid_request
+Chat request failed: thread=a request=23ac0e75-b770-4b6c-a6c3-19a09a81f9a5 code=invalid_request
+Chat request failed: thread=a request=c66f5e1b-3f24-4b7d-b51d-5d998a2dec52 code=invalid_request
+Chat request failed: thread=None request=4e777a50-aac0-4d3c-8652-ec1f0f00817f code=invalid_request
+Chat request failed: thread=None request=55838383-5ece-46c1-9d09-f09ddb12ce04 code=invalid_request
+Chat request failed: thread=a request=b63da20f-3b84-42a2-a8ad-7885c575f61d code=invalid_request
+Chat request failed: thread=a request=b7b08e3d-a502-46a5-ab01-ad17623231ed code=search_unavailable
+Chat request failed: thread=a request=0ab2da14-beee-400b-aa9d-3a2290e33284 code=storage_unavailable
+Chat request failed: thread=a request=355a9759-f1a0-4707-b38d-5bb564feaf98 code=model_failure
+Chat request failed: thread=a request=0622c642-eec3-41b6-8a70-1d9baed2b99e code=model_timeout
+Unexpected chat failure: request=67356a25-f8a9-4a77-9a9e-71c7435228d0 type=RuntimeError
+Chat request failed: thread=a request=67356a25-f8a9-4a77-9a9e-71c7435228d0 code=internal_error
+Retrieval graph failed: SearchUnavailable
+Retrieval graph failed: EmbeddingFailure
+----------------------------------------------------------------------
+Ran 27 tests in 2.561s
+
+OK
