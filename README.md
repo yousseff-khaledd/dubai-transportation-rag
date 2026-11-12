@@ -215,13 +215,57 @@ The runner uses a temporary API process on port 8011 and writes raw [results](ev
 
 ### Ragas answer evaluation
 
-Run `uv sync --frozen --group eval`, then `uv run --group eval python -m evals.ragas.run`. See [evals/ragas/README.md](evals/ragas/README.md) for the reviewed cases, metrics, exact chat-evidence capture, mode comparison, and output format. This offline evaluation does not change the chatbot routes.
+Run `uv sync --frozen --group eval`, then `uv run --group eval python -m evals.ragas.run`. The 13 cases in [evals/ragas/cases.json](evals/ragas/cases.json) include ten questions with reviewed answers and source references, plus unsupported, unrelated, and ambiguous questions. The runner calls `/chat` with a new thread per case and reads the checkpoint to score the exact chunks selected by the chat graph. It checks expected response status and citation IDs separately. It also compares the three `/search` modes using the same original questions; those search results are not substituted for chat evidence.
 
-## Graph names and shared state
+For answered cases, Ragas uses the configured chat model and embedding model to judge five metrics:
 
-`app/agents/chat.py` is the conversation orchestrator: `build_chat_graph()` connects `input_guard → question_guard → retrieve_evidence → draft_answer → response_guard`, with `ask_clarification` looping back to `question_guard` when needed. `run_chat()` starts or resumes this graph and checkpoints its `ChatState` in `data/checkpoints.sqlite` by `thread_id`. The state is defined in `app/agents/chat_models.py`; it holds the request, history, plan, clarifications, evidence, draft, and response. `input_guard` clears question-specific fields for each new question while history remains available.
+| Metric | Meaning |
+| --- | --- |
+| Faithfulness | Whether the answer's claims follow from selected chunks. |
+| Answer correctness | Agreement with the reviewed reference answer. |
+| Context precision | Whether useful chunks appear early in the selected list. |
+| Context recall | Whether the selected chunks support the reference answer's claims. |
+| Answer relevancy | Whether the answer addresses the question, regardless of factual accuracy. |
 
-`app/agents/retrieval_graph.py` is the retrieval orchestrator. Its branch selector runs `lexical_search`, `semantic_search`, or both; then `merge_candidates` and `rerank_candidates` run once. The temporary `RetrievalState` is defined in `app/agents/retrieval_nodes.py`. It stores separate branch results, merged candidates, and final results for one search. `retrieve_evidence` copies those final results into the conversation state as evidence. Earlier `data/day4_trace.json` examples retain the node names used when they were recorded.
+The saved [evaluation report](evals/ragas/results/20261111_205750/report.md) records this baseline (final `top_k=5`):
+
+| Measure | Result |
+| --- | ---: |
+| Expected status on first attempt | 11/13 cases |
+| API/model errors on first attempt | 2/13 cases |
+| Expected document in selected chat top 5 | 8/10 answer cases |
+| Valid citations to selected chunks | 8/10 answer cases |
+| Faithfulness mean | 0.9271 across 8 scored answers |
+| Answer correctness mean | 0.6504 across 8 scored answers |
+| Context precision mean | 0.9340 across 8 scored answers |
+| Context recall mean | 1.0000 across 8 scored answers |
+| Answer relevancy mean | 0.9207 across 8 scored answers |
+
+In separate `/search` comparisons, lexical, semantic, and hybrid each found the expected document in the final top five for all ten answer questions. Two `/chat` cases returned HTTP 502 during reranking, so they received no Ragas scores. The [manual review](evals/ragas/results/20261111_205750/review.md) found several low answer-correctness scores that appear inconsistent with the cited text, as well as an answer that may mix claims from two documents. These are judge estimates from a small, corpus-derived set; they do not establish accuracy on unseen questions. Review the [raw results](evals/ragas/results/20261111_205750/results.json) and cited PDF pages before changing thresholds or answer behavior. See [the evaluation guide](evals/ragas/README.md) for the full procedure and output format.
+
+## Agent flow and shared state
+
+The [chat graph](app/agents/chat.py) is the conversation orchestrator. `run_chat()` invokes it for `/chat` or resumes a pending clarification for `/chat/resume`. The graph passes one typed [ChatState](app/agents/chat_models.py) between its nodes: request, request ID, history, query plan, clarifications, retrieved evidence, answer draft, and final response. LangGraph checkpoints this state in `data/checkpoints.sqlite` under `thread_id`, so follow-ups and interrupted conversations can continue on the same thread.
+
+| Chat node | What it does |
+| --- | --- |
+| `input_guard` | Validates the request and clears the previous question's plan, evidence, draft, response, and clarification replies; it keeps conversation history. |
+| `question_guard` | Uses the chat model to produce a Pydantic `QueryPlan`. It turns follow-ups into standalone search queries and chooses `retrieve`, `out_of_scope`, or `needs_clarification`. |
+| `ask_clarification` | Calls LangGraph `interrupt()` and returns a question to the client. On `/chat/resume`, it records the reply and loops back to `question_guard`. The flow allows up to two replies. |
+| `retrieve_evidence` | Calls the retrieval graph with the planned query, requested mode, filters, and `top_k`, then stores its final chunks as evidence. |
+| `draft_answer` | Runs a LangChain answer agent on that evidence and returns a structured `AnswerDraft` with an answer and citations, or `insufficient_evidence`. |
+| `response_guard` | Creates the final status, checks that each citation identifies a selected chunk and locator, and appends the exchange to history. A matching citation identifier is not itself proof that every claim is supported. |
+
+The [LangChain answer agent](app/agents/answer_agent.py) runs *inside* the `draft_answer` LangGraph node. It uses `create_agent()` with the configured chat model, a model-callable `get_document_excerpt(document_id, locator)` tool, and `ToolStrategy(AnswerDraft)` for structured output. The tool only reads chunks selected by retrieval. Middleware logs model-call duration and limits the agent to four model calls and four excerpt calls. The planning, answer, and reranking instructions live in separate files under [app/agents/prompts/](app/agents/prompts/).
+
+The [retrieval graph](app/agents/retrieval_graph.py) has its own temporary [RetrievalState](app/agents/retrieval_nodes.py), containing the request, separate lexical and semantic lists, merged candidates, and final results. It is run once per retrieval request and is not checkpointed. Its fan-out and fan-in work as follows:
+
+1. `select_search_branches()` reads the search mode. Lexical or semantic mode starts one matching branch. Hybrid mode starts both `lexical_search` and `semantic_search` in parallel; each writes to a different state key.
+2. `lexical_search` gets word-matched BM25 chunks from SQLite. `semantic_search` embeds the query and ranks indexed vectors by cosine similarity. Each branch retrieves at least ten candidates, or more when `top_k` is larger.
+3. Both branches lead to `merge_candidates`. In hybrid mode, LangGraph waits for both branch results, then runs this join once. It deduplicates by chunk ID and combines *ranks* using reciprocal rank fusion, `1 / (60 + rank)`. Single-mode searches pass their one branch's results through the same node.
+4. `rerank_candidates` sends at most 20 merged chunks to the chat model in one ranking request, then returns the requested `top_k`. The reported numeric scores remain BM25, cosine, or RRF retrieval scores; reranking changes the order without assigning new scores.
+
+`retrieve_evidence` copies those final chunks into `ChatState`; the answer agent then uses them to draft the cited response. The search graph's `trace`, `before_rerank`, and `after_rerank` fields show which nodes ran and how candidate order changed.
 
 ## Current structure
 
