@@ -1,6 +1,6 @@
 # Roads and Transport Knowledge Assistant
 
-A local FastAPI project for answering questions from a bounded collection of Dubai legislation. The project includes PDF ingestion, lexical and semantic retrieval, and a LangGraph flow with hybrid search and LLM reranking. Day 5 adds cited answers and persistent conversation threads.
+A local FastAPI project for answering questions from a bounded collection of Dubai legislation. The project includes PDF ingestion, lexical and semantic retrieval, and a LangGraph flow with hybrid search and LLM reranking. It also provides cited answers and persistent conversation threads.
 
 ## Architecture graphs
 
@@ -130,9 +130,9 @@ The typed parent graph clears question-specific state, asks the model for a stru
 
 Response fields are `thread_id`, `request_id`, `status`, `answer`, `citations`, and `clarification`. Model and retrieval progress appears in the server terminal. `data/day5_examples.json` records example runs, the model-issued excerpt call, and middleware timing logs; the examples do not establish accuracy across all questions.
 
-## Clarification and API controls (Day 6)
+## Clarification and API controls
 
-An ambiguous question now pauses the graph using a real LangGraph `interrupt()`. The HTTP request finishes immediately after the pause; the graph state and pending interrupt stay in SQLite. The response contains `status: "needs_clarification"`, a `clarification` question, and an `interrupt_id`. There is no answer or evidence search at this point.
+An ambiguous question pauses the graph using a LangGraph `interrupt()`. The HTTP request finishes immediately after the pause; the graph state and pending interrupt stay in SQLite. The response contains `status: "needs_clarification"`, a `clarification` question, and an `interrupt_id`. There is no answer or evidence search at this point.
 
 ```sh
 curl -X POST http://127.0.0.1:8000/chat \
@@ -197,7 +197,7 @@ Search strategies remain in `app/rag/search.py` and `app/agents/retrieval_nodes.
 uv run python -m unittest discover -s tests -v
 ```
 
-The deterministic tests use temporary databases and model substitutes. They cover search/filtering, hybrid routing and deduplication, history isolation, citation validation, and per-question state reset. Day 6 adds a separate-process interrupt/resume test, wrong-thread/stale/no-pending rejection, two-attempt exhaustion, concurrent thread checks, error envelopes, lock release after failure, and actual agent middleware enforcement of model/tool limits.
+The deterministic tests use temporary databases and model substitutes. They cover search/filtering, hybrid routing and deduplication, history isolation, citation validation, and per-question state reset. Additional tests cover separate-process interrupt/resume, wrong-thread/stale/no-pending rejection, two-attempt exhaustion, concurrent thread checks, error envelopes, lock release after failure, and actual agent middleware enforcement of model/tool limits.
 
 `data/day6_examples.json` records a live Azure model question that paused, then resumed to a cited answer after restarting Uvicorn (different server process IDs). It also records 409 responses for a wrong-thread resume and a repeated resume after completion. The current test suite contains 27 tests.
 
