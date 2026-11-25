@@ -23,6 +23,7 @@ class ChatTests(unittest.TestCase):
     def test_thread_history_and_per_question_state(self):
         seen = []
         def fake_plan(state):
+            self.assertEqual(state['retrieval'], {})
             seen.append((state['request']['thread_id'], list(state.get('history', [])), state['evidence'], state['draft']))
             return {'plan': {'route': 'out_of_scope', 'search_query': state['request']['message'], 'clarification': None}}
         with tempfile.TemporaryDirectory() as directory, \

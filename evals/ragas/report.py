@@ -4,6 +4,11 @@ import statistics
 from evals.ragas.scoring import ALL_METRICS
 
 
+def used_fallback(retrieval: dict) -> bool:
+    """Empty results skip reranking and must not count as failures."""
+    return retrieval.get('ranking_stage') == 'retrieval' and bool(retrieval.get('before_rerank'))
+
+
 def summarize(results: dict) -> dict:
     answered_cases = [item for item in results['cases'] if item['expected_status'] == 'answered']
     first_attempts = [item['attempts'][0] for item in results['cases']]
@@ -13,6 +18,11 @@ def summarize(results: dict) -> dict:
     return {
         'status_matches': sum(attempt['status_matches'] for attempt in first_attempts),
         'case_count': len(first_attempts),
+        'chat_rerank_fallbacks': sum(used_fallback(attempt.get('retrieval', {})) for attempt in first_attempts),
+        'mode_rerank_fallbacks': {
+            mode: sum(used_fallback(row[mode]) for row in modes.values())
+            for mode in ('lexical', 'semantic', 'hybrid')
+        },
         'first_attempt_errors': sum(attempt['http_status'] >= 500 for attempt in first_attempts),
         'answered_first_attempt': sum(attempt['response'].get('status') == 'answered' for attempt in first_attempts),
         'document_hit_at_5': sum(item['attempts'][0].get('document_rank') is not None for item in answered_cases),
@@ -45,12 +55,14 @@ def report_text(results: dict) -> str:
     summary = results['summary']
     lines = [
         '# Ragas evaluation', '',
+        f"Database: `{results.get('database', 'not recorded')}`. Collection: `{results.get('collection', 'not recorded')}`.", '',
         f"Run: `{results['run_id']}`. Corpus: {results['document_count']} documents, {results['chunk_count']} chunks. "
         f"Chat model: `{results['chat_model']}`; embedding model: `{results['embedding_model']}`; "
         f"Ragas: `{results['ragas_version']}`; final top_k: {results['top_k']}.", '',
         '## First-attempt results', '',
         f"- Expected status: {summary['status_matches']}/{summary['case_count']} cases.",
         f"- API/server errors: {summary['first_attempt_errors']} cases.",
+        f"- First-attempt chat reranker fallbacks: {summary['chat_rerank_fallbacks']}.",
         f"- Expected document in selected chat top 5: {summary['document_hit_at_5']}/{summary['answered_case_count']} answer cases.",
         f"- Valid citations to selected chunks: {summary['citation_valid']}/{summary['answered_case_count']} answer cases.",
         f"- Chat request elapsed time: mean {summary['chat_latency_seconds']['mean']}s, "
@@ -67,12 +79,12 @@ def report_text(results: dict) -> str:
         '', 'Scores are judge estimates, not search probabilities. Unanswered and failed requests have no Ragas score; '
         'the denominator for each mean is shown above. Review individual cases before acting on a small difference.',
         '', '## Search mode comparison', '',
-        '| Mode | Expected document in final top 5 | Errors |', '| --- | ---: | ---: |',
+        '| Mode | Expected document in final top 5 | Errors | Reranker fallbacks |', '| --- | ---: | ---: | ---: |',
     ]
     for mode, count in summary['mode_document_hit_at_5'].items():
-        lines.append(f"| {mode} | {count}/{len(results['mode_comparison'])} | {summary['mode_errors'][mode]} |")
+        lines.append(f"| {mode} | {count}/{len(results['mode_comparison'])} | {summary['mode_errors'][mode]} | {summary['mode_rerank_fallbacks'][mode]} |")
     if not summary['mode_document_hit_at_5']:
-        lines.append('| Not run | - | - |')
+        lines.append('| Not run | - | - | - |')
     lines += [
         '', 'These mode calls use the same original question. Chat may rewrite the question; its Ragas contexts come '
         'from the actual checkpointed chat evidence, not from these separate search calls.',

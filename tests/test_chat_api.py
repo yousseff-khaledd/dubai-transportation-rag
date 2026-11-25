@@ -174,7 +174,7 @@ with patch('app.agents.chat.CHECKPOINT_PATH', Path(sys.argv[1])), patch('app.age
                     'source_url': '', 'content_url': '', 'primary_category': 'Roads and Transport',
                     'year': 2023, 'type': 'Law', 'status': None, 'article_number': None, 'score': 1.0}
         state = {'evidence': [evidence], 'plan': {'search_query': 'vehicle permit'}}
-        # Invalid locators never open the database. The model repeatedly calls the tool.
+        # Invalid locators never query Qdrant. The model repeatedly calls the tool.
         for batch_size, expected_exception in [(1, ModelCallLimitExceededError), (5, ToolCallLimitExceededError)]:
             calls = [{'name': 'get_document_excerpt', 'args': {'document_id': 'other', 'locator': '1'},
                       'id': str(index)} for index in range(batch_size)]

@@ -20,7 +20,7 @@ def input_guard(state: ChatState) -> dict:
     LOGGER.info('Chat validation started: thread=%s', request.thread_id)
     # Clear all per-question state; only history is carried to the next turn.
     return {'request': request.model_dump(), 'clarifications': [],
-            'plan': {}, 'evidence': [], 'draft': {}, 'response': {}}
+            'plan': {}, 'evidence': [], 'retrieval': {}, 'draft': {}, 'response': {}}
 
 
 def question_guard(state: ChatState) -> dict:
@@ -49,9 +49,11 @@ def ask_clarification(state: ChatState) -> dict:
 def retrieve_evidence(state: ChatState) -> dict:
     request = ChatRequest.model_validate(state['request'])
     LOGGER.info('Chat retrieval node started')
-    result = run_retrieval(SearchRequest(query=state['plan']['search_query'], mode=request.mode,
-                                         top_k=request.top_k, filters=request.filters))
-    return {'evidence': [hit.model_dump() for hit in result['results']]}
+    retrieval_response = run_retrieval(SearchRequest(query=state['plan']['search_query'], mode=request.mode,
+                                                      top_k=request.top_k, filters=request.filters))
+    return {'evidence': [hit.model_dump() for hit in retrieval_response['results']],
+            'retrieval': {key: retrieval_response[key] for key in
+                          ('ranking_stage', 'before_rerank', 'after_rerank')}}
 
 
 def response_guard(state: ChatState) -> dict:
@@ -64,12 +66,18 @@ def response_guard(state: ChatState) -> dict:
         response = ChatResponse(thread_id=request.thread_id, request_id=state['request_id'], status='insufficient_evidence')
     else:
         draft = AnswerDraft.model_validate(state['draft'])
-        allowed = {(hit['chunk_id'], hit['document_id'], hit['locator']) for hit in state['evidence']}
-        valid = (draft.status == 'answered' and bool(draft.answer and draft.answer.strip()) and bool(draft.citations)
-                 and all((c.chunk_id, c.document_id, c.locator) in allowed for c in draft.citations))
+        allowed_citations = {(hit['chunk_id'], hit['document_id'], hit['locator']) for hit in state['evidence']}
+        has_valid_answer = (
+            draft.status == 'answered'
+            and bool(draft.answer and draft.answer.strip())
+            and bool(draft.citations)
+            and all((citation.chunk_id, citation.document_id, citation.locator) in allowed_citations
+                    for citation in draft.citations)
+        )
         response = ChatResponse(thread_id=request.thread_id, request_id=state['request_id'],
-                                status='answered' if valid else 'insufficient_evidence',
-                                answer=draft.answer if valid else None, citations=draft.citations if valid else [])
+                                status='answered' if has_valid_answer else 'insufficient_evidence',
+                                answer=draft.answer if has_valid_answer else None,
+                                citations=draft.citations if has_valid_answer else [])
     history = state.get('history', []) + [{'question': request.message, 'clarifications': state.get('clarifications', []),
                                           'answer': response.answer, 'status': response.status}]
     LOGGER.info('Chat response validated: status=%s citations=%s', response.status, len(response.citations))

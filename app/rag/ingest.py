@@ -4,20 +4,19 @@ import csv
 import hashlib
 import logging
 import re
-import sqlite3
-from contextlib import closing
 from dataclasses import dataclass
 from pathlib import Path
 
 from pydantic import BaseModel, Field
 from pypdf import PdfReader
 import pdfplumber
+from qdrant_client import models
 
+from app.rag.store import COLLECTION, client, document_filter, ensure_collection, model_key, point_id
 from app.rag.table_chunks import extract_table_chunks
 
 PROJECT_DIR = Path(__file__).resolve().parents[2]
 MANIFEST_PATH = PROJECT_DIR / "data" / "manifest.csv"
-INDEX_PATH = PROJECT_DIR / "data" / "index.sqlite"
 MAX_CHARS = 800
 OVERLAP_CHARS = 80
 ARTICLE_PATTERN = re.compile(r"^Article\s*\((\d+)\)\s*$", re.IGNORECASE)
@@ -178,26 +177,17 @@ def build_chunks(document_id: str, lines: list[SourceLine]) -> list[tuple]:
     return chunks
 
 
-def create_tables(connection: sqlite3.Connection) -> None:
-    connection.execute("PRAGMA foreign_keys = ON")
-    connection.execute("""CREATE TABLE IF NOT EXISTS documents (
-        document_id TEXT PRIMARY KEY, title TEXT NOT NULL, source_url TEXT NOT NULL,
-        content_url TEXT NOT NULL, primary_category TEXT NOT NULL, language TEXT NOT NULL,
-        year INTEGER, type TEXT, authority TEXT, status TEXT, sha256 TEXT NOT NULL
-    )""")
-    connection.execute("""CREATE TABLE IF NOT EXISTS chunks (
-        chunk_id TEXT PRIMARY KEY, document_id TEXT NOT NULL REFERENCES documents(document_id),
-        section_type TEXT NOT NULL, article_number TEXT, start_page INTEGER NOT NULL,
-        end_page INTEGER NOT NULL, text TEXT NOT NULL
-    )""")
-    connection.execute("CREATE INDEX IF NOT EXISTS chunks_document_id ON chunks(document_id)")
-
-
 def ingest_corpus() -> IngestResult:
+    from app.rag.search import SearchUnavailable, embed_texts, embedding_settings
+
     result = IngestResult()
+    base_url, embedding_model, _ = embedding_settings()
+    embedding_key = model_key(base_url, embedding_model)
+    database = client()
+    if database.collection_exists(COLLECTION) and database.get_collection(COLLECTION).config.metadata != {'embedding_key': embedding_key}:
+        raise SearchUnavailable('Qdrant index uses a different embedding deployment; rebuild it')
     LOGGER.info("Starting ingestion from %s", MANIFEST_PATH)
-    with MANIFEST_PATH.open(newline="") as manifest, closing(sqlite3.connect(INDEX_PATH)) as connection:
-        create_tables(connection)
+    with MANIFEST_PATH.open(newline="") as manifest:
         for record in csv.DictReader(manifest):
             document_id = record["document_id"]
             try:
@@ -208,13 +198,17 @@ def ingest_corpus() -> IngestResult:
                 content_hash = hashlib.sha256(pdf_path.read_bytes()).hexdigest()
                 if content_hash != record["sha256"]:
                     raise ValueError("PDF hash does not match the manifest")
-                existing = connection.execute(
-                    "SELECT sha256 FROM documents WHERE document_id = ?", (document_id,)
-                ).fetchone()
-                if existing and existing[0] == content_hash:
-                    result.skipped_documents += 1
-                    LOGGER.info("Skipped unchanged document %s", document_id)
-                    continue
+                document_points = document_filter(document_id)
+                existing_points = []
+                if database.collection_exists(COLLECTION):
+                    existing_points, _ = database.scroll(COLLECTION, scroll_filter=document_points, limit=1)
+                    if existing_points and existing_points[0].payload['sha256'] == content_hash:
+                        stored_count = existing_points[0].payload['document_chunk_count']
+                        actual_count = database.count(COLLECTION, count_filter=document_points, exact=True).count
+                        if stored_count == actual_count:
+                            result.skipped_documents += 1
+                            LOGGER.info("Skipped unchanged document %s", document_id)
+                            continue
 
                 table_chunks, table_boxes, table_warnings = extract_table_chunks(pdf_path, document_id)
                 lines, warnings = extract_lines(pdf_path, table_boxes)
@@ -225,23 +219,33 @@ def ingest_corpus() -> IngestResult:
                 chunks = prose_chunks + table_chunks
                 if not chunks:
                     raise ValueError("no article or preamble text could be indexed")
-                with connection:
-                    connection.execute("DELETE FROM chunks WHERE document_id = ?", (document_id,))
-                    connection.execute("""INSERT OR REPLACE INTO documents
-                        (document_id, title, source_url, content_url, primary_category, language,
-                         year, type, authority, status, sha256)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""", (
-                        document_id, record["title"], record["source_url"], record["content_url"],
-                        record["primary_category"], record["language"],
-                        int(record["year"]) if record["year"] else None,
-                        record["type"] or None, record["authority"] or None,
-                        record["status"] or None, content_hash,
-                    ))
-                    connection.executemany("""INSERT INTO chunks
-                        (chunk_id, document_id, section_type, article_number, start_page, end_page, text)
-                        VALUES (?, ?, ?, ?, ?, ?, ?)""", chunks)
+                vectors = []
+                for offset in range(0, len(chunks), 64):
+                    vectors.extend(embed_texts([chunk[6] for chunk in chunks[offset:offset + 64]]))
+                ensure_collection(len(vectors[0]), embedding_key)
+                if existing_points:
+                    database.delete(COLLECTION, models.FilterSelector(filter=document_points), wait=True)
+                document_metadata = {
+                    'title': record['title'], 'source_url': record['source_url'],
+                    'content_url': record['content_url'], 'primary_category': record['primary_category'],
+                    'language': record['language'], 'year': int(record['year']) if record['year'] else None,
+                    'type': record['type'] or None, 'status': record['status'] or None,
+                    'sha256': content_hash, 'document_chunk_count': len(chunks),
+                }
+                for offset in range(0, len(chunks), 64):
+                    points = []
+                    for chunk, vector in zip(chunks[offset:offset + 64], vectors[offset:offset + 64]):
+                        chunk_id, _, section_type, article_number, start_page, end_page, text = chunk
+                        points.append(models.PointStruct(
+                            id=point_id(chunk_id), vector=vector.tolist(),
+                            payload={**document_metadata, 'chunk_id': chunk_id, 'document_id': document_id,
+                                     'section_type': section_type, 'article_number': article_number,
+                                     'start_page': start_page, 'end_page': end_page, 'text': text},
+                        ))
+                    database.upsert(COLLECTION, points, wait=True)
                 result.indexed_documents += 1
                 result.chunks_written += len(chunks)
+                result.embeddings_written += len(chunks)
                 result.warnings.extend(warnings)
                 for warning in warnings:
                     LOGGER.warning(warning)

@@ -71,6 +71,7 @@ class ChatState(TypedDict, total=False):
     history: list[dict]
     plan: dict
     evidence: list[dict]
+    retrieval: dict
     draft: dict
     response: dict
     clarifications: list[dict]

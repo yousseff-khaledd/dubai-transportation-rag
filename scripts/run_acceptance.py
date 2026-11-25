@@ -15,7 +15,8 @@ from urllib.request import Request, urlopen
 from langgraph.checkpoint.sqlite import SqliteSaver
 
 from app.agents.chat import CHECKPOINT_PATH, build_chat_graph
-from app.rag.ingest import INDEX_PATH, MANIFEST_PATH, PROJECT_DIR
+from app.rag.ingest import MANIFEST_PATH, PROJECT_DIR
+from app.rag.store import chunk_payload
 
 EVIDENCE_DIR = PROJECT_DIR / 'evidence' / 'acceptance'
 BASE_URL = 'http://127.0.0.1:8011'
@@ -73,13 +74,10 @@ def summarize_search(response):
 
 
 def indexed_excerpt(chunk_id):
-    with closing(sqlite3.connect(f'file:{INDEX_PATH}?mode=ro', uri=True)) as database:
-        row = database.execute(
-            'SELECT document_id, start_page, end_page, text FROM chunks WHERE chunk_id = ?', (chunk_id,)
-        ).fetchone()
-    if row is None:
+    payload = chunk_payload(chunk_id)
+    if payload is None:
         return None
-    document_id, start_page, end_page, text = row
+    document_id, start_page, end_page, text = (payload[key] for key in ('document_id', 'start_page', 'end_page', 'text'))
     locator = str(start_page) if start_page == end_page else f'{start_page}-{end_page}'
     return {'chunk_id': chunk_id, 'document_id': document_id, 'locator': locator, 'text': text}
 

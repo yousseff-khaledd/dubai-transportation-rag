@@ -4,6 +4,7 @@ __pycache__/
 .env
 *.pyc
 data/index.sqlite*
+data/qdrant/
 .DS_Store
 # Keep downloaded legislation local until redistribution rights are confirmed.
 data/pdfs/

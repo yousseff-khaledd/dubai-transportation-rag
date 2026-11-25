@@ -1,9 +1,8 @@
 """HTTP entry point for the Roads and Transport knowledge assistant."""
 
-import sqlite3
 import logging
 import re
-from contextlib import closing
+import sqlite3
 from uuid import uuid4
 
 from fastapi import FastAPI, HTTPException, Request
@@ -18,9 +17,10 @@ from langchain.agents.structured_output import StructuredOutputError
 from langchain_core.exceptions import OutputParserException
 from langgraph.errors import GraphRecursionError
 
-from app.rag.search import EmbeddingFailure, SearchUnavailable, SearchRequest, synchronize_search_indexes
+from app.rag.search import EmbeddingFailure, SearchUnavailable, SearchRequest
 
-from app.rag.ingest import INDEX_PATH, IngestResult, ingest_corpus
+from app.rag.ingest import IngestResult, ingest_corpus
+from app.rag.store import COLLECTION, QDRANT_PATH, client
 from app.agents.retrieval_graph import RerankFailure, RetrievalResponse, run_retrieval
 from app.agents.chat import ChatConflict, ChatError, ChatRequest, ChatResponse, ResumeRequest, run_chat
 from openai import APITimeoutError, OpenAIError
@@ -74,7 +74,9 @@ def execute_chat(body: ChatRequest | ResumeRequest, request: Request):
         return chat_error(request, body.thread_id, 503, 'storage_unavailable', 'The index or conversation storage is unavailable.')
     except (ModelCallLimitExceededError, ToolCallLimitExceededError, GraphRecursionError):
         return chat_error(request, body.thread_id, 502, 'call_limit_exceeded', 'The agent exceeded its call limit.')
-    except (EmbeddingFailure, RerankFailure, OpenAIError, ValidationError, OutputParserException, StructuredOutputError):
+    except (EmbeddingFailure, RerankFailure, OpenAIError, ValidationError, OutputParserException, StructuredOutputError) as error:
+        LOGGER.error('Chat model failure: request=%s type=%s cause=%s', request.state.request_id,
+                     type(error).__name__, type(error.__cause__).__name__)
         return chat_error(request, body.thread_id, 502, 'model_failure', 'A model request failed or returned an invalid response.')
     except Exception as error:
         LOGGER.error('Unexpected chat failure: request=%s type=%s', request.state.request_id, type(error).__name__)
@@ -87,13 +89,13 @@ class HealthResponse(BaseModel):
 
 
 def has_indexed_chunks() -> bool:
-    if not INDEX_PATH.is_file():
+    if not QDRANT_PATH.is_dir():
         return False
 
     try:
-        with closing(sqlite3.connect(f"file:{INDEX_PATH}?mode=ro", uri=True)) as connection:
-            return connection.execute("SELECT 1 FROM chunks LIMIT 1").fetchone() is not None
-    except sqlite3.Error:
+        database = client()
+        return database.collection_exists(COLLECTION) and database.count(COLLECTION, exact=True).count > 0
+    except Exception:
         return False
 
 
@@ -107,9 +109,7 @@ def ingest() -> IngestResult:
     if not INGEST_LOCK.acquire(blocking=False):
         raise HTTPException(409, "Ingestion is already running")
     try:
-        result = ingest_corpus()
-        result.embeddings_written = synchronize_search_indexes()["embeddings_written"]
-        return result
+        return ingest_corpus()
     except SearchUnavailable as error:
         raise HTTPException(503, str(error)) from error
     except (EmbeddingFailure, RerankFailure) as error:

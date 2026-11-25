@@ -1,6 +1,7 @@
 """Run a small, repeatable Ragas evaluation without changing the API."""
 import argparse
 import asyncio
+import hashlib
 import json
 import os
 import sqlite3
@@ -14,8 +15,8 @@ from langgraph.checkpoint.sqlite import SqliteSaver
 
 from app.agents.chat import CHECKPOINT_PATH, build_chat_graph
 from app.api.app import app
-from app.rag.ingest import INDEX_PATH
-from evals.ragas.cases import load_cases
+from app.rag.store import COLLECTION, index_counts
+from evals.ragas.cases import CASE_PATH, load_cases
 from evals.ragas.report import report_text, summarize
 from evals.ragas.scoring import ALL_METRICS, CORE_METRICS, build_metrics, score_answer
 
@@ -42,6 +43,7 @@ def chat_attempt(client: TestClient, case: dict, thread_id: str) -> dict:
         'response': response.json(),
         'elapsed_seconds': round(time.perf_counter() - started, 3),
         'planned_query': state.get('plan', {}).get('search_query'),
+        'retrieval': state.get('retrieval', {}),
         'evidence': [
             {key: hit[key] for key in ('chunk_id', 'document_id', 'locator', 'text')}
             for hit in state.get('evidence', [])
@@ -84,7 +86,8 @@ def compare_modes(client: TestClient, case: dict) -> dict:
     comparison = {}
     for mode in ('lexical', 'semantic', 'hybrid'):
         started = time.perf_counter()
-        response = client.post('/search', json={'query': case['question'], 'mode': mode, 'top_k': TOP_K})
+        response = client.post('/search', json={'query': case['question'], 'mode': mode,
+                                                'top_k': TOP_K, 'filters': case.get('filters', {})})
         body = response.json()
         hits = body.get('results', [])
         comparison[mode] = {
@@ -95,6 +98,9 @@ def compare_modes(client: TestClient, case: dict) -> dict:
             'chunk_ids': [hit['chunk_id'] for hit in hits],
             'document_ids': [hit['document_id'] for hit in hits],
             'trace': body.get('trace', []),
+            'ranking_stage': body.get('ranking_stage'),
+            'before_rerank': body.get('before_rerank', []),
+            'after_rerank': body.get('after_rerank', []),
             'error': body.get('detail') if response.status_code != 200 else None,
         }
     return comparison
@@ -140,10 +146,10 @@ async def run_evaluation(args) -> None:
 
     run_id = datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')
     output_dir = RESULTS_DIR / run_id
-    with closing(sqlite3.connect(f'file:{INDEX_PATH}?mode=ro', uri=True)) as database:
-        document_count = database.execute('SELECT count(*) FROM documents').fetchone()[0]
-        chunk_count = database.execute('SELECT count(*) FROM chunks').fetchone()[0]
+    document_count, chunk_count = index_counts()
     results = {
+        'database': 'qdrant-local', 'collection': COLLECTION,
+        'cases_sha256': hashlib.sha256(CASE_PATH.read_bytes()).hexdigest(),
         'run_id': run_id, 'ragas_version': ragas.__version__, 'chat_model': os.getenv('CHAT_MODEL'),
         'embedding_model': os.getenv('EMBEDDING_MODEL'), 'document_count': document_count,
         'chunk_count': chunk_count, 'top_k': TOP_K, 'metrics': list(metric_names),

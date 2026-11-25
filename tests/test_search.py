@@ -1,46 +1,54 @@
-import sqlite3
+"""Filtered Qdrant retrieval and hybrid graph checks."""
 import tempfile
 import unittest
-from contextlib import closing
 from pathlib import Path
 from threading import Barrier
 from unittest.mock import patch
 
 import numpy as np
 from fastapi.testclient import TestClient
+from qdrant_client import models
 
-from app.rag import search as retrieval
+from app.rag import search as retrieval, store
 from app.agents.retrieval_graph import run_retrieval
-from app.rag.ingest import create_tables
 from app.main import app
 
 
 class SearchTests(unittest.TestCase):
     def setUp(self):
         self.directory = tempfile.TemporaryDirectory()
-        self.index_path = Path(self.directory.name) / 'index.sqlite'
-        self.path_patch = patch.object(retrieval, 'INDEX_PATH', self.index_path)
+        self.path_patch = patch.object(store, 'QDRANT_PATH', Path(self.directory.name) / 'qdrant')
         self.path_patch.start()
-        self.settings_patch = patch.object(retrieval, 'embedding_settings', return_value=('https://example.test', 'embedding', 'unused'))
+        self.settings_patch = patch.object(retrieval, 'embedding_settings',
+                                           return_value=('https://example.test', 'embedding', 'unused'))
         self.settings_patch.start()
-        with closing(sqlite3.connect(self.index_path)) as database, database:
-            create_tables(database)
-            for document_id, year, kind, category in [('a', 2023, 'Law', 'Roads and Transport'),
-                    ('b', 2025, 'Resolution', 'Roads and Transport'), ('c', 2023, 'Law', 'Other')]:
-                database.execute('INSERT INTO documents VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                    (document_id, document_id, 'https://example.test/source', 'https://example.test/pdf', category, 'en', year, kind, None, None, document_id))
-                database.execute('INSERT INTO chunks VALUES (?, ?, ?, ?, ?, ?, ?)',
-                    (document_id, document_id, 'article', '1', 2, 3, 'Vehicle permit requirements'))
-        with patch.object(retrieval, 'embed_texts', return_value=np.array([[0, 1], [1, 0]], dtype=np.float32)):
-            retrieval.synchronize_search_indexes()
+        store.ensure_collection(2, store.model_key('https://example.test', 'embedding'))
+        self.database = store.client()
+        points = []
+        for document_id, year, kind, category, vector in [
+            ('a', 2023, 'Law', 'Roads and Transport', [0, 1]),
+            ('b', 2025, 'Resolution', 'Roads and Transport', [1, 0]),
+            ('c', 2023, 'Law', 'Other', [1, 0]),
+        ]:
+            points.append(models.PointStruct(
+                id=store.point_id(document_id), vector=vector,
+                payload={'chunk_id': document_id, 'document_id': document_id,
+                         'title': document_id, 'text': 'Vehicle permit requirements',
+                         'source_url': 'https://example.test/source', 'content_url': 'https://example.test/pdf',
+                         'primary_category': category, 'language': 'en', 'year': year, 'type': kind,
+                         'status': None, 'article_number': '1', 'start_page': 2, 'end_page': 3},
+            ))
+        self.database.upsert(store.COLLECTION, points, wait=True)
         self.rerank_patch = patch('app.agents.retrieval_nodes.rank_candidates', side_effect=lambda query, candidates: candidates)
         self.rerank_patch.start()
         self.client = TestClient(app)
 
     def tearDown(self):
         self.rerank_patch.stop()
-        self.path_patch.stop()
         self.settings_patch.stop()
+        self.path_patch.stop()
+        self.database.close()
+        store._client.cache_clear()
         self.directory.cleanup()
 
     def test_filters_and_scope_before_top_k(self):
@@ -48,9 +56,13 @@ class SearchTests(unittest.TestCase):
             for filters, expected in [({}, {'a', 'b'}), ({'year': 2023}, {'a'}),
                     ({'type': 'Resolution'}, {'b'}), ({'year': 2023, 'type': 'Law'}, {'a'}),
                     ({'year': 2025, 'type': 'Law'}, set())]:
-                with self.subTest(mode=mode, filters=filters), patch.object(retrieval, 'embed_texts', return_value=np.array([[1, 0]], dtype=np.float32)):
-                    response = self.client.post('/search', json={'query': 'vehicle permit', 'mode': mode, 'filters': filters, 'top_k': 1})
-                    self.assertEqual(response.status_code, 200)
+                with self.subTest(mode=mode, filters=filters), patch.object(
+                    retrieval, 'embed_texts', return_value=np.array([[1, 0]], dtype=np.float32)
+                ):
+                    response = self.client.post('/search', json={
+                        'query': 'vehicle permit', 'mode': mode, 'filters': filters, 'top_k': 1,
+                    })
+                    self.assertEqual(response.status_code, 200, response.text)
                     results = response.json()['results']
                     self.assertEqual(bool(results), bool(expected))
                     self.assertTrue({hit['document_id'] for hit in results}.issubset(expected))
@@ -62,6 +74,7 @@ class SearchTests(unittest.TestCase):
             response = self.client.post('/search', json={'query': 'vehicle', 'mode': 'semantic'}).json()
         self.assertEqual([hit['document_id'] for hit in response['results']], ['b', 'a'])
         self.assertEqual(response['score_type'], 'cosine_similarity')
+        self.assertEqual(response['score_direction'], 'higher_is_better')
         self.assertEqual(response['ranking_stage'], 'reranked')
 
     def test_hybrid_trace_and_deduplication(self):
@@ -80,8 +93,7 @@ class SearchTests(unittest.TestCase):
             both_started.wait(timeout=3)
             return retrieval.SearchResponse(
                 mode=request.mode, score_type='bm25' if request.mode == 'lexical' else 'cosine_similarity',
-                score_direction='lower_is_better' if request.mode == 'lexical' else 'higher_is_better',
-                results=[],
+                score_direction='higher_is_better', results=[],
             )
 
         with patch('app.agents.retrieval_nodes.search', side_effect=simultaneous_search):
@@ -94,21 +106,24 @@ class SearchTests(unittest.TestCase):
                        {'query': 'x', 'filters': {'year': '2023'}}, {'query': 'x', 'filters': {'type': 'Unknown'}}]:
             self.assertEqual(self.client.post('/search', json=values).status_code, 422)
 
-    def test_missing_embeddings_are_not_silently_omitted(self):
-        with closing(sqlite3.connect(self.index_path)) as database, database:
-            database.execute("DELETE FROM embeddings WHERE chunk_id='a'")
+    def test_missing_collection_is_controlled(self):
+        self.database.delete_collection(store.COLLECTION)
         self.assertEqual(self.client.post('/search', json={'query': 'vehicle', 'mode': 'semantic'}).status_code, 503)
-
-    def test_repeat_indexing_avoids_model_calls(self):
-        with patch.object(retrieval, 'embed_texts') as embed:
-            self.assertEqual(retrieval.synchronize_search_indexes()['embeddings_written'], 0)
-            embed.assert_not_called()
 
     def test_model_failure_is_controlled(self):
         with patch.object(retrieval, 'embed_texts', side_effect=retrieval.EmbeddingFailure('Embedding service request failed')):
             self.assertEqual(self.client.post('/search', json={'query': 'vehicle', 'mode': 'semantic'}).status_code, 502)
 
-    def test_punctuation_does_not_become_fts_syntax(self):
+    def test_semantic_no_match_skips_embedding(self):
+        with patch.object(retrieval, 'embed_texts') as embed:
+            response = self.client.post('/search', json={
+                'query': 'vehicle', 'mode': 'semantic', 'filters': {'year': 1900},
+            })
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['results'], [])
+        embed.assert_not_called()
+
+    def test_punctuation_does_not_become_query_syntax(self):
         self.assertEqual(self.client.post('/search', json={'query': 'vehicle " OR * (permit)'}).status_code, 200)
 
 
