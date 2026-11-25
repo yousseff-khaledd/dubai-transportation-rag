@@ -69,6 +69,8 @@ The project has an ignored `.env` file for the Azure AI Foundry OpenAI-compatibl
 
 `data/manifest.csv` lists each selected document's portal ID, title, official HTML viewer URL, PDF URL, category, language, retrieval date, available legislation metadata, local filename, and SHA-256 hash. `data/evidence/roads_and_transport_filtered_results.html` is the saved filtered portal result page; its selected primary-category option and all 30 selected result IDs can be checked directly.
 
+To obtain the PDFs for local research on a fresh checkout, run `uv run python scripts/download_pdfs.py`. The script downloads each file from its official manifest URL, verifies its SHA-256 hash, and skips files that already match. The portal's [terms](https://dlp.dubai.gov.ae/en/Pages/TermsAndConditions.aspx) permit personal use or research but require express prior written consent before redistribution, so the PDFs remain outside Git.
+
 The portal's `status` field is copied as source metadata. It should not be treated as independent verification of current legal applicability. This corpus is a selected sample, not an exhaustive or current legal compilation.
 
 ## Ingest the corpus
@@ -297,6 +299,7 @@ The [source-based review](evals/ragas/results/20261125_133409/review.md) identif
 - `data/ingestion_report.json`: both ingestion runs, exclusions, and current corpus totals.
 - `data/chunk_examples.json`: three representative indexed chunks.
 - `data/pdfs/`: the 30 downloaded source PDFs.
+- `scripts/download_pdfs.py`: downloads and verifies the PDFs locally from the official portal.
 - `data/evidence/`: filtered-category source evidence.
 - `pyproject.toml` and `uv.lock`: pinned dependencies and resolved lockfile.
 - `.env.example`: shareable placeholders for the model configuration. The real `.env` stays local and is ignored by Git.

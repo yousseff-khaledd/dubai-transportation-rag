@@ -38,6 +38,8 @@ Prepared on 25 November 2026 from the current source code, saved raw results, an
 
 “The standalone search endpoint defaults to lexical mode, while chat and the frontend default to hybrid. `pyproject.toml` declares dependencies and `uv.lock` records the resolved environment. Credentials, generated databases, and local PDF downloads are ignored by Git, so a fresh checkout also needs the source PDFs and local model configuration.”
 
+“A fresh checkout can obtain the PDFs with `uv run python scripts/download_pdfs.py`. It reads official URLs from the manifest, verifies hashes, and skips matching local files. The repository links to those sources because the portal requires express prior written consent to redistribute its material.”
+
 ```mermaid
 flowchart TD
     PDFs[Local PDFs and manifest] --> Ingest[Validate, extract, and chunk]
@@ -224,7 +226,7 @@ flowchart TD
 
 “I separate implementation checks, retrieval measurement, and generated-answer evaluation.
 
-“The current deterministic suite contains 38 tests. It uses temporary Qdrant collections and SQLite checkpoints with model substitutes, plus real corpus PDFs for table-parsing tests. It checks filtering before top-k selection, hybrid branch overlap, stable ingestion, table values and locators, citation rejection, thread isolation, restart and resume, and model or tool call limits. Seven tests cover reranker response validation, fallback, and chat continuation. Two additional evaluation tests check fallback counting and preservation of filters and ranking details. The migration verification previously passed 29 tests; the older acceptance report records the 27 tests that existed then.
+“The current deterministic suite contains 40 tests. It uses temporary Qdrant collections and SQLite checkpoints with model substitutes, plus real corpus PDFs for table-parsing tests. It checks filtering before top-k selection, hybrid branch overlap, stable ingestion, table values and locators, citation rejection, thread isolation, restart and resume, model or tool call limits, and verified PDF downloading. Seven tests cover reranker response validation, fallback, and chat continuation. Two additional evaluation tests check fallback counting and preservation of filters and ranking details. The migration verification previously passed 29 tests; the older acceptance report records the 27 tests that existed then.
 
 “After the fallback fix on November 25, 2026, all 36 tests passed. I also repeated the user's autonomous-vehicle permit question through the running backend and live Azure models, using hybrid search with twenty requested chunks and no filters. It returned HTTP 200, an answered status, and four citations. That verifies this request can complete; it is not a new Ragas evaluation or proof of answer accuracy. The chat response does not expose whether fallback was used, so the deterministic tests provide the direct verification of that failure path.
 
@@ -252,7 +254,7 @@ flowchart TD
 
 “The current run is `20261125_133409`, from November 25, 2026, after the Qdrant migration and reranker fallback fix. It uses the same thirteen questions, references, source identifiers, filters, modes, deployed models, thirty documents, 1,136 chunks, and final top five as the earlier Ragas run. The runner records the database, collection, and case-file hash so the run is identifiable.
 
-“I preserved the November 11 SQLite results as a baseline. The old acceptance run found nine of ten expected documents on first attempts and ten after a retry; that separate acceptance runner has not been rerun. The new verification consists of 38 passing automated tests and a complete live Ragas run, including thirty search-mode requests and a conversation-memory check.”
+“I preserved the November 11 SQLite results as a baseline. The old acceptance run found nine of ten expected documents on first attempts and ten after a retry; that separate acceptance runner has not been rerun. The Qdrant evaluation included 38 passing automated tests and a complete live Ragas run, including thirty search-mode requests and a conversation-memory check. Two later tests check local PDF downloading and hash verification, bringing the current suite to 40.”
 
 | Measure | SQLite baseline | Current Qdrant run |
 | --- | ---: | ---: |
@@ -374,4 +376,4 @@ There is a specific migration follow-up in [scripts/run_acceptance.py](../script
 | Historical acceptance evidence | [report](../evidence/acceptance/evaluation_report.md), [raw results](../evidence/acceptance/results.json) |
 | Historical Ragas evidence | [report](../evals/ragas/results/20261111_205750/report.md), [raw results](../evals/ragas/results/20261111_205750/results.json), [manual review](../evals/ragas/results/20261111_205750/review.md) |
 
-Verification for this document: reviewed the current source and test definitions, checked the local collection configuration, and compared the reported metrics with the saved raw JSON. The updated script includes 38 passing automated tests and the full Qdrant Ragas run `20261125_133409`; the separate acceptance runner was not rerun.
+Verification for this document: reviewed the current source and test definitions, checked the local collection configuration, and compared the reported metrics with the saved raw JSON. The current suite has 40 passing tests; the Qdrant Ragas run `20261125_133409` was completed before the two PDF downloader tests were added. The separate acceptance runner was not rerun.
